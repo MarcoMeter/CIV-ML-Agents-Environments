@@ -11,9 +11,11 @@ namespace SaltyUtils.SaltySpline.Editor
 
         public static Spline CreateNewSpline(BezierType bezierType)
         {
+            // Create GameObject and add Component
             GameObject newGameObject = new GameObject("Spline");
             Spline newSpline = newGameObject.AddComponent<Spline>();
 
+            // Generate two new points
             SplinePoint startPoint = AddPoint(newSpline, bezierType);
             SplinePoint endPoint = AddPoint(newSpline, bezierType);
 
@@ -49,6 +51,7 @@ namespace SaltyUtils.SaltySpline.Editor
 
         #endregion
 
+        /*
         #region Utility
 
         private void AutoPlaceNewPoint()
@@ -57,5 +60,6 @@ namespace SaltyUtils.SaltySpline.Editor
         }
 
         #endregion
+        /*
     }
 }

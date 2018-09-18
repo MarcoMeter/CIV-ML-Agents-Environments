@@ -20,6 +20,7 @@ namespace SaltyUtils.SaltySpline.Editor
         [MenuItem("Tools/SaltyTools/SaltySpline")]
         static void Init()
         {
+            // Open editor window on menu click
             SplineBuilderWindow window = GetWindow<SplineBuilderWindow>("SaltySpline");
             window.Show();
         }
@@ -52,6 +53,7 @@ namespace SaltyUtils.SaltySpline.Editor
 
             if (GUILayout.Button("Add Point"))
             {
+                // Check if spline selected
                 if (Selection.activeGameObject == null || selectedSpline == null)
                 {
                     EditorApplication.Beep();
@@ -108,6 +110,7 @@ namespace SaltyUtils.SaltySpline.Editor
             selectedSpline = Utility.GetComponentSelectionNull<Spline>();
             selectedSplinePoint = Utility.GetComponentSelectionNull<SplinePoint>();
 
+            // Auto select spline of selected SplinePoint
             if (selectedSpline == null && selectedSplinePoint != null) selectedSpline = selectedSplinePoint.parentSpline;
 
             Repaint();
@@ -163,6 +166,7 @@ namespace SaltyUtils.SaltySpline.Editor
                     }
                 }
 
+                // Only draw when spline contains points
                 if (selectedSpline.splinePoints.Count <= 1)
                     return;
 

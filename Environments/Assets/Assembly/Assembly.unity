@@ -753,31 +753,6 @@ Prefab:
       propertyPath: CoreBrains.Array.data[3]
       value: 
       objectReference: {fileID: 16008094}
-    - target: {fileID: 114272569662204894, guid: 4e0fb0eb56f721f45911d98d994f0910,
-        type: 2}
-      propertyPath: trainingConfiguration.timeScale
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357282073911822, guid: 4e0fb0eb56f721f45911d98d994f0910,
-        type: 2}
-      propertyPath: brainParameters.vectorObservationSize
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357282073911822, guid: 4e0fb0eb56f721f45911d98d994f0910,
-        type: 2}
-      propertyPath: instanceID
-      value: -2601522
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357282073911822, guid: 4e0fb0eb56f721f45911d98d994f0910,
-        type: 2}
-      propertyPath: brainType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357282073911822, guid: 4e0fb0eb56f721f45911d98d994f0910,
-        type: 2}
-      propertyPath: brainParameters.numStackedVectorObservations
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0fb0eb56f721f45911d98d994f0910, type: 2}
   m_IsPrefabAsset: 0

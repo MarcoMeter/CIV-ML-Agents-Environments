@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ML-Agents/Thesis Environments/BRO/Scenes/MultiEnvironment.unity
-    guid: 3c3c7e660bf8d3e4fa858263ff361f4a
+    path: Assets/Assembly/Assembly.unity
+    guid: 076761cd727581e4e8d077879070cc39
   m_configObjects: {}

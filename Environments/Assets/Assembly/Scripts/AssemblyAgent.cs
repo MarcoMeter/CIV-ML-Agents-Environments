@@ -41,44 +41,6 @@ public class AssemblyAgent : Agent {
                     hit.rigidbody.AddForce(gun.forward + Vector3.up * hit.rigidbody.mass, ForceMode.Impulse);
                 }
             }
-            if (hit.transform.tag == "redBox")
-            {
-                if(actionFire > 0.5f)
-                {
-                    AddReward(0.01f);
-                }
-                else
-                {
-                    AddReward(0.001f);
-                }
-                
-            }
-            else if(hit.transform.tag == "blueBox")
-            {
-                if (actionFire > 0.5f)
-                {
-                    AddReward(-0.01f);
-                }
-                else
-                {
-                    AddReward(-0.001f);
-                }
-            }
-            else
-            {
-                if (actionFire > 0.5f)
-                {
-                    AddReward(-0.001f);
-                }
-                else
-                {
-                    AddReward(-0.0001f);
-                }
-            }
-        }
-        else
-        {
-            AddReward(-0.0001f);
         }
     }
 

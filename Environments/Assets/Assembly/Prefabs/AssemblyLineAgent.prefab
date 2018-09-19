@@ -571,7 +571,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013444820036950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4601311661147710}
@@ -1909,8 +1909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ddcd52b0cf65c4b8d0ba670fc98fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 1
-  punish: 1
+  reward: 0
+  punish: 0
   acceptedClass: redBox
   agent: {fileID: 114618590946101028}
   spawner: {fileID: 114268185063732988}
@@ -1931,7 +1931,7 @@ MonoBehaviour:
     maxStep: 5000
     resetOnDone: 1
     onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 5
+    numberOfActionsBetweenDecisions: 6
   gun: {fileID: 4732718396252292}
   spawner: {fileID: 114268185063732988}
 --- !u!114 &114624704384794192
@@ -1945,8 +1945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ddcd52b0cf65c4b8d0ba670fc98fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 1
-  punish: 1
+  reward: 0
+  punish: 0
   acceptedClass: blueBox
   agent: {fileID: 114618590946101028}
   spawner: {fileID: 114268185063732988}

@@ -25,7 +25,7 @@ public class AssemblyAgent : Agent {
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         float actionY = Mathf.Clamp(vectorAction[0], -1f, 1f);
-        gun.Rotate(new Vector3(0, 5f, 0), actionY);
+        gun.Rotate(new Vector3(0, 15f, 0), actionY);
 
         float actionFire = Mathf.Abs(vectorAction[1]);
 
@@ -41,10 +41,43 @@ public class AssemblyAgent : Agent {
                 {
                     hit.rigidbody.AddForce(gun.forward + Vector3.up * hit.rigidbody.mass, ForceMode.Impulse);
                 }
+
+                if (hit.transform.tag == "blueBox")
+                {
+                    AddReward(-0.05f);
+                }
+                else if(hit.transform.tag == "redBox")
+                {
+                    AddReward(0.1f);
+                }
+                else
+                {
+                    AddReward(-0.05f);
+                }
+            }
+            else
+            {
+                if (hit.transform.tag == "blueBox")
+                {
+                    AddReward(-0.001f);
+                }
+                else if (hit.transform.tag == "redBox")
+                {
+                    AddReward(0.005f);
+                }
+                else
+                {
+                    AddReward(-0.0001f);
+                }
             }
         }
-
-        AddReward(0.001f);
+        else
+        {
+            if(actionFire > 0.5f)
+            {
+                AddReward(-0.05f);
+            }
+        }
     }
 
     public override void AgentReset()

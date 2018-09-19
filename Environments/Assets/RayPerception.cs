@@ -67,6 +67,42 @@ namespace MLAgents
             return perceptionBuffer;
         }
 
+        public List<float> Perceive(float rayDistance, Vector3[] offsets, Vector3[] rays, string[] detectableObjects)
+        {
+            perceptionBuffer.Clear();
+            int length = offsets.Length;
+
+            for(int n = 0; n < length; n++)
+            {
+                if (Application.isEditor)
+                {
+                    Debug.DrawRay(transform.position + offsets[n], rays[n] * rayDistance, Color.black, 0.01f, true);
+                }
+
+                float[] subList = new float[detectableObjects.Length + 2];
+                if(Physics.SphereCast(transform.position + offsets[n], 0.5f, rays[n], out hit, rayDistance))
+                {
+                    for(int i = 0; i < detectableObjects.Length; i++)
+                    {
+                        if (hit.collider.gameObject.CompareTag(detectableObjects[i]))
+                        {
+                            subList[i] = 1;
+                            subList[detectableObjects.Length + 1] = hit.distance / rayDistance;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    subList[detectableObjects.Length] = 1f;
+                }
+
+                perceptionBuffer.AddRange(subList);
+            }
+
+            return perceptionBuffer;
+        }
+
         /// <summary>
         /// Converts polar coordinate to cartesian coordinate.
         /// </summary>

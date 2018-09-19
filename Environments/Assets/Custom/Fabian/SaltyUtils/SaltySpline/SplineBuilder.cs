@@ -6,7 +6,7 @@ using System;
 namespace SaltyUtils.SaltySpline.Editor
 {
     public class SplineBuilder : MonoBehaviour
-    {        
+    {
         #region General
 
         public static Spline CreateNewSpline(BezierType bezierType)
@@ -40,26 +40,30 @@ namespace SaltyUtils.SaltySpline.Editor
             // TODO Add ControlPoints
 
             spline.splinePoints.Add(newSplinePoint);
+            AutoPlaceNewPoint(newSplinePoint);
 
             return newSplinePoint;
         }
 
         public static void DeletePoint(SplinePoint splinePoint)
         {
-            Destroy(splinePoint.gameObject);
+            if (Application.isEditor)
+                DestroyImmediate(splinePoint.gameObject);
+            else
+                Destroy(splinePoint.gameObject);
         }
 
         #endregion
 
-        /*
         #region Utility
 
-        private void AutoPlaceNewPoint()
+        private static void AutoPlaceNewPoint(SplinePoint splinePoint)
         {
+            Spline parentSpline = splinePoint.parentSpline;
 
+            splinePoint.transform.position = splinePoint.parentSpline.LastSplinePoint.transform.position + Vector3.one;
         }
 
         #endregion
-        /*
     }
 }

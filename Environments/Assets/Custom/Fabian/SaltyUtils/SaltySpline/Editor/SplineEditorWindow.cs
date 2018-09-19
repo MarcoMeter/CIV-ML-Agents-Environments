@@ -2,7 +2,6 @@
 using SaltyUtils.SaltySpline.Bezier;
 using SaltyUtils.SaltySpline.Classes;
 using SaltyUtils.SaltySpline.Enums;
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -143,6 +142,11 @@ namespace SaltyUtils.SaltySpline.Editor
                     item.transform.position = Handles.PositionHandle(item.transform.position, Quaternion.identity);
                     Handles.color = Color.green;
                     Handles.SphereHandleCap(0, item.transform.position, Quaternion.identity, 0.1f, EventType.Repaint);
+
+                    GUIStyle labelStyle = new GUIStyle();
+                    labelStyle.normal.textColor = Color.red;
+
+                    Handles.Label(item.transform.position, item.name, labelStyle);
 
                     // Draw ControlPoints Handles
                     if (item == selectedSpline.splinePoints[selectedSpline.splinePoints.Count - 1])

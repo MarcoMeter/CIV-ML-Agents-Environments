@@ -1886,6 +1886,7 @@ MonoBehaviour:
   - {fileID: 4249998011662008, guid: 8b68f8432a286dd4a889bb2f06524039, type: 2}
   - {fileID: 4680383516021690, guid: 389c71baeb030264081119d8951da27a, type: 2}
   moveSpeed: 8
+  cubes: []
 --- !u!114 &114440174603082976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1912,6 +1913,7 @@ MonoBehaviour:
   punish: 0.2
   acceptedClass: redBox
   agent: {fileID: 114618590946101028}
+  spawner: {fileID: 114268185063732988}
 --- !u!114 &114618590946101028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1926,11 +1928,12 @@ MonoBehaviour:
   brain: {fileID: 0}
   agentParameters:
     agentCameras: []
-    maxStep: 2000
+    maxStep: 5000
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 5
   gun: {fileID: 4732718396252292}
+  spawner: {fileID: 114268185063732988}
 --- !u!114 &114624704384794192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1946,3 +1949,4 @@ MonoBehaviour:
   punish: 0.1
   acceptedClass: blueBox
   agent: {fileID: 114618590946101028}
+  spawner: {fileID: 114268185063732988}

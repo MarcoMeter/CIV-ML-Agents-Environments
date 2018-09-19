@@ -9,6 +9,7 @@ public class GiveReward : MonoBehaviour {
     public float punish = 0f;
     public string acceptedClass = "blueClass";
     public Agent agent;
+    public SpawnCubes spawner;
 
 	// Update is called once per frame
 	void OnCollisionEnter (Collision collision) {
@@ -19,7 +20,8 @@ public class GiveReward : MonoBehaviour {
         else
         {
             agent.AddReward(-punish);
+            agent.Done();
         }
-        Destroy(collision.transform.gameObject);
+        spawner.Unregister(collision.transform.gameObject);
 	}
 }

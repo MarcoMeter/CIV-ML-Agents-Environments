@@ -7,6 +7,7 @@ public class AssemblyAgent : Agent {
 
     public Transform gun;
     RayPerception rayPer;
+    public SpawnCubes spawner;
 
     public override void InitializeAgent()
     {
@@ -24,7 +25,7 @@ public class AssemblyAgent : Agent {
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         float actionY = Mathf.Clamp(vectorAction[0], -1f, 1f);
-        gun.Rotate(new Vector3(0, 2f, 0), actionY);
+        gun.Rotate(new Vector3(0, 5f, 0), actionY);
 
         float actionFire = Mathf.Abs(vectorAction[1]);
 
@@ -42,10 +43,13 @@ public class AssemblyAgent : Agent {
                 }
             }
         }
+
+        AddReward(0.001f);
     }
 
     public override void AgentReset()
     {
+        spawner.ResetCubes();
         gun.rotation = Quaternion.identity;
     }
 }

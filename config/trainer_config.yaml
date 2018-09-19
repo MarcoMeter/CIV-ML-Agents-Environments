@@ -20,3 +20,14 @@ default:
     use_curiosity: false
     curiosity_strength: 0.01
     curiosity_enc_size: 128
+    
+AssemblyBrain:
+    trainer: ppo
+    batch_size: 256
+    beta: 3.0e-3
+    buffer_size: 2048
+    hidden_units: 64
+    max_steps: 1.0e6
+    normalize: true
+    num_epoch: 5
+    num_layers: 2

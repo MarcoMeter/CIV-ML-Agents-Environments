@@ -33,20 +33,45 @@ public class AssemblyAgent : Agent {
         
         RaycastHit hit;
         Ray ray = new Ray(gun.position, gun.forward);
-        if (Physics.Raycast(ray, out hit, 12f))
+        if (Physics.SphereCast(ray, 0.1f, out hit, 12f))
         {
-            if(actionFire > 0.8f)
+            if(actionFire > 0.6f)
             {
                 Debug.DrawLine(gun.position, hit.point, Color.red);
                 if (hit.rigidbody)
                 {
-                    hit.rigidbody.AddForce(gun.forward + Vector3.up * hit.rigidbody.mass, ForceMode.Impulse);
+                    hit.rigidbody.AddForce(gun.forward + Vector3.up * hit.rigidbody.mass * 5.0f, ForceMode.Impulse);
+
+                    if(hit.transform.tag == "redBox")
+                    {
+                        AddReward(1.0f);
+                        hit.transform.tag = "Untagged";
+                    }
+                    else if(hit.transform.tag == "blueBox")
+                    {
+                        AddReward(-0.5f);
+                        hit.transform.tag = "Untagged";
+                    }
+                    else
+                    {
+                        AddReward(-0.001f);
+                    }
                 }
             }
-
+            else
+            {
+                if(hit.transform.tag == "Untagged")
+                {
+                    AddReward(-0.001f);
+                }
+            }
+        }
+        else
+        {
+            AddReward(-0.001f);
         }
 
-        AddReward(0.001f);
+        //AddReward(0.001f);
     }
 
     public override void AgentReset()

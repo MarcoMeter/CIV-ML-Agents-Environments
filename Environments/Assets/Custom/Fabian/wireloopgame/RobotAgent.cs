@@ -16,6 +16,7 @@ public class RobotAgent : Agent
     private Vector3 ringNewPos;
     private Vector3 ringVelocity;
 
+
     public override void InitializeAgent()
     {
         robot = GetComponent<RobotController>();
@@ -49,7 +50,7 @@ public class RobotAgent : Agent
 
         localXVelocity = ring.transform.InverseTransformVector(ringVelocity).x;
         AddReward(localXVelocity * 0.01f);
-        AddReward(-0.001f);
+        AddReward(-0.0001f);
 
         robot.inputBase = vectorAction[0];
         robot.inputArm1 = vectorAction[1];
@@ -70,6 +71,7 @@ public class RobotAgent : Agent
         robot.ring = initialRobotPosition.ring;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(
@@ -78,4 +80,5 @@ public class RobotAgent : Agent
 
         Handles.Label(ring.position, ring.position + "\n" + localXVelocity.ToString());
     }
+#endif
 }

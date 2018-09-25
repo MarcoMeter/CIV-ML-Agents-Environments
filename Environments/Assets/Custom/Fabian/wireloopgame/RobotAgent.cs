@@ -7,15 +7,20 @@ public class RobotAgent : Agent
 {
     public CircularRayPerception circularRayPerception;
     public string[] detectabeObjects;
-    public Rigidbody ringRB;
+    public Transform ring;
 
     private RobotController robot;
     private RobotTelemetryData initialRobotPosition;
+    private Vector3 ringOldPos;
+    private float localXVelocity;
+    private Vector3 ringNewPos;
+    private Vector3 ringVelocity;
 
     public override void InitializeAgent()
     {
         robot = GetComponent<RobotController>();
         initialRobotPosition = new RobotTelemetryData(robot);
+        ringOldPos = ring.position;
     }
 
     public override void CollectObservations()
@@ -36,7 +41,14 @@ public class RobotAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        AddReward(ringRB.velocity.x * 0.01f);
+        ringNewPos = ring.position;
+        var media = (ringNewPos - ringOldPos);
+        ringVelocity = media / Time.fixedDeltaTime;
+        ringOldPos = ringNewPos;
+        ringNewPos = ring.position;
+
+        localXVelocity = ring.transform.InverseTransformVector(ringVelocity).x;
+        AddReward(localXVelocity * 0.01f);
         AddReward(-0.001f);
 
         robot.inputBase = vectorAction[0];
@@ -60,7 +72,10 @@ public class RobotAgent : Agent
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(ringRB.position, ringRB.position + ringRB.velocity);
-        Handles.Label(ringRB.position, ringRB.position + "\n" + ringRB.velocity.ToString());
+        Gizmos.DrawLine(
+            ring.position,
+            ring.position + ring.transform.right * localXVelocity);
+
+        Handles.Label(ring.position, ring.position + "\n" + localXVelocity.ToString());
     }
 }

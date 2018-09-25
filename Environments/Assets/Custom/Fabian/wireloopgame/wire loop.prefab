@@ -1921,7 +1921,7 @@ MonoBehaviour:
   detectabeObjects:
   - Goal
   - Enermy
-  ringRB: {fileID: 54200767374943178}
+  ring: {fileID: 4869680559223588}
 --- !u!114 &114083658773362424
 MonoBehaviour:
   m_ObjectHideFlags: 1

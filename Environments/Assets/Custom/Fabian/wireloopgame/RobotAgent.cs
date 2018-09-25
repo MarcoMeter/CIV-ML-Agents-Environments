@@ -1,5 +1,6 @@
 ﻿using System;
 using MLAgents;
+using UnityEditor;
 using UnityEngine;
 
 public class RobotAgent : Agent
@@ -35,7 +36,7 @@ public class RobotAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        AddReward(ringRB.velocity.magnitude * 0.01f);
+        AddReward(ringRB.velocity.x * 0.01f);
         AddReward(-0.001f);
 
         robot.inputBase = vectorAction[0];
@@ -55,5 +56,11 @@ public class RobotAgent : Agent
         robot.arm1 = initialRobotPosition.arm1;
         robot.arm2 = initialRobotPosition.arm2;
         robot.ring = initialRobotPosition.ring;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(ringRB.position, ringRB.position + ringRB.velocity);
+        Handles.Label(ringRB.position, ringRB.position + "\n" + ringRB.velocity.ToString());
     }
 }

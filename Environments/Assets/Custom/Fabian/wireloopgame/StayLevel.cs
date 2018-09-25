@@ -28,14 +28,11 @@ public class StayLevel : MonoBehaviour
             default:
                 throw new Exception();
         }
-
-        Debug.Log("Axis: " + axis.ToString() + "\n" +
-            "Locked to degree: " + initialDegree.ToString());
     }
 
     [ExecuteInEditMode]
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (axis)
         {

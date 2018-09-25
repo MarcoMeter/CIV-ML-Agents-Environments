@@ -17,9 +17,12 @@ public class AssemblyLineMover : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.transform.tag == "AssemblyLine")
-        {
-            rig.MovePosition(transform.position + Vector3.right * speed * Time.deltaTime);
-        }
+        collision.rigidbody.MovePosition(collision.transform.position + Vector3.right * speed * Time.deltaTime);
+        //collision.rigidbody.velocity = new Vector3(speed, collision.rigidbody.velocity.y, collision.rigidbody.velocity.z);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        collision.rigidbody.AddForce(Vector3.right * speed * collision.rigidbody.mass, ForceMode.Impulse);
     }
 }

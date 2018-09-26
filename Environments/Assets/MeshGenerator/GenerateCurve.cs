@@ -166,8 +166,6 @@ public class GenerateCurve : MonoBehaviour {
 
         mesh.RecalculateTangents();
         mesh.RecalculateBounds();
-        mesh.
-
 
         mf.mesh = mesh;
     }

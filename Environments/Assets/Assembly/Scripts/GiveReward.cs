@@ -20,7 +20,7 @@ public class GiveReward : MonoBehaviour {
         else
         {
             agent.AddReward(-punish);
-            agent.Done();
+            //agent.Done();
         }
         spawner.Unregister(collision.transform.gameObject);
 	}

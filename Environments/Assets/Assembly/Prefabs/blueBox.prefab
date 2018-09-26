@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23112475711813408}
   - component: {fileID: 65776619040640722}
   - component: {fileID: 54285987742764784}
-  - component: {fileID: 114427599020424144}
   m_Layer: 0
   m_Name: blueBox
   m_TagString: blueBox
@@ -113,15 +112,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114427599020424144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222271179459692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a319a172f9bad264eb21c5c082a84db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1

@@ -10,6 +10,7 @@ public class AssemblyAgent : Agent {
     public Vector3 maxMoverDirection = new Vector3(0f, 0f, 1f);
     RayPerception rayPer;
     public SpawnCubes spawner;
+    private float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
 
     public Transform raySpawner;
     public float rayDistance = 0.1f;
@@ -59,11 +60,14 @@ public class AssemblyAgent : Agent {
         }
 
         AddVectorObs(rayPer.Perceive(12f, rays, detectableObjects, 0f, 0f));
+
+        // Mover pos
+        AddVectorObs(mover.transform.localPosition.z);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        float actionY = Mathf.Clamp(vectorAction[0], -1f, 1f);
+        float actionY = _movementBuckets[(int)vectorAction[0]];
         mover.MovePosition(Vector3.Lerp(mover.position, moverOrigin + maxMoverDirection * actionY, Time.deltaTime * 10.0f));
 
         //AddReward(0.001f);

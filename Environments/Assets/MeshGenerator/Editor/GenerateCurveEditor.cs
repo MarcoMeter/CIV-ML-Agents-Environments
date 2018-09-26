@@ -15,6 +15,7 @@ public class GenerateCurveEditor : Editor {
         {
             myScript.CalculateRandomPoints();
         }
+        if (myScript.hasRandomPoints())
         {
             if (GUILayout.Button("Draw Random Mesh"))
             {

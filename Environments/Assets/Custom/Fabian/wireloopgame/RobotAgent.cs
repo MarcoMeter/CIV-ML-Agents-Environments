@@ -16,6 +16,8 @@ public class RobotAgent : Agent
     private Vector3 ringNewPos;
     private Vector3 ringVelocity;
 
+    private float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
+
 
     public override void InitializeAgent()
     {
@@ -52,10 +54,10 @@ public class RobotAgent : Agent
         AddReward(localXVelocity * 0.01f);
         AddReward(-0.0001f);
 
-        robot.inputBase = vectorAction[0];
-        robot.inputArm1 = vectorAction[1];
-        robot.inputArm2 = vectorAction[2];
-        robot.inputRing = vectorAction[3];
+        robot.inputBase = _movementBuckets[(int)vectorAction[0]];
+        robot.inputArm1 = _movementBuckets[(int)vectorAction[1]];
+        robot.inputArm2 = _movementBuckets[(int)vectorAction[2]];
+        robot.inputRing = _movementBuckets[(int)vectorAction[3]];
     }
 
     public override void AgentOnDone()

@@ -22,4 +22,4 @@ default:
     curiosity_enc_size: 128
 
 RobotBrain:
-    max_steps: 1.0e10
+    max_steps: 1.0e6

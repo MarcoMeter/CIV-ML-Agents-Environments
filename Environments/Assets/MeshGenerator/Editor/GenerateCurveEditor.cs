@@ -11,17 +11,23 @@ public class GenerateCurveEditor : Editor {
         DrawDefaultInspector();
 
         GenerateCurve myScript = (GenerateCurve)target;
-        if (GUILayout.Button("Build Mesh"))
-        {
-            myScript.BuildMesh();
-        }
         if(GUILayout.Button("Calculate Random Points"))
         {
             myScript.CalculateRandomPoints();
         }
-        if(GUILayout.Button("Draw Random Mesh"))
         {
-            myScript.BuildMeshBezier();
+            if (GUILayout.Button("Draw Random Mesh"))
+            {
+                myScript.BuildMeshBezier();
+            }
         }
+    }
+
+    public virtual void OnSceneGUI()
+    {
+        GenerateCurve gc = (GenerateCurve)target;
+
+        gc.endPosition = gc.transform.InverseTransformPoint(Handles.PositionHandle(gc.transform.TransformPoint(gc.endPosition), Quaternion.identity));
+        gc.endPosition = new Vector3(gc.endPosition.x, 0f, gc.endPosition.z);
     }
 }

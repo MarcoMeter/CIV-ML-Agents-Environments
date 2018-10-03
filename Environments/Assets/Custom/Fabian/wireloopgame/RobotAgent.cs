@@ -34,6 +34,8 @@ public class RobotAgent : Agent
 
     internal void Collision(bool good)
     {
+        print("RobotAgent");
+
         if (good)
             AddReward(1.0f);
         else
@@ -54,10 +56,22 @@ public class RobotAgent : Agent
         AddReward(localXVelocity * 0.01f);
         AddReward(-0.0001f);
 
-        robot.inputBase = _movementBuckets[(int)vectorAction[0]];
-        robot.inputArm1 = _movementBuckets[(int)vectorAction[1]];
-        robot.inputArm2 = _movementBuckets[(int)vectorAction[2]];
-        robot.inputRing = _movementBuckets[(int)vectorAction[3]];
+        if (brain.brainType == BrainType.Player)
+        {
+            robot.inputBase = (Input.GetKey(KeyCode.KeypadPeriod) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad0) ? -1f : 0f);
+            robot.inputBaseRotator = (Input.GetKey(KeyCode.Keypad3) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad2) ? -1f : 0f);
+            robot.inputArm1 = (Input.GetKey(KeyCode.Keypad7) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad4) ? -1f : 0f);
+            robot.inputArm2 = (Input.GetKey(KeyCode.Keypad8) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad5) ? -1f : 0f);
+            robot.inputRing = (Input.GetKey(KeyCode.Keypad9) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad6) ? -1f : 0f);
+        }
+        else
+        {
+            robot.inputBase = _movementBuckets[(int)vectorAction[0]];
+            robot.inputBaseRotator = _movementBuckets[(int)vectorAction[1]];
+            robot.inputArm1 = _movementBuckets[(int)vectorAction[2]];
+            robot.inputArm2 = _movementBuckets[(int)vectorAction[3]];
+            robot.inputRing = _movementBuckets[(int)vectorAction[4]];
+        }
     }
 
     public override void AgentOnDone()
@@ -68,6 +82,7 @@ public class RobotAgent : Agent
     public override void AgentReset()
     {
         robot.armBase = initialRobotPosition.armBase;
+        robot.armBaseRotator = initialRobotPosition.armBaseRotator;
         robot.arm1 = initialRobotPosition.arm1;
         robot.arm2 = initialRobotPosition.arm2;
         robot.ring = initialRobotPosition.ring;

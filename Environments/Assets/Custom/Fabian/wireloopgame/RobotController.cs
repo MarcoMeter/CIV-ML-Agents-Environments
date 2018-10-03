@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class RobotController : MonoBehaviour
 {
+    [Header("Transforms")]
+    public Transform armBaseTransform;
+    public Transform armBaseRotatorTransform;
+    public Transform arm1Transform, arm2Transform;
+    public Transform ringRotatorTransform;
+    public Transform ringTransform;
+
+    [Header("Axle Settings")]
     public Vector3 armBase;
+    public Vector3 armBaseRotator;
     public Vector3 arm1, arm2;
     public Vector3 ring;
 
-    public Transform armBaseTransform;
-    public Transform arm1Transform, arm2Transform;
-    public Transform ringTransform;
+    [Header("Settings")]
+    public float speedBase;
+    public float speedArms;
+    public float speedRing;
 
-    public float inputBase, inputArm1, inputArm2, inputRing;
-    public float speed;
+    [Header("Debug")]
+    public float inputBase;
+    public float inputBaseRotator;
+    public float inputArm1;
+    public float inputArm2;
+    public float inputRing;
 
 
     private void FixedUpdate()
@@ -25,15 +39,17 @@ public class RobotController : MonoBehaviour
 
     private void ApplyInput()
     {
-        armBase.z += Mathf.Clamp(inputBase, -1f, 1f) * speed * Time.fixedDeltaTime;
-        arm1.z += Mathf.Clamp(inputArm1, -1f, 1f) * speed * Time.fixedDeltaTime;
-        arm2.z += Mathf.Clamp(inputArm2, -1f, 1f) * speed * Time.fixedDeltaTime;
-        ring.z += Mathf.Clamp(inputRing, -1f, 1f) * speed * 10f * Time.fixedDeltaTime;
+        armBase.z += inputBase * speedBase * Time.fixedDeltaTime;
+        armBaseRotator.z += inputBaseRotator * speedArms * Time.fixedDeltaTime;
+        arm1.z += inputArm1 * speedArms * Time.fixedDeltaTime;
+        arm2.z += inputArm2 * speedArms * Time.fixedDeltaTime;
+        ring.z += inputRing * speedRing * Time.fixedDeltaTime;
     }
 
     private void Clamps()
     {
         armBase.z = Mathf.Clamp(armBase.z, armBase.x, armBase.y);
+        armBaseRotator.z = Mathf.Clamp(armBaseRotator.z, armBaseRotator.x, armBaseRotator.y);
         arm1.z = Mathf.Clamp(arm1.z, arm1.x, arm1.y);
         arm2.z = Mathf.Clamp(arm2.z, arm2.x, arm2.y);
         ring.z = Mathf.Clamp(ring.z, ring.x, ring.y);
@@ -41,10 +57,15 @@ public class RobotController : MonoBehaviour
 
     private void Assignment()
     {
-        armBaseTransform.localEulerAngles = new Vector3(
+        armBaseTransform.localPosition = new Vector3(
+            armBase.z,
+            armBaseTransform.localPosition.y,
+            armBaseTransform.localPosition.z);
+
+        armBaseRotatorTransform.localEulerAngles = new Vector3(
             0f,
             0f,
-            armBase.z);
+            armBaseRotator.z);
 
         arm1Transform.localEulerAngles = new Vector3(
             arm1.z,
@@ -67,6 +88,7 @@ public class RobotController : MonoBehaviour
         List<float> result = new List<float>
         {
             NormalizeValue(armBase.z, armBase.x, armBase.y),
+            NormalizeValue(armBaseRotator.z, armBaseRotator.x, armBaseRotator.y),
             NormalizeValue(arm1.z, arm1.x, arm1.y),
             NormalizeValue(arm2.z, arm2.x, arm2.y),
             NormalizeValue(ring.z, ring.x, ring.y)

@@ -18,6 +18,20 @@ ModelImporter:
     100024: //RootNode
     100026: ArmBase_002
     100028: Roboterarm
+    100030: Finish
+    100032: Floor
+    100034: Rail
+    100036: RailStopLeft
+    100038: RailStopRight
+    100040: Start
+    100042: Wire
+    100044: Wire_001
+    100046: Arm2
+    100048: ArmRingRotator
+    100050: ArmRotator
+    100052: ArmTop
+    100054: WireObject
+    100056: ArmRing
     400000: Arm1
     400002: Arm1_001
     400004: ArmBase
@@ -33,12 +47,30 @@ ModelImporter:
     400024: //RootNode
     400026: ArmBase_002
     400028: Roboterarm
+    400030: Finish
+    400032: Floor
+    400034: Rail
+    400036: RailStopLeft
+    400038: RailStopRight
+    400040: Start
+    400042: Wire
+    400044: Wire_001
+    400046: Arm2
+    400048: ArmRingRotator
+    400050: ArmRotator
+    400052: ArmTop
+    400054: WireObject
+    400056: ArmRing
     2100000: Floor
     2100002: Wire
     2100004: Socket
     2100006: Connector
     2100008: Arm
     2100010: Ring
+    2100012: Metal_Silver
+    2100014: Red
+    2100016: Start
+    2100018: Finish_001
     2300000: Arm1
     2300002: Arm1_001
     2300004: ArmBase
@@ -52,6 +84,19 @@ ModelImporter:
     2300020: Plane
     2300022: ArmBase_002
     2300024: Roboterarm
+    2300026: Finish
+    2300028: Floor
+    2300030: Rail
+    2300032: RailStopLeft
+    2300034: RailStopRight
+    2300036: Start
+    2300038: Wire_001
+    2300040: Arm2
+    2300042: ArmRingRotator
+    2300044: ArmRotator
+    2300046: ArmTop
+    2300048: Wire
+    2300050: ArmRing
     3300000: Arm1
     3300002: Arm1_001
     3300004: ArmBase
@@ -65,6 +110,19 @@ ModelImporter:
     3300020: Plane
     3300022: ArmBase_002
     3300024: Roboterarm
+    3300026: Finish
+    3300028: Floor
+    3300030: Rail
+    3300032: RailStopLeft
+    3300034: RailStopRight
+    3300036: Start
+    3300038: Wire_001
+    3300040: Arm2
+    3300042: ArmRingRotator
+    3300044: ArmRotator
+    3300046: ArmTop
+    3300048: Wire
+    3300050: ArmRing
     4300000: Plane
     4300002: Cylinder
     4300004: Base
@@ -78,6 +136,19 @@ ModelImporter:
     4300020: Cube
     4300022: Roboterarm
     4300024: ArmBase_002
+    4300026: Rail
+    4300028: RailStopLeft
+    4300030: RailStopRight
+    4300032: Floor
+    4300034: Finish
+    4300036: Start
+    4300038: Wire_001
+    4300040: Arm2
+    4300042: ArmTop
+    4300044: ArmRingRotator
+    4300046: ArmRotator
+    4300048: Wire
+    4300050: ArmRing
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs

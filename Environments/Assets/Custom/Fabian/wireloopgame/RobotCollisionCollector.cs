@@ -6,10 +6,11 @@ public class RobotCollisionCollector : MonoBehaviour
 
     public void CollisionCollect(Collider other)
     {
-        if (other.CompareTag("Goal"))
-            robot.Collision(true);
+        print("RobotCollisionCollector");
 
-        else if (other.CompareTag("Enermy"))
+        if (other.CompareTag("Enermy"))
             robot.Collision(false);
+        else if (other.CompareTag("Goal"))
+            robot.Collision(true);
     }
 }

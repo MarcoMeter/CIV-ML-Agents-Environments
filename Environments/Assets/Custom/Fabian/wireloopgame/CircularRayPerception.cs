@@ -6,7 +6,6 @@ namespace MLAgents
 {
     public class CircularRayPerception : RayPerception
     {
-
         public int horizontalRays = 10;
         public int verticalRays = 3;
         public float verticalAngle = 0.2f;
@@ -41,7 +40,7 @@ namespace MLAgents
 
             return Perceive(distance, offsets.ToArray(), rays.ToArray(), detectableObjects);
         }
-
+        
         // Update is called once per frame
         void OnDrawGizmos()
         {
@@ -64,7 +63,5 @@ namespace MLAgents
                 }
             }
         }
-
-
     }
 }

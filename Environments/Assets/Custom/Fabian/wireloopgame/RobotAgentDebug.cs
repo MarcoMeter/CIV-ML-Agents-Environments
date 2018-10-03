@@ -2,27 +2,37 @@
 
 public class RobotAgentDebug : MonoBehaviour
 {
-    public float reward = 0f;
-    private Vector3 ringNewPos;
-    private float localXVelocity;
-    private Vector3 ringVelocity;
-    private Vector3 ringOldPos;
+    public float currentReward, highestReward;
+    public float currentTotalReward, highestTotalReward;
+    private RobotAgent robot;
 
     private void Start()
     {
-        ringOldPos = transform.position;
+        robot = GetComponent<RobotAgent>();
     }
 
     private void FixedUpdate()
     {
-        ringNewPos = transform.position;
-        var media = (ringNewPos - ringOldPos);
-        ringVelocity = media / Time.fixedDeltaTime;
-        ringOldPos = ringNewPos;
-        ringNewPos = transform.position;
+        currentReward = robot.GetReward();
+        currentTotalReward = robot.GetCumulativeReward();
 
-        localXVelocity = transform.transform.InverseTransformVector(ringVelocity).x;
-        reward += localXVelocity * 0.01f;
-        //reward += -0.0001f;
+        if (currentReward > highestReward)
+        {
+            highestReward = currentReward;
+        }
+
+        if (currentTotalReward > highestTotalReward)
+        {
+            highestTotalReward = currentTotalReward;
+        }
+    }
+
+    private void OnGUI()
+    {
+        GUI.color = Color.black;
+        GUILayout.Label("currentReward " + currentReward);
+        GUILayout.Label("highestReward: " + highestReward);
+        GUILayout.Label("currentTotalReward: " + currentTotalReward);
+        GUILayout.Label("highestTotalReward: " + highestTotalReward);
     }
 }

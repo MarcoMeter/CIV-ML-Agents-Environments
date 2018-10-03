@@ -435,11 +435,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114500279605426032, guid: 3822dcb8fc13c8a4fb8bcae3eac03c11,
-        type: 2}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 1052965920}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3822dcb8fc13c8a4fb8bcae3eac03c11, type: 2}
   m_IsPrefabAsset: 0

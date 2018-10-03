@@ -1,5 +1,4 @@
-﻿using System;
-using MLAgents;
+﻿using MLAgents;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,8 +14,8 @@ public class RobotAgent : Agent
     private float localXVelocity;
     private Vector3 ringNewPos;
     private Vector3 ringVelocity;
-
-    private float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
+    private bool firstRun = true;
+    private readonly float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
 
 
     public override void InitializeAgent()
@@ -34,20 +33,30 @@ public class RobotAgent : Agent
 
     internal void Collision(bool good)
     {
-        print("RobotAgent");
-
         if (good)
+        {
             AddReward(1.0f);
+        }
         else
+        {
             AddReward(-1.0f);
+        }
 
         Done();
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
+        if (firstRun)
+        {
+            ResetReward();
+            Done();
+            firstRun = false;
+            return;
+        }
+
         ringNewPos = ring.position;
-        var media = (ringNewPos - ringOldPos);
+        Vector3 media = (ringNewPos - ringOldPos);
         ringVelocity = media / Time.fixedDeltaTime;
         ringOldPos = ringNewPos;
         ringNewPos = ring.position;
@@ -76,7 +85,6 @@ public class RobotAgent : Agent
 
     public override void AgentOnDone()
     {
-        base.AgentOnDone();
     }
 
     public override void AgentReset()
@@ -86,6 +94,7 @@ public class RobotAgent : Agent
         robot.arm1 = initialRobotPosition.arm1;
         robot.arm2 = initialRobotPosition.arm2;
         robot.ring = initialRobotPosition.ring;
+
     }
 
 #if UNITY_EDITOR

@@ -6,7 +6,6 @@ public class SendCollisionToParent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("SendCollisionToParent");
         robotCollisionCollector.CollisionCollect(other);
     }
 }

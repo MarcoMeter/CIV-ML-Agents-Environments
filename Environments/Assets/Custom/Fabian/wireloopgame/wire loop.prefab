@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 23523348335810624}
   - component: {fileID: 114083658773362424}
   - component: {fileID: 114500279605426032}
+  - component: {fileID: 114518829046228008}
   m_Layer: 0
   m_Name: Roboterarm
   m_TagString: Untagged
@@ -1843,6 +1844,28 @@ MonoBehaviour:
   detectabeObjects:
   - Enermy
   ring: {fileID: 4360614533161816}
+  resetEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114518829046228008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923926479508964}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9523fdd7d925204583e3e1adc61c1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentReward: 0
+  highestReward: 0
+  currentTotalReward: 0
+  highestTotalReward: 0
+  currentRingVelocity: 0
+  highestRingVelocity: 0
 --- !u!114 &114651964057265666
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -92,7 +92,6 @@ public class RobotController : MonoBehaviour
             NormalizeValue(arm2.z, arm2.x, arm2.y),
             NormalizeValue(ring.z, ring.x, ring.y)
     };
-
         return result;
     }
 

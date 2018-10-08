@@ -32,7 +32,7 @@ public class StayLevel : MonoBehaviour
 
     [ExecuteInEditMode]
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         switch (axis)
         {

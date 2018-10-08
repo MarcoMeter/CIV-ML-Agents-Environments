@@ -10,17 +10,23 @@ public class RobotAgent : Agent
 
     private RobotController robot;
     private RobotTelemetryData initialRobotPosition;
+
+    private StayLevel ringStayLevel;
     private Vector3 ringOldPos;
-    private float localXVelocity;
     private Vector3 ringNewPos;
     private Vector3 ringVelocity;
+    private float localXVelocity;
+
     private bool firstRun = true;
+
     private readonly float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
 
 
     public override void InitializeAgent()
     {
-        robot = GetComponent<RobotController>();
+        robot			= GetComponent<RobotController>();
+        ringStayLevel	= GetComponentInChildren<StayLevel>();
+
         initialRobotPosition = new RobotTelemetryData(robot);
         ringOldPos = ring.position;
     }
@@ -31,6 +37,7 @@ public class RobotAgent : Agent
         AddVectorObs(robot.GetTelemetry());
     }
 
+    // Collision receiver
     internal void Collision(bool good)
     {
         if (good)
@@ -47,6 +54,7 @@ public class RobotAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
+        // Prevents reward glitch on first frame
         if (firstRun)
         {
             ResetReward();
@@ -55,16 +63,21 @@ public class RobotAgent : Agent
             return;
         }
 
+        // Calculates Ring Velocity
         ringNewPos = ring.position;
         Vector3 media = (ringNewPos - ringOldPos);
         ringVelocity = media / Time.fixedDeltaTime;
         ringOldPos = ringNewPos;
         ringNewPos = ring.position;
 
+        // Adds reward depending on velocity
         localXVelocity = ring.transform.InverseTransformVector(ringVelocity).x;
         AddReward(localXVelocity * 0.01f);
+
+        // Time penality
         AddReward(-0.0001f);
 
+        //Input Handling
         if (brain.brainType == BrainType.Player)
         {
             robot.inputBase = (Input.GetKey(KeyCode.KeypadPeriod) ? 1f : 0f) + (Input.GetKey(KeyCode.Keypad0) ? -1f : 0f);
@@ -89,14 +102,18 @@ public class RobotAgent : Agent
 
     public override void AgentReset()
     {
+		// Reset arm to init position
         robot.armBase = initialRobotPosition.armBase;
         robot.armBaseRotator = initialRobotPosition.armBaseRotator;
         robot.arm1 = initialRobotPosition.arm1;
         robot.arm2 = initialRobotPosition.arm2;
         robot.ring = initialRobotPosition.ring;
 
+		// REVIEW Refresh Stay Level to prevent arm from glitching out
+        ringStayLevel.FixedUpdate();
     }
 
+	// Debug visuals
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

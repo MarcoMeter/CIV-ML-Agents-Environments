@@ -84,7 +84,7 @@ public class RobotController : MonoBehaviour
 
     public List<float> GetTelemetry()
     {
-        List<float> result = new List<float>
+        var result = new List<float>
         {
             NormalizeValue(armBase.z, armBase.x, armBase.y),
             NormalizeValue(armBaseRotator.z, armBaseRotator.x, armBaseRotator.y),

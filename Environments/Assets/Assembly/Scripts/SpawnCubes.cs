@@ -14,6 +14,8 @@ public class SpawnCubes : MonoBehaviour {
     private List<GameObject> cubes = new List<GameObject>();
     private int numPrefabs = 0;
 
+    public bool resetCubes = true;
+
 	// Use this for initialization
 	void Start () {
         numPrefabs = prefabs.Length;
@@ -26,7 +28,7 @@ public class SpawnCubes : MonoBehaviour {
             nextSpawn = Time.time + intervall;
             Transform cube = Instantiate(prefabs[Random.Range(0, numPrefabs)].transform, transform.position, Quaternion.identity);
             cubes.Add(cube.gameObject);
-            npos = Random.Range(-0.4f, 0.4f);
+            npos = Random.Range(-0.3f, 0.3f);
         }
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, transform.localPosition.y, npos), Time.deltaTime * moveSpeed);
@@ -34,11 +36,14 @@ public class SpawnCubes : MonoBehaviour {
 
     public void ResetCubes()
     {
-        for(int i = 0; i < cubes.Count; i++)
+        if (resetCubes)
         {
-            Destroy(cubes[i]);
+            for (int i = 0; i < cubes.Count; i++)
+            {
+                Destroy(cubes[i]);
+            }
+            cubes.Clear();
         }
-        cubes.Clear();
     }
 
     public void Unregister(GameObject cube)

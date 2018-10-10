@@ -38,8 +38,6 @@ GameObject:
   - component: {fileID: 4104949841137742}
   - component: {fileID: 33702395019601554}
   - component: {fileID: 65240453141504804}
-  - component: {fileID: 54533804163245368}
-  - component: {fileID: 114493733979586604}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -57,8 +55,6 @@ GameObject:
   - component: {fileID: 4637765434578432}
   - component: {fileID: 33056709414548198}
   - component: {fileID: 65403078101044942}
-  - component: {fileID: 54426246613496962}
-  - component: {fileID: 114282235370671442}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -76,8 +72,6 @@ GameObject:
   - component: {fileID: 4018155437227000}
   - component: {fileID: 33651623042009838}
   - component: {fileID: 65797667609005564}
-  - component: {fileID: 54614431144738154}
-  - component: {fileID: 114829540338690552}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -146,6 +140,7 @@ GameObject:
   - component: {fileID: 4208050747698550}
   - component: {fileID: 114002335037584900}
   - component: {fileID: 114848340519356376}
+  - component: {fileID: 54951636365053752}
   m_Layer: 0
   m_Name: RayPerception
   m_TagString: Untagged
@@ -180,8 +175,6 @@ GameObject:
   - component: {fileID: 4776021296437904}
   - component: {fileID: 33855850730878448}
   - component: {fileID: 65967199124197160}
-  - component: {fileID: 54497453126104452}
-  - component: {fileID: 114413228930062406}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -199,8 +192,6 @@ GameObject:
   - component: {fileID: 4391866228632268}
   - component: {fileID: 33920497111499202}
   - component: {fileID: 65789609313167676}
-  - component: {fileID: 54668817116075290}
-  - component: {fileID: 114491346139409774}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -238,7 +229,7 @@ GameObject:
   - component: {fileID: 64455574482628778}
   m_Layer: 0
   m_Name: Wire
-  m_TagString: Enermy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -271,8 +262,6 @@ GameObject:
   - component: {fileID: 4792810025235460}
   - component: {fileID: 33804718832796920}
   - component: {fileID: 65505149321871494}
-  - component: {fileID: 54879424541380322}
-  - component: {fileID: 114651964057265666}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -372,8 +361,6 @@ GameObject:
   - component: {fileID: 4440897606402312}
   - component: {fileID: 33198953779914240}
   - component: {fileID: 65010894139340894}
-  - component: {fileID: 54584746780105380}
-  - component: {fileID: 114812675571387838}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -391,8 +378,6 @@ GameObject:
   - component: {fileID: 4594524762177248}
   - component: {fileID: 33948027678363862}
   - component: {fileID: 65649173285211920}
-  - component: {fileID: 54852907530161544}
-  - component: {fileID: 114380776127090448}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -430,7 +415,7 @@ GameObject:
   - component: {fileID: 65285954579039984}
   m_Layer: 0
   m_Name: Start
-  m_TagString: Enermy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1450,117 +1435,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811263161153226}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54426246613496962
+--- !u!54 &54951636365053752
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1156370174851566}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54497453126104452
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1448250104554722}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54533804163245368
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102652492926152}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54584746780105380
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1725907979228304}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54614431144738154
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1177808473404156}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54668817116075290
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1464990653812388}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54852907530161544
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811263161153226}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &54879424541380322
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567223152670118}
+  m_GameObject: {fileID: 1315236753406274}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -1750,18 +1630,6 @@ MonoBehaviour:
   inputArm1: 0
   inputArm2: 0
   inputRing: 0
---- !u!114 &114282235370671442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1156370174851566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
 --- !u!114 &114312827628587692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1774,54 +1642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: 0
---- !u!114 &114380776127090448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811263161153226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
---- !u!114 &114413228930062406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1448250104554722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
---- !u!114 &114491346139409774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1464990653812388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
---- !u!114 &114493733979586604
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102652492926152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
 --- !u!114 &114500279605426032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1842,7 +1662,7 @@ MonoBehaviour:
     numberOfActionsBetweenDecisions: 5
   circularRayPerception: {fileID: 114002335037584900}
   detectabeObjects:
-  - Enermy
+  - Enemy
   ring: {fileID: 4360614533161816}
   resetEvent:
     m_PersistentCalls:
@@ -1866,42 +1686,6 @@ MonoBehaviour:
   highestTotalReward: 0
   currentRingVelocity: 0
   highestRingVelocity: 0
---- !u!114 &114651964057265666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567223152670118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
---- !u!114 &114812675571387838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1725907979228304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
---- !u!114 &114829540338690552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1177808473404156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f0196d05848246b737bde7f99e301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotCollisionCollector: {fileID: 114848340519356376}
 --- !u!114 &114848340519356376
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ public class WireLoopAgent : Agent {
     public Transform head;
 
     public float force;
-    private readonly float[] _movementBuckets = new float[] { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
+    private readonly float[] _movementBuckets = new float[] { -1.0f, -0.1f, 0f, 0.1f, 1.0f };
 
     private static string[] detectableObjects = {"Enemy"};
 
@@ -68,11 +68,11 @@ public class WireLoopAgent : Agent {
         trackReward += localXVelocity * 0.01f;
 
         armSlider.AddRelativeForce(new Vector3(1f, 0f, 0f) * _movementBuckets[(int)vectorAction[0]] * force, ForceMode.Impulse);
-        armBase.AddRelativeTorque(new Vector3(0f, 0f, 4f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
-        armLow.AddRelativeTorque(new Vector3(3f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
-        armHigh.AddRelativeTorque(new Vector3(2f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);
-        armTop.AddRelativeTorque(new Vector3(1f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * force, ForceMode.Impulse);
-        armRotator.AddRelativeTorque(new Vector3(0f, 1f, 0f) * _movementBuckets[(int)vectorAction[5]] * force, ForceMode.Impulse);
+        armBase.AddRelativeTorque(new Vector3(0f, 0f, 5f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
+        armLow.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
+        armHigh.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);
+        armTop.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * force, ForceMode.Impulse);
+        armRotator.AddRelativeTorque(new Vector3(0f, 5f, 0f) * _movementBuckets[(int)vectorAction[5]] * force, ForceMode.Impulse);
     }
 
     public override void AgentReset()

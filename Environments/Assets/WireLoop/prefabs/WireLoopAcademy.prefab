@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 114
+    vectorObservationSize: 78
     numStackedVectorObservations: 3
-    vectorActionSize: 0b0000000b0000000b0000000b0000000b0000000b000000
+    vectorActionSize: 050000000500000005000000050000000500000005000000
     cameraResolutions: []
     vectorActionDescriptions:
     - 

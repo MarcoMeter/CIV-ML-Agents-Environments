@@ -36,7 +36,7 @@ public class RobotAgent : Agent
 
 	public override void CollectObservations()
 	{
-		AddVectorObs(circularRayPerception.Percieve(detectabeObjects));
+		AddVectorObs(circularRayPerception.Perceive(detectabeObjects));
 		AddVectorObs(robot.GetTelemetry());
 		// HACK Normalize velocity
 		AddVectorObs(localXVelocity / 5f);

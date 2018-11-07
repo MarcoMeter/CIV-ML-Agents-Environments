@@ -14,7 +14,7 @@ namespace MLAgents
         public float radius = 1f;
 
         // Use this for initialization
-        public List<float> Percieve(string[] detectableObjects)
+        public List<float> Perceive(string[] detectableObjects)
         {
             List<Vector3> offsets = new List<Vector3>();
             List<Vector3> rays = new List<Vector3>();

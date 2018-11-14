@@ -49,11 +49,11 @@ public class WireLoopAgent : Agent {
 
         //velocitys
         AddVectorObs(transform.InverseTransformDirection(armSlider.velocity).x);
-        AddVectorObs(transform.InverseTransformDirection(armBase.angularVelocity).z);
-        AddVectorObs(transform.InverseTransformDirection(armLow.angularVelocity).x);
-        AddVectorObs(transform.InverseTransformDirection(armHigh.angularVelocity).x);
-        AddVectorObs(transform.InverseTransformDirection(armTop.angularVelocity).x);
-        AddVectorObs(transform.InverseTransformDirection(armRotator.angularVelocity).y);
+        AddVectorObs(armBase.angularVelocity);
+        AddVectorObs(armLow.angularVelocity);
+        AddVectorObs(armHigh.angularVelocity);
+        AddVectorObs(armTop.angularVelocity);
+        AddVectorObs(armRotator.angularVelocity);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)

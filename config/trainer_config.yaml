@@ -36,7 +36,7 @@ WireLoopBrain:
     batch_size: 2024
     buffer_size: 20240
     hidden_units: 128
-    max_steps: 1.0e6
+    max_steps: 3.0e6
     time_horizon: 1000
     gamma: 0.995
     normalize: true

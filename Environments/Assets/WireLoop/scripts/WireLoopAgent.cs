@@ -66,7 +66,7 @@ public class WireLoopAgent : Agent {
 
         localXVelocity = Mathf.Clamp(ring.transform.InverseTransformVector(ringVelocity).x, -5f, 5f);
         AddReward(localXVelocity * 0.01f);
-        AddReward(0.001f);
+        AddReward(-0.001f);
 
         armSlider.AddRelativeForce(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[0]] * force, ForceMode.Impulse);
         armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);

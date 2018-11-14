@@ -1746,12 +1746,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.03
   endPosition: {x: -1.3759141, y: 0, z: 0}
-  maxRandomAmplitude: {x: 0.1, y: 1.2}
-  minRandomAmplitude: {x: -0.1, y: 0.7}
+  maxRandomAmplitude: {x: 0, y: 1.1}
+  minRandomAmplitude: {x: 0, y: 0.5}
   footHeight: 0.5
   distanceBetweenPoints: 0.05
   quality: 10
-  maxRandomPoints: 10
+  maxRandomPoints: 8
 --- !u!144 &144141751045264054
 CharacterJoint:
   m_ObjectHideFlags: 1

@@ -28,8 +28,6 @@ public class WireLoopAgent : Agent {
     internal Vector3 ringVelocity;
     internal float localXVelocity;
 
-    public float trackReward = 0f;
-
     public override void InitializeAgent()
     {
         for(int i = 0; i < rigs.Length; i++)
@@ -48,6 +46,14 @@ public class WireLoopAgent : Agent {
         AddVectorObs(armHigh.transform.localEulerAngles.x / 360f);
         AddVectorObs(armTop.transform.localEulerAngles.x / 360f);
         AddVectorObs(armRotator.transform.localEulerAngles.y / 360f);
+
+        //velocitys
+        AddVectorObs(transform.InverseTransformDirection(armSlider.velocity).x);
+        AddVectorObs(transform.InverseTransformDirection(armBase.angularVelocity).z);
+        AddVectorObs(transform.InverseTransformDirection(armLow.angularVelocity).x);
+        AddVectorObs(transform.InverseTransformDirection(armHigh.angularVelocity).x);
+        AddVectorObs(transform.InverseTransformDirection(armTop.angularVelocity).x);
+        AddVectorObs(transform.InverseTransformDirection(armRotator.angularVelocity).y);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
@@ -58,21 +64,16 @@ public class WireLoopAgent : Agent {
         ringVelocity = media / Time.fixedDeltaTime;
         ringOldPos = ringNewPos;
 
-        // Adds reward depending on velocity
-        // HACK Prevent velocity spikes on reset
-        if (Mathf.Abs(localXVelocity) > 5f)
-            Debug.LogWarning("Velocity exceeded clamp value");
         localXVelocity = Mathf.Clamp(ring.transform.InverseTransformVector(ringVelocity).x, -5f, 5f);
-
         AddReward(localXVelocity * 0.01f);
-        trackReward += localXVelocity * 0.01f;
+        AddReward(0.001f);
 
-        armSlider.AddRelativeForce(new Vector3(1f, 0f, 0f) * _movementBuckets[(int)vectorAction[0]] * force, ForceMode.Impulse);
-        armBase.AddRelativeTorque(new Vector3(0f, 0f, 5f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
-        armLow.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
-        armHigh.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);
-        armTop.AddRelativeTorque(new Vector3(5f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * force, ForceMode.Impulse);
-        armRotator.AddRelativeTorque(new Vector3(0f, 5f, 0f) * _movementBuckets[(int)vectorAction[5]] * force, ForceMode.Impulse);
+        armSlider.AddRelativeForce(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[0]] * force, ForceMode.Impulse);
+        armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
+        armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
+        armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);
+        armTop.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * force, ForceMode.Impulse);
+        armRotator.AddRelativeTorque(new Vector3(0f, 10f, 0f) * _movementBuckets[(int)vectorAction[5]] * force, ForceMode.Impulse);
     }
 
     public override void AgentReset()
@@ -81,6 +82,9 @@ public class WireLoopAgent : Agent {
         {
             rigs[i].Reset();
         }
+        ringNewPos = ring.position;
+        ringOldPos = ring.position;
+        ringVelocity = Vector3.zero;
     }
 
     public void Loose()

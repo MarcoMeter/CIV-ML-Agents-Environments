@@ -38,8 +38,7 @@ namespace MLAgents
                 endPosition.y = endOffset;
                 if (Application.isEditor)
                 {
-                    Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f),
-                        endPosition, Color.black, 0.01f, true);
+                    //Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f), endPosition, Color.black, 0.01f, true);
                 }
 
                 float[] subList = new float[detectableObjects.Length + 2];
@@ -77,7 +76,7 @@ namespace MLAgents
             {
                 if (Application.isEditor)
                 {
-                    Debug.DrawRay(transform.position + offsets[n], rays[n] * rayDistance, Color.black, 0.01f, true);
+                    //Debug.DrawRay(transform.position + offsets[n], rays[n] * rayDistance, Color.black, 0.01f, true);
                 }
 
                 float[] subList = new float[detectableObjects.Length + 2];

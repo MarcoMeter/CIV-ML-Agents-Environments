@@ -59,7 +59,7 @@ namespace MLAgents
                     float angleY = (((Mathf.PI * verticalAngle) / (verticalRays - 1f)) * y) - (Mathf.PI * verticalAngle * 0.5f);
                     Vector3 nPos = new Vector3(0, Mathf.Sin(angleY), Mathf.Cos(angleY));
                     nPos = rot.MultiplyPoint3x4(nPos);
-                    //Gizmos.DrawRay(transform.position + pos.normalized * radius, -nPos.normalized * distance);
+                    Gizmos.DrawRay(transform.position + pos.normalized * radius, -nPos.normalized * distance);
                 }
             }
         }

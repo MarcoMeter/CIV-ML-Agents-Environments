@@ -8,7 +8,6 @@ public class WireLoopAgent : Agent {
     public CircularRayPerception circularRayPerception;
     public RigResetPosition[] rigs;
 
-    public Rigidbody armSlider;
     public Rigidbody armBase;
     public Rigidbody armLow;
     public Rigidbody armHigh;
@@ -40,15 +39,13 @@ public class WireLoopAgent : Agent {
     public override void CollectObservations()
     {
         AddVectorObs(circularRayPerception.Perceive(detectableObjects));
-        AddVectorObs(armSlider.transform.localPosition.x);
-        AddVectorObs(armBase.transform.localEulerAngles.z / 360f);
-        AddVectorObs(armLow.transform.localEulerAngles.x / 360f);
-        AddVectorObs(armHigh.transform.localEulerAngles.x / 360f);
-        AddVectorObs(armTop.transform.localEulerAngles.x / 360f);
-        AddVectorObs(armRotator.transform.localEulerAngles.y / 360f);
+        AddVectorObs(armBase.transform.localRotation);
+        AddVectorObs(armLow.transform.localRotation);
+        AddVectorObs(armHigh.transform.localRotation);
+        AddVectorObs(armTop.transform.localRotation);
+        AddVectorObs(armRotator.transform.localRotation);
 
         //velocitys
-        AddVectorObs(transform.InverseTransformDirection(armSlider.velocity).x);
         AddVectorObs(armBase.angularVelocity);
         AddVectorObs(armLow.angularVelocity);
         AddVectorObs(armHigh.angularVelocity);
@@ -68,7 +65,6 @@ public class WireLoopAgent : Agent {
         AddReward(localXVelocity * 0.01f);
         AddReward(-0.001f);
 
-        armSlider.AddRelativeForce(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[0]] * force, ForceMode.Impulse);
         armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
         armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
         armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);

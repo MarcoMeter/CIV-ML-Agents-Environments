@@ -5,82 +5,96 @@ using MLAgents;
 
 public class WireLoopAgent : Agent {
 
-    public CircularRayPerception circularRayPerception;
-    public RigResetPosition[] rigs;
+    #region Member Fields
 
-    public Rigidbody armBase;
-    public Rigidbody armLow;
-    public Rigidbody armHigh;
-    public Rigidbody armTop;
-    public Rigidbody armRotator;
+    [SerializeField]
+    private CircularRayPerception _circularRayPerception;
+    [SerializeField]
+    private RigResetPosition[] _rigs;
 
-    public Transform head;
+    [SerializeField]
+    private Rigidbody _armBase;
+    [SerializeField]
+    private Rigidbody _armLow;
+    [SerializeField]
+    private Rigidbody _armHigh;
+    [SerializeField]
+    private Rigidbody _armTop;
+    [SerializeField]
+    private Rigidbody _armRotator;
 
-    public float force;
+    [SerializeField]
+    private Transform _ring;
+
+    [SerializeField]
+    private float _force = 2f;
     private readonly float[] _movementBuckets = new float[] { -1.0f, -0.1f, 0f, 0.1f, 1.0f };
 
     private static string[] detectableObjects = {"Enemy"};
 
-    public Transform ring;
-    internal Vector3 ringOldPos;
-    internal Vector3 ringNewPos;
-    internal Vector3 ringVelocity;
-    internal float localXVelocity;
+    internal Vector3 _ringOldPos;
+    internal Vector3 _ringNewPos;
+    internal Vector3 _ringVelocity;
+    internal float _localXVelocity;
+
+    #endregion
+
+    #region Member Lifecycle
 
     public override void InitializeAgent()
     {
-        for(int i = 0; i < rigs.Length; i++)
+        for(int i = 0; i < _rigs.Length; i++)
         {
-            rigs[i].EvaluateStart();
-            rigs[i].Reset();
+            _rigs[i].EvaluateStart();
+            _rigs[i].Reset();
         }
     }
 
     public override void CollectObservations()
     {
-        AddVectorObs(circularRayPerception.Perceive(detectableObjects));
-        AddVectorObs(armBase.transform.localRotation);
-        AddVectorObs(armLow.transform.localRotation);
-        AddVectorObs(armHigh.transform.localRotation);
-        AddVectorObs(armTop.transform.localRotation);
-        AddVectorObs(armRotator.transform.localRotation);
+        AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
+        AddVectorObs(_armBase.transform.localRotation);
+        AddVectorObs(_armLow.transform.localRotation);
+        AddVectorObs(_armHigh.transform.localRotation);
+        AddVectorObs(_armTop.transform.localRotation);
+        AddVectorObs(_armRotator.transform.localRotation);
 
         //velocitys
-        AddVectorObs(armBase.angularVelocity);
-        AddVectorObs(armLow.angularVelocity);
-        AddVectorObs(armHigh.angularVelocity);
-        AddVectorObs(armTop.angularVelocity);
-        AddVectorObs(armRotator.angularVelocity);
+        AddVectorObs(_armBase.angularVelocity);
+        AddVectorObs(_armLow.angularVelocity);
+        AddVectorObs(_armHigh.angularVelocity);
+        AddVectorObs(_armTop.angularVelocity);
+        AddVectorObs(_armRotator.angularVelocity);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         // Calculates Ring Velocity
-        ringNewPos = ring.position;
-        Vector3 media = ringNewPos - ringOldPos;
-        ringVelocity = media / Time.fixedDeltaTime;
-        ringOldPos = ringNewPos;
+        _ringNewPos = _ring.position;
+        Vector3 media = _ringNewPos - _ringOldPos;
+        _ringVelocity = media / Time.fixedDeltaTime;
+        _ringOldPos = _ringNewPos;
 
-        localXVelocity = Mathf.Clamp(ring.transform.InverseTransformVector(ringVelocity).x, -5f, 5f);
-        AddReward(localXVelocity * 0.01f);
+        _localXVelocity = Mathf.Clamp(_ring.transform.InverseTransformVector(_ringVelocity).x, -5f, 5f);
+        AddReward(_localXVelocity * 0.01f);
         AddReward(-0.001f);
 
-        armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[1]] * force, ForceMode.Impulse);
-        armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * force, ForceMode.Impulse);
-        armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * force, ForceMode.Impulse);
-        armTop.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * force, ForceMode.Impulse);
-        armRotator.AddRelativeTorque(new Vector3(0f, 10f, 0f) * _movementBuckets[(int)vectorAction[5]] * force, ForceMode.Impulse);
+        _armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[1]] * _force, ForceMode.Impulse);
+        _armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * _force, ForceMode.Impulse);
+        _armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * _force, ForceMode.Impulse);
+        _armTop.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[4]] * _force, ForceMode.Impulse);
+        _armRotator.AddRelativeTorque(new Vector3(0f, 10f, 0f) * _movementBuckets[(int)vectorAction[5]] * _force, ForceMode.Impulse);
     }
 
     public override void AgentReset()
     {
-        for (int i = 0; i < rigs.Length; i++)
+        for (int i = 0; i < _rigs.Length; i++)
         {
-            rigs[i].Reset();
+            _rigs[i].Reset();
         }
-        ringNewPos = ring.position;
-        ringOldPos = ring.position;
-        ringVelocity = Vector3.zero;
+        _ringNewPos = _ring.position;
+        _ringOldPos = _ring.position;
+        _ringVelocity = Vector3.zero;
     }
 
     public void Loose()
@@ -88,4 +102,7 @@ public class WireLoopAgent : Agent {
         AddReward(-1f);
         Done();
     }
+
+    #endregion
+
 }

@@ -1633,21 +1633,20 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
-  circularRayPerception: {fileID: 114773114913749038}
-  rigs:
+  _circularRayPerception: {fileID: 114773114913749038}
+  _rigs:
   - {fileID: 114417924355144354}
   - {fileID: 114039006324687992}
   - {fileID: 114518799034864108}
   - {fileID: 114682764684532048}
   - {fileID: 114019130773468386}
-  armBase: {fileID: 54779302855657054}
-  armLow: {fileID: 54657689793303140}
-  armHigh: {fileID: 54709182344787216}
-  armTop: {fileID: 54779708653667888}
-  armRotator: {fileID: 54196238400443956}
-  head: {fileID: 4478279056935284}
-  force: 2
-  ring: {fileID: 4478279056935284}
+  _armBase: {fileID: 54779302855657054}
+  _armLow: {fileID: 54657689793303140}
+  _armHigh: {fileID: 54709182344787216}
+  _armTop: {fileID: 54779708653667888}
+  _armRotator: {fileID: 54196238400443956}
+  _ring: {fileID: 4478279056935284}
+  _force: 2
 --- !u!114 &114417924355144354
 MonoBehaviour:
   m_ObjectHideFlags: 1

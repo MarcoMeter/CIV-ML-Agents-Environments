@@ -1529,16 +1529,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1904765097}
-    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 1.0000039
-      objectReference: {fileID: 0}
-    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.000002503395
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0

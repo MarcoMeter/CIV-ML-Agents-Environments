@@ -470,7 +470,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224253296286232}
-  m_LocalRotation: {x: -3.228859e-15, y: 2.3998277e-15, z: -9.337511e-16, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0000004768371, y: 1.0000001, z: -0.0000025689717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1245,7 +1245,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1706,9 +1706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50919303fac10ca4697a890f7a90db0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalRays: 12
+  horizontalRays: 10
   verticalRays: 5
-  verticalAngle: 0.7
+  verticalAngle: 0.5
   distance: 0.1
   radius: 0.1
 --- !u!114 &114937470080681742
@@ -1722,14 +1722,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f02879b21b44304cb3028a0f417b4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.02
-  endPosition: {x: -1.3759141, y: 0, z: 0}
-  maxRandomAmplitude: {x: 0, y: 1}
-  minRandomAmplitude: {x: 0, y: 0.5}
-  footHeight: 0.5
+  radius: 0.1
+  endPosition: {x: 5, y: 0, z: 0}
+  maxRandomAmplitude: {x: 0.2, y: 2}
+  minRandomAmplitude: {x: -0.2, y: 0.7}
+  footHeight: 1.5
   distanceBetweenPoints: 0.05
   quality: 10
-  maxRandomPoints: 8
+  maxRandomPoints: 10
 --- !u!144 &144141751045264054
 CharacterJoint:
   m_ObjectHideFlags: 1
@@ -1872,7 +1872,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000063790935, y: 1.0000039, z: -0.000002503395}
+  m_ConnectedAnchor: {x: 0.000000063790935, y: 1.0000005, z: 0.0000019073486}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

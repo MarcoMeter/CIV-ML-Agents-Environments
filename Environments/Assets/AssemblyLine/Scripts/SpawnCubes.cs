@@ -1,14 +1,12 @@
-﻿
-namespace CIV_ML_Agents.AssemblyLine
+﻿namespace CIV_ML_Agents.AssemblyLine
 {
     using System.Collections.Generic;
     using UnityEngine;
 
     public class SpawnCubes : MonoBehaviour
     {
-        #region Fields
-
-        // Public Settings
+        #region Member Fields
+        // Inspector
         [SerializeField]
         private float _intervall = 1.0f;
         [SerializeField]
@@ -17,18 +15,14 @@ namespace CIV_ML_Agents.AssemblyLine
         private float _moveSpeed = 3f;
         [SerializeField]
         private bool _resetCubes = true;
-
-        // Private
+        
         private float _nextSpawn = 0f;
         private float _npos = 0.0f;
         private List<GameObject> _cubes = new List<GameObject>();
         private int _numPrefabs = 0;
-
         #endregion
 
-
-        #region Mono
-        
+        #region Unity Lifecycle
         private void Start() => _numPrefabs = _prefabs.Length;
         
         private void Update()
@@ -51,12 +45,12 @@ namespace CIV_ML_Agents.AssemblyLine
                 b: new Vector3(transform.localPosition.x, transform.localPosition.y, _npos),
                 t: Time.deltaTime * _moveSpeed);
         }
-
         #endregion
 
-
-        #region Functions
-
+        #region Public Functions
+        /// <summary>
+        /// 
+        /// </summary>
         public void ResetCubes()
         {
             if (_resetCubes)
@@ -69,12 +63,15 @@ namespace CIV_ML_Agents.AssemblyLine
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cube"></param>
         public void Unregister(GameObject cube)
         {
             _cubes.Remove(cube);
             Destroy(cube);
         }
-
         #endregion
     }
 }

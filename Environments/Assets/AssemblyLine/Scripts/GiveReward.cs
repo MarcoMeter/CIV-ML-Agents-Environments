@@ -1,14 +1,12 @@
-﻿
-namespace CIV_ML_Agents.AssemblyLine
+﻿namespace CIV_ML_Agents.AssemblyLine
 {
     using MLAgents;
     using UnityEngine;
 
     public class GiveReward : MonoBehaviour
     {
-        #region Fields
-
-        // Public Settings
+        #region Member Fields
+        // Inspector
         [SerializeField]
         private float _reward = 1f;
         [SerializeField]
@@ -19,12 +17,9 @@ namespace CIV_ML_Agents.AssemblyLine
         private Agent _agent;
         [SerializeField]
         private SpawnCubes _spawner;
-
         #endregion
 
-
-        #region Mono
-        
+        #region Unity Lifecycle        
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.gameObject.tag == _acceptedClass)
@@ -33,10 +28,8 @@ namespace CIV_ML_Agents.AssemblyLine
             else
                 _agent.AddReward(-_punish);
 
-
             _spawner.Unregister(collision.transform.gameObject);
         }
-
         #endregion
     }
 }

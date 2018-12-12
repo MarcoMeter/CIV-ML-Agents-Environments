@@ -1,14 +1,12 @@
-﻿
-namespace CIV_ML_Agents.AssemblyLine
+﻿namespace CIV_ML_Agents.AssemblyLine
 {
     using MLAgents;
     using UnityEngine;
 
     public class AssemblyAgent : Agent
     {
-        #region Fields
-
-        // Public Settings
+        #region Member Fields
+        // Inspector
         [SerializeField]
         private Rigidbody _mover;
         [SerializeField]
@@ -22,10 +20,10 @@ namespace CIV_ML_Agents.AssemblyLine
         [SerializeField]
         private SpawnCubes _spawner;
 
-        // Private
         private Vector3 _moverOrigin;
         private RayPerception _rayPer;
-        private float[] _movementBuckets = new float[] {
+        private float[] _movementBuckets = new float[] 
+        {
             -1.0f,
             -0.8f,
             -0.6f,
@@ -38,12 +36,9 @@ namespace CIV_ML_Agents.AssemblyLine
             0.8f,
             1.0f
         };
-
         #endregion
 
-
-        #region Agent Lifecycle
-
+        #region ML-Agents Lifecycle
         public override void InitializeAgent()
         {
             _rayPer = GetComponent<RayPerception>();
@@ -51,10 +46,15 @@ namespace CIV_ML_Agents.AssemblyLine
         }
 
 
+        public override void AgentReset()
+        {
+            _spawner.ResetCubes();
+            _mover.position = _moverOrigin;
+        }
+
         public override void CollectObservations()
         {
             // Generate array of raycasts
-
             var rays = new Ray[(int)_rayAmount.x * (int)_rayAmount.y];
 
             float halfX = ((int)_rayAmount.x - 1) * _rayDistance / 2.0f;
@@ -87,7 +87,6 @@ namespace CIV_ML_Agents.AssemblyLine
                 }
             }
 
-
             // Raycast return
             AddVectorObs(
                 _rayPer.Perceive(
@@ -102,7 +101,6 @@ namespace CIV_ML_Agents.AssemblyLine
             AddVectorObs(_mover.transform.localPosition.z);
         }
 
-
         public override void AgentAction(float[] vectorAction, string textAction)
         {
             float actionY = _movementBuckets[(int)vectorAction[0]];
@@ -113,14 +111,6 @@ namespace CIV_ML_Agents.AssemblyLine
                     b: _moverOrigin + (_maxMoverDirection * actionY),
                     t: Time.deltaTime * 10.0f));
         }
-
-
-        public override void AgentReset()
-        {
-            _spawner.ResetCubes();
-            _mover.position = _moverOrigin;
-        }
-
         #endregion
     }
 }

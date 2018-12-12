@@ -12,10 +12,11 @@
         #endregion
 
         #region Unity Lifecycle
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionStay(Collision collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
+                //Debug.Log("Collision");
                 wireloopAgent.Loose();
             }
         }

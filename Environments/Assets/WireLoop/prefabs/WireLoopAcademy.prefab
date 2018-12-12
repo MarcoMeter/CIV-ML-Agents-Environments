@@ -86,7 +86,7 @@ MonoBehaviour:
     width: 80
     height: 80
     qualityLevel: 1
-    timeScale: 20
+    timeScale: 50
     targetFrameRate: -1
   inferenceConfiguration:
     width: 1280
@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 215
+    vectorObservationSize: 220
     numStackedVectorObservations: 3
-    vectorActionSize: 050000000500000005000000050000000500000005000000
+    vectorActionSize: 0a000000
     cameraResolutions: []
     vectorActionDescriptions:
     - 
@@ -119,11 +119,15 @@ MonoBehaviour:
     - 
     - 
     - 
-    vectorActionSpaceType: 0
+    - 
+    - 
+    - 
+    - 
+    vectorActionSpaceType: 1
   brainType: 2
   CoreBrains:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  instanceID: -1862
+  instanceID: -8044

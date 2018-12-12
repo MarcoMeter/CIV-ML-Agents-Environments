@@ -1,16 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace CIV_ML_Agents.WireLoop
+{
+    using UnityEngine;
 
-public class LooseCollision : MonoBehaviour {
-
-    public WireLoopAgent wireloopAgent;
-
-    private void OnCollisionEnter(Collision collision)
+    /// <summary>
+    /// 
+    /// </summary>
+    public class LooseCollision : MonoBehaviour
     {
-        if(collision.gameObject.tag == "Enemy")
+        #region Member Fields
+        public WireLoopAgent wireloopAgent;
+        #endregion
+
+        #region Unity Lifecycle
+        private void OnCollisionEnter(Collision collision)
         {
-            wireloopAgent.Loose();
+            if (collision.gameObject.tag == "Enemy")
+            {
+                wireloopAgent.Loose();
+            }
         }
+        #endregion
     }
 }

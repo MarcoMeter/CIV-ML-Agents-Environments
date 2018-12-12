@@ -1,35 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace CIV_ML_Agents.WireLoop
+{
+    using UnityEngine;
 
-public class RigResetPosition : MonoBehaviour {
-    public Vector3 position;
-    public Vector3 rotation;
-    public Rigidbody rig;
-
-    public bool startPosition = false;
-    public bool startRotation = false;
-
-    public void EvaluateStart()
+    /// <summary>
+    /// 
+    /// </summary>
+    public class RigResetPosition : MonoBehaviour
     {
-        if (startPosition)
+        #region Member Fields
+        public Vector3 position;
+        public Vector3 rotation;
+        public Rigidbody rig;
+
+        public bool startPosition = false;
+        public bool startRotation = false;
+        #endregion
+
+        #region Public Functions
+        /// <summary>
+        /// 
+        /// </summary>
+        public void EvaluateStart()
         {
-            position = rig.transform.localPosition;
+            if (startPosition)
+            {
+                position = rig.transform.localPosition;
+            }
+
+            if (startRotation)
+            {
+                rotation = rig.transform.localEulerAngles;
+            }
         }
 
-        if (startRotation)
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Reset()
         {
-            rotation = rig.transform.localEulerAngles;
+            rig.isKinematic = true;
+            rig.velocity = Vector3.zero;
+            rig.angularVelocity = Vector3.zero;
+            rig.transform.localPosition = position;
+            rig.transform.localEulerAngles = rotation;
+            rig.isKinematic = false;
         }
-    }
-
-    public void Reset()
-    {
-        rig.isKinematic = true;
-        rig.velocity = Vector3.zero;
-        rig.angularVelocity = Vector3.zero;
-        rig.transform.localPosition = position;
-        rig.transform.localEulerAngles = rotation;
-        rig.isKinematic = false;
+        #endregion
     }
 }

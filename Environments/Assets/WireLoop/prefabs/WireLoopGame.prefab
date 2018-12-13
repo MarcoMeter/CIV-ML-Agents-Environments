@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 65326206965903170}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,6 @@ GameObject:
   - component: {fileID: 4261828671937200}
   - component: {fileID: 33226843942667358}
   - component: {fileID: 23493400496102626}
-  - component: {fileID: 64168883946976168}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -460,8 +459,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482230996649230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4261828671937200}
   - {fileID: 4479701689460720}
@@ -861,7 +860,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7dad38c212cb6b04d815209edbf4709e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -931,7 +930,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dbce4b83440c18f40ab73d4251087264, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1316,20 +1315,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64168883946976168
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1714223843919434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64811607347079216
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -38456,7 +38441,7 @@ MonoBehaviour:
     maxStep: 0
     resetOnDone: 1
     onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 5
+    numberOfActionsBetweenDecisions: 1
   _circularRayPerception: {fileID: 114773114913749038}
   _rigs:
   - {fileID: 114417924355144354}
@@ -38578,11 +38563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50919303fac10ca4697a890f7a90db0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalRays: 10
-  verticalRays: 5
-  verticalAngle: 0.5
-  distance: 0.1
-  radius: 0.1
+  horizontalRays: 8
+  verticalRays: 3
+  verticalAngle: 0.3
+  distance: 0.4
+  radius: 0.4
 --- !u!114 &114937470080681742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38595,7 +38580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.1
-  endPosition: {x: 4.9999995, y: 0, z: 0}
+  endPosition: {x: 4.999999, y: 0, z: 0}
   maxRandomAmplitude: {x: 0.2, y: 2}
   minRandomAmplitude: {x: -0.2, y: 0.7}
   footHeight: 1.5
@@ -38706,7 +38691,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0002790459, y: 0.9829866, z: 0.016709328}
+  m_ConnectedAnchor: {x: -0.00027808477, y: 0.9829866, z: 0.016709328}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -38800,7 +38785,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00014749265, y: -0.00001859665, z: 8.000789}
+  m_ConnectedAnchor: {x: 0.0001479804, y: -0.000017642975, z: 8.000789}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

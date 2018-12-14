@@ -38456,6 +38456,7 @@ MonoBehaviour:
   _armRotator: {fileID: 54196238400443956}
   _ring: {fileID: 4478279056935284}
   _force: 2
+  _generateCurve: {fileID: 114937470080681742}
 --- !u!114 &114417924355144354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38579,14 +38580,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f02879b21b44304cb3028a0f417b4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
-  endPosition: {x: 4.999999, y: 0, z: 0}
-  maxRandomAmplitude: {x: 0.2, y: 2}
-  minRandomAmplitude: {x: -0.2, y: 0.7}
-  footHeight: 1.5
+  radius: 0.03
+  endPosition: {x: -1.3866286, y: 0, z: 0}
+  maxRandomAmplitude: {x: 0, y: 1}
+  minRandomAmplitude: {x: 0, y: 0.5}
+  footHeight: 0.5
   distanceBetweenPoints: 0.05
   quality: 10
-  maxRandomPoints: 10
+  maxRandomPoints: 8
 --- !u!153 &153032525006997970
 ConfigurableJoint:
   m_ObjectHideFlags: 1

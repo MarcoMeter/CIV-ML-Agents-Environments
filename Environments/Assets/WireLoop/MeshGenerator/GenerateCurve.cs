@@ -38,9 +38,11 @@ public class GenerateCurve : MonoBehaviour {
 	void OnDrawGizmosSelected () {
         Gizmos.color = Color.green;
  
+        Vector3 scale = transform.lossyScale;
+
         if(randomPointsGenerated && randomPoints.Count >= 4)
         {
-            DrawGizmoSpline(randomPoints[0], randomPoints[1], randomPoints[2], randomPoints[3]);
+            DrawGizmoSpline(randomPoints[0], randomPoints[1], randomPoints[2], randomPoints[3], scale);
 
             for(int i = 3; i < randomPoints.Count - 2; i+=2)
             {
@@ -48,13 +50,18 @@ public class GenerateCurve : MonoBehaviour {
                 Vector3 splinePos1 = startPos + (startPos - randomPoints[i - 1]);
                 Vector3 splinePos2 = randomPoints[i + 1];
                 Vector3 endPos = randomPoints[i + 2];
-                DrawGizmoSpline(startPos, splinePos1, splinePos2, endPos);
+
+                DrawGizmoSpline(startPos, splinePos1, splinePos2, endPos, scale);
             }
         }
 	}
 
-    void DrawGizmoSpline(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    void DrawGizmoSpline(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 scale)
     {
+        p0.Scale(scale);
+        p1.Scale(scale);
+        p2.Scale(scale);
+        p3.Scale(scale);
 
         for (float y = 0f; y < 1f; y += distanceBetweenPoints)
         {
@@ -75,6 +82,10 @@ public class GenerateCurve : MonoBehaviour {
                 Vector3 endPoint = new Vector3(Mathf.Sin((anglePoint + stepSize) * Mathf.PI * 2f) * radius, Mathf.Cos((anglePoint + stepSize) * Mathf.PI * 2f) * radius, 0f);
                 startPoint = rot.MultiplyPoint3x4(startPoint);
                 endPoint = rot.MultiplyPoint3x4(endPoint);
+
+                startPoint.Scale(scale);
+                endPoint.Scale(scale);
+
                 Gizmos.DrawLine(transform.position + startPos + startPoint, transform.position + startPos + endPoint);
             }
         }

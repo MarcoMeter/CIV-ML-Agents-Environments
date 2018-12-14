@@ -29,6 +29,9 @@
         private float _force = 2f;
         private readonly float[] _movementBuckets = new float[] { -1.0f, -0.1f, 0f, 0.1f, 1.0f };
 
+        [SerializeField]
+        private GenerateCurve _generateCurve;
+
         private static string[] detectableObjects = { "Enemy" };
 
         internal Vector3 _ringOldPos;
@@ -65,6 +68,9 @@
 
         public override void AgentReset()
         {
+            _generateCurve.CalculateRandomPoints();
+            _generateCurve.BuildMeshBezier();
+
             for (int i = 0; i < _rigs.Length; i++)
             {
                 _rigs[i].Reset();
@@ -187,6 +193,12 @@
         public void Loose()
         {
             AddReward(-1f);
+            Done();
+        }
+
+        public void Win()
+        {
+            AddReward(1f);
             Done();
         }
         #endregion

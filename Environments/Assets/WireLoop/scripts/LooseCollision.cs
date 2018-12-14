@@ -19,6 +19,10 @@
                 //Debug.Log("Collision");
                 wireloopAgent.Loose();
             }
+            if(collision.gameObject.tag == "Goal")
+            {
+                wireloopAgent.Win();
+            }
         }
         #endregion
     }

@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 65326206965903170}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38566,9 +38566,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalRays: 8
   verticalRays: 3
-  verticalAngle: 0.3
-  distance: 0.4
-  radius: 0.4
+  verticalAngle: 0.5
+  distance: 0.5
+  radius: 0.5
 --- !u!114 &114937470080681742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38580,7 +38580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f02879b21b44304cb3028a0f417b4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.03
+  radius: 0.02
   endPosition: {x: -1.3866286, y: 0, z: 0}
   maxRandomAmplitude: {x: 0, y: 1}
   minRandomAmplitude: {x: 0, y: 0.5}

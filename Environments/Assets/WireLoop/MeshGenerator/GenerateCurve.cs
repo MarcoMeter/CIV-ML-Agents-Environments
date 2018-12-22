@@ -29,8 +29,8 @@ public class GenerateCurve : MonoBehaviour {
     [Range(2, 16)]
     public int maxRandomPoints = 10;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -131,11 +131,10 @@ public class GenerateCurve : MonoBehaviour {
             Debug.LogError("No Meshfilter Connected!");
             return;
         }
+        Mesh mesh = new Mesh();
         verts = new List<Vector3>();
         tris = new List<int>();
         norms = new List<Vector3>();
-
-        Mesh mesh = new Mesh();
 
         if (randomPoints.Count >= 4)
         {
@@ -158,6 +157,8 @@ public class GenerateCurve : MonoBehaviour {
 
         mesh.RecalculateTangents();
         mesh.RecalculateBounds();
+
+        ClearMeshes();
 
         mf.sharedMesh = mesh;
 
@@ -247,5 +248,17 @@ public class GenerateCurve : MonoBehaviour {
     public bool hasRandomPoints()
     {
         return randomPointsGenerated;
+    }
+
+    public void ClearMeshes()
+    {
+        if (GetComponent<MeshFilter>().mesh)
+        {
+            Destroy(GetComponent<MeshFilter>().mesh);
+        }
+        if (GetComponent<MeshCollider>().sharedMesh)
+        {
+            Destroy(GetComponent<MeshCollider>().sharedMesh);
+        }
     }
 }

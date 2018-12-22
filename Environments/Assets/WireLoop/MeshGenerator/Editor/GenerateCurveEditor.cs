@@ -8,10 +8,11 @@ public class GenerateCurveEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        GenerateCurve myScript = (GenerateCurve)target;
+
         DrawDefaultInspector();
 
-        GenerateCurve myScript = (GenerateCurve)target;
-        if(GUILayout.Button("Calculate Random Points"))
+        if (GUILayout.Button("Calculate Random Points"))
         {
             myScript.CalculateRandomPoints();
         }

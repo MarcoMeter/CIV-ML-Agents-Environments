@@ -26,25 +26,19 @@
         private Transform _ring;
 
         [SerializeField]
-        private float _force = 2f;
-        private readonly float[] _movementBuckets = new float[] { -1.0f, -0.1f, 0f, 0.1f, 1.0f };
-
-        [SerializeField]
         private GenerateCurve _generateCurve;
 
-        private static string[] detectableObjects = { "Enemy" };
+        private string[] _detectableObjects = { "Enemy" };
 
         internal Vector3 _ringOldPos;
         internal Vector3 _ringNewPos;
         internal Vector3 _ringVelocity;
         internal float _localXVelocity;
 
-        JointDriveController jdController;
+        private JointDriveController _jdController;
 
-        bool isNewDecisionStep;
-        int currentDecisionStep;
-
-
+        private bool _isNewDecisionStep;
+        private int _currentDecisionStep;
         #endregion
 
         #region ML-Agents Lifecycle
@@ -56,21 +50,21 @@
                 _rigs[i].Reset();
             }
 
-            //_armBase.gameObject.GetComponent<Renderer>().material
-
-            jdController = GetComponent<JointDriveController>();
-            jdController.SetupBodyPart(_armBase.transform);
-            jdController.SetupBodyPart(_armLow.transform);
-            jdController.SetupBodyPart(_armHigh.transform);
-            jdController.SetupBodyPart(_armTop.transform);
-            jdController.SetupBodyPart(_armRotator.transform);
+            _jdController = GetComponent<JointDriveController>();
+            _jdController.SetupBodyPart(_armBase.transform);
+            _jdController.SetupBodyPart(_armLow.transform);
+            _jdController.SetupBodyPart(_armHigh.transform);
+            _jdController.SetupBodyPart(_armTop.transform);
+            _jdController.SetupBodyPart(_armRotator.transform);
         }
 
         public override void AgentReset()
         {
+            // Reset wire by generating a new curve
             _generateCurve.CalculateRandomPoints();
             _generateCurve.BuildMeshBezier();
 
+            // Reset arm rig (position and velocities)
             for (int i = 0; i < _rigs.Length; i++)
             {
                 _rigs[i].Reset();
@@ -79,7 +73,7 @@
             _ringOldPos = _ring.position;
             _ringVelocity = Vector3.zero;
 
-            foreach (var bodyPart in jdController.bodyPartsDict.Values)
+            foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 bodyPart.Reset(bodyPart);
             }
@@ -88,7 +82,7 @@
         public void CollectObservationBodyPart(BodyPart bp)
         {
             var rb = bp.rb;
-            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground
+            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground?
             AddVectorObs(rb.velocity);
             AddVectorObs(rb.angularVelocity);
             Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
@@ -99,30 +93,16 @@
                 AddVectorObs(bp.currentXNormalizedRot);
                 AddVectorObs(bp.currentYNormalizedRot);
                 AddVectorObs(bp.currentZNormalizedRot);
-                AddVectorObs(bp.currentStrength / jdController.maxJointForceLimit);
+                AddVectorObs(bp.currentStrength / _jdController.maxJointForceLimit);
             }
         }
 
         public override void CollectObservations()
         {
-            /*AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
-            AddVectorObs(_armBase.transform.localRotation);
-            AddVectorObs(_armLow.transform.localRotation);
-            AddVectorObs(_armHigh.transform.localRotation);
-            AddVectorObs(_armTop.transform.localRotation);
-            AddVectorObs(_armRotator.transform.localRotation);
+            AddVectorObs(_circularRayPerception.Perceive(_detectableObjects));
+            _jdController.GetCurrentJointForces();
 
-            // Velocities
-            AddVectorObs(_armBase.angularVelocity);
-            AddVectorObs(_armLow.angularVelocity);
-            AddVectorObs(_armHigh.angularVelocity);
-            AddVectorObs(_armTop.angularVelocity);
-            AddVectorObs(_armRotator.angularVelocity);*/
-
-            AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
-            jdController.GetCurrentJointForces();
-
-            foreach (var bodyPart in jdController.bodyPartsDict.Values)
+            foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 CollectObservationBodyPart(bodyPart);
             }
@@ -140,16 +120,10 @@
             AddReward(_localXVelocity * 0.01f);
             AddReward(-0.001f);
 
-            /*_armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[0]] * _force, ForceMode.Impulse);
-            _armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[1]] * _force, ForceMode.Impulse);
-            _armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * _force, ForceMode.Impulse);
-            _armTop.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * _force, ForceMode.Impulse);
-            _armRotator.AddRelativeTorque(new Vector3(0f, 10f, 0f) * _movementBuckets[(int)vectorAction[4]] * _force, ForceMode.Impulse);*/
-
-            if (isNewDecisionStep)
+            if (_isNewDecisionStep)
             {
 
-                var bpDict = jdController.bodyPartsDict;
+                var bpDict = _jdController.bodyPartsDict;
 
                 bpDict[_armBase.transform].SetJointTargetRotation(0f, 0f, vectorAction[0]);
                 bpDict[_armLow.transform].SetJointTargetRotation(vectorAction[1], 0f, 0f);
@@ -162,33 +136,35 @@
                 bpDict[_armHigh.transform].SetJointStrength(vectorAction[7]);
                 bpDict[_armTop.transform].SetJointStrength(vectorAction[8]);
                 bpDict[_armRotator.transform].SetJointStrength(vectorAction[9]);
-
             }
 
             IncrementDecisionTimer();
         }
+        #endregion
 
-        public void IncrementDecisionTimer()
+        #region Private Functions
+        /// <summary>
+        /// TODO: Description
+        /// </summary>
+        private void IncrementDecisionTimer()
         {
-            if (currentDecisionStep == agentParameters.numberOfActionsBetweenDecisions ||
+            if (_currentDecisionStep == agentParameters.numberOfActionsBetweenDecisions ||
                 agentParameters.numberOfActionsBetweenDecisions == 1)
             {
-                currentDecisionStep = 1;
-                isNewDecisionStep = true;
+                _currentDecisionStep = 1;
+                _isNewDecisionStep = true;
             }
             else
             {
-                currentDecisionStep++;
-                isNewDecisionStep = false;
+                _currentDecisionStep++;
+                _isNewDecisionStep = false;
             }
         }
-
-
         #endregion
 
         #region Public Functions
         /// <summary>
-        /// 
+        /// Punishes the agent and stops the episode.
         /// </summary>
         public void Loose()
         {
@@ -196,6 +172,9 @@
             Done();
         }
 
+        /// <summary>
+        /// Rewards the agent and stops the episode.
+        /// </summary>
         public void Win()
         {
             AddReward(1f);

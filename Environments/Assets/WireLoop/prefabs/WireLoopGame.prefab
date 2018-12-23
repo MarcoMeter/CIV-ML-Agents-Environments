@@ -323,7 +323,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4422392107798662}
-  - component: {fileID: 95694344975563468}
   - component: {fileID: 114350143181545858}
   - component: {fileID: 114028604786775896}
   m_Layer: 0
@@ -1545,24 +1544,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5000004, z: 2.0000005}
   m_Center: {x: 0, y: -5.684342e-14, z: 1.0000005}
---- !u!95 &95694344975563468
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1766301699319312}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5a9a3d8a199f0df4ca2af9234bd31c4b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114019130773468386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38391,7 +38372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1762560f4e75d645aa7adc4bb37609a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wireloopAgent: {fileID: 114350143181545858}
+  _wireloopAgent: {fileID: 114350143181545858}
 --- !u!114 &114231314760213898
 MonoBehaviour:
   m_ObjectHideFlags: 1

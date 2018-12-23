@@ -2622,21 +2622,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 116333057}
-    - target: {fileID: 64811607347079216, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 116333057}
     - target: {fileID: 114350143181545858, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
       propertyPath: brain
       value: 
       objectReference: {fileID: 215603170}
+    - target: {fileID: 64811607347079216, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 116333057}
+    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 116333057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0

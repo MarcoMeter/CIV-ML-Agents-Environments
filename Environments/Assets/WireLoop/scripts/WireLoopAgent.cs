@@ -79,24 +79,6 @@
             }
         }
 
-        public void CollectObservationBodyPart(BodyPart bp)
-        {
-            var rb = bp.rb;
-            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground?
-            AddVectorObs(rb.velocity);
-            AddVectorObs(rb.angularVelocity);
-            Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
-            AddVectorObs(localPosRelToBase);
-
-            if (bp.rb.transform != _armBase)
-            {
-                AddVectorObs(bp.currentXNormalizedRot);
-                AddVectorObs(bp.currentYNormalizedRot);
-                AddVectorObs(bp.currentZNormalizedRot);
-                AddVectorObs(bp.currentStrength / _jdController.maxJointForceLimit);
-            }
-        }
-
         public override void CollectObservations()
         {
             AddVectorObs(_circularRayPerception.Perceive(_detectableObjects));
@@ -143,6 +125,28 @@
         #endregion
 
         #region Private Functions
+        /// <summary>
+        /// TODO: Description
+        /// </summary>
+        /// <param name="bp"></param>
+        private void CollectObservationBodyPart(BodyPart bp)
+        {
+            var rb = bp.rb;
+            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground?
+            AddVectorObs(rb.velocity);
+            AddVectorObs(rb.angularVelocity);
+            Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
+            AddVectorObs(localPosRelToBase);
+
+            if (bp.rb.transform != _armBase)
+            {
+                AddVectorObs(bp.currentXNormalizedRot);
+                AddVectorObs(bp.currentYNormalizedRot);
+                AddVectorObs(bp.currentZNormalizedRot);
+                AddVectorObs(bp.currentStrength / _jdController.maxJointForceLimit);
+            }
+        }
+
         /// <summary>
         /// TODO: Description
         /// </summary>

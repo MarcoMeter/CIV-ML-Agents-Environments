@@ -56,8 +56,6 @@
                 _rigs[i].Reset();
             }
 
-            //_armBase.gameObject.GetComponent<Renderer>().material
-
             jdController = GetComponent<JointDriveController>();
             jdController.SetupBodyPart(_armBase.transform);
             jdController.SetupBodyPart(_armLow.transform);
@@ -68,9 +66,12 @@
 
         public override void AgentReset()
         {
+            // Neuen Draht erstellen
             _generateCurve.CalculateRandomPoints();
             _generateCurve.BuildMeshBezier();
 
+
+            // Körperteile auf ausgangsposition zurücksetzen.
             for (int i = 0; i < _rigs.Length; i++)
             {
                 _rigs[i].Reset();
@@ -79,21 +80,34 @@
             _ringOldPos = _ring.position;
             _ringVelocity = Vector3.zero;
 
+
+            // Joint Controller zurücksetzen
             foreach (var bodyPart in jdController.bodyPartsDict.Values)
             {
                 bodyPart.Reset(bodyPart);
             }
         }
 
+
+        // Observation für ein einzelnes Körperteil
         public void CollectObservationBodyPart(BodyPart bp)
         {
-            var rb = bp.rb;
+            Rigidbody rb = bp.rb;
+
+            // Bodenkontakt des Körperteils
             AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground
+
+            // Geschwindigkeit des Körperteils
             AddVectorObs(rb.velocity);
+
+            // Winkelgeschwindigkeit des Körperteils
             AddVectorObs(rb.angularVelocity);
+
+            // Lokale Position des Körperteils im Verhältnis zur Basis des Roboterarms
             Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
             AddVectorObs(localPosRelToBase);
 
+            // Wenn Körperteil nicht Basis ist, dann lokale Rotationen des Körperteils
             if (bp.rb.transform != _armBase)
             {
                 AddVectorObs(bp.currentXNormalizedRot);
@@ -105,23 +119,14 @@
 
         public override void CollectObservations()
         {
-            /*AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
-            AddVectorObs(_armBase.transform.localRotation);
-            AddVectorObs(_armLow.transform.localRotation);
-            AddVectorObs(_armHigh.transform.localRotation);
-            AddVectorObs(_armTop.transform.localRotation);
-            AddVectorObs(_armRotator.transform.localRotation);
-
-            // Velocities
-            AddVectorObs(_armBase.angularVelocity);
-            AddVectorObs(_armLow.angularVelocity);
-            AddVectorObs(_armHigh.angularVelocity);
-            AddVectorObs(_armTop.angularVelocity);
-            AddVectorObs(_armRotator.angularVelocity);*/
-
+            // Raycasts vom Ring aus nach innen über CircularRayPerceptor
             AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
+
+            // JointController werte ermitteln
             jdController.GetCurrentJointForces();
 
+
+            // Für jedes Körperteil observationen durchführen
             foreach (var bodyPart in jdController.bodyPartsDict.Values)
             {
                 CollectObservationBodyPart(bodyPart);
@@ -136,27 +141,27 @@
             _ringVelocity = media / Time.fixedDeltaTime;
             _ringOldPos = _ringNewPos;
 
+
+            // Reward für Geschwindigkeit des Rings in der lokalen X-Achse abhängig von der Rotation
             _localXVelocity = Mathf.Clamp(_ring.transform.InverseTransformVector(_ringVelocity).x, -5f, 5f);
             AddReward(_localXVelocity * 0.01f);
-            AddReward(-0.001f);
 
-            /*_armBase.AddRelativeTorque(new Vector3(0f, 0f, 10f) * _movementBuckets[(int)vectorAction[0]] * _force, ForceMode.Impulse);
-            _armLow.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[1]] * _force, ForceMode.Impulse);
-            _armHigh.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[2]] * _force, ForceMode.Impulse);
-            _armTop.AddRelativeTorque(new Vector3(10f, 0f, 0f) * _movementBuckets[(int)vectorAction[3]] * _force, ForceMode.Impulse);
-            _armRotator.AddRelativeTorque(new Vector3(0f, 10f, 0f) * _movementBuckets[(int)vectorAction[4]] * _force, ForceMode.Impulse);*/
+            // Abzüge fürs Überleben
+            AddReward(-0.001f);
 
             if (isNewDecisionStep)
             {
 
                 var bpDict = jdController.bodyPartsDict;
 
+                // Zielrotationen für Körperteile festlegen.
                 bpDict[_armBase.transform].SetJointTargetRotation(0f, 0f, vectorAction[0]);
                 bpDict[_armLow.transform].SetJointTargetRotation(vectorAction[1], 0f, 0f);
                 bpDict[_armHigh.transform].SetJointTargetRotation(vectorAction[2], 0f, 0f);
                 bpDict[_armTop.transform].SetJointTargetRotation(vectorAction[3], 0f, 0f);
                 bpDict[_armRotator.transform].SetJointTargetRotation(0f, vectorAction[4], 0f);
 
+                // Kraft der einzelnen Körperteile festlegen
                 bpDict[_armBase.transform].SetJointStrength(vectorAction[5]);
                 bpDict[_armLow.transform].SetJointStrength(vectorAction[6]);
                 bpDict[_armHigh.transform].SetJointStrength(vectorAction[7]);
@@ -168,6 +173,10 @@
             IncrementDecisionTimer();
         }
 
+        /**
+         * IncrementDecisionTimer() sorgt dafür, dass zwar jeden step ein Reward ausgesprochen werden kann,
+         * aber nicht jeden step die Zielrotationen geändert werden können.
+         * **/
         public void IncrementDecisionTimer()
         {
             if (currentDecisionStep == agentParameters.numberOfActionsBetweenDecisions ||

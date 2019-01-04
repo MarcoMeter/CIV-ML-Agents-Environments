@@ -26,25 +26,19 @@
         private Transform _ring;
 
         [SerializeField]
-        private float _force = 2f;
-        private readonly float[] _movementBuckets = new float[] { -1.0f, -0.1f, 0f, 0.1f, 1.0f };
-
-        [SerializeField]
         private GenerateCurve _generateCurve;
 
-        private static string[] detectableObjects = { "Enemy" };
+        private string[] _detectableObjects = { "Enemy" };
 
         internal Vector3 _ringOldPos;
         internal Vector3 _ringNewPos;
         internal Vector3 _ringVelocity;
         internal float _localXVelocity;
 
-        JointDriveController jdController;
+        private JointDriveController _jdController;
 
-        bool isNewDecisionStep;
-        int currentDecisionStep;
-
-
+        private bool _isNewDecisionStep;
+        private int _currentDecisionStep;
         #endregion
 
         #region ML-Agents Lifecycle
@@ -56,22 +50,21 @@
                 _rigs[i].Reset();
             }
 
-            jdController = GetComponent<JointDriveController>();
-            jdController.SetupBodyPart(_armBase.transform);
-            jdController.SetupBodyPart(_armLow.transform);
-            jdController.SetupBodyPart(_armHigh.transform);
-            jdController.SetupBodyPart(_armTop.transform);
-            jdController.SetupBodyPart(_armRotator.transform);
+            _jdController = GetComponent<JointDriveController>();
+            _jdController.SetupBodyPart(_armBase.transform);
+            _jdController.SetupBodyPart(_armLow.transform);
+            _jdController.SetupBodyPart(_armHigh.transform);
+            _jdController.SetupBodyPart(_armTop.transform);
+            _jdController.SetupBodyPart(_armRotator.transform);
         }
 
         public override void AgentReset()
         {
-            // Neuen Draht erstellen
+            // Reset wire by generating a new curve
             _generateCurve.CalculateRandomPoints();
             _generateCurve.BuildMeshBezier();
 
-
-            // Körperteile auf ausgangsposition zurücksetzen.
+            // Reset arm rig (position and velocities)
             for (int i = 0; i < _rigs.Length; i++)
             {
                 _rigs[i].Reset();
@@ -88,46 +81,12 @@
             }
         }
 
-
-        // Observation für ein einzelnes Körperteil
-        public void CollectObservationBodyPart(BodyPart bp)
-        {
-            Rigidbody rb = bp.rb;
-
-            // Bodenkontakt des Körperteils
-            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground
-
-            // Geschwindigkeit des Körperteils
-            AddVectorObs(rb.velocity);
-
-            // Winkelgeschwindigkeit des Körperteils
-            AddVectorObs(rb.angularVelocity);
-
-            // Lokale Position des Körperteils im Verhältnis zur Basis des Roboterarms
-            Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
-            AddVectorObs(localPosRelToBase);
-
-            // Wenn Körperteil nicht Basis ist, dann lokale Rotationen des Körperteils
-            if (bp.rb.transform != _armBase)
-            {
-                AddVectorObs(bp.currentXNormalizedRot);
-                AddVectorObs(bp.currentYNormalizedRot);
-                AddVectorObs(bp.currentZNormalizedRot);
-                AddVectorObs(bp.currentStrength / jdController.maxJointForceLimit);
-            }
-        }
-
         public override void CollectObservations()
         {
-            // Raycasts vom Ring aus nach innen über CircularRayPerceptor
-            AddVectorObs(_circularRayPerception.Perceive(detectableObjects));
+            AddVectorObs(_circularRayPerception.Perceive(_detectableObjects));
+            _jdController.GetCurrentJointForces();
 
-            // JointController werte ermitteln
-            jdController.GetCurrentJointForces();
-
-
-            // Für jedes Körperteil observationen durchführen
-            foreach (var bodyPart in jdController.bodyPartsDict.Values)
+            foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 CollectObservationBodyPart(bodyPart);
             }
@@ -149,10 +108,10 @@
             // Abzüge fürs Überleben
             AddReward(-0.001f);
 
-            if (isNewDecisionStep)
+            if (_isNewDecisionStep)
             {
 
-                var bpDict = jdController.bodyPartsDict;
+                var bpDict = _jdController.bodyPartsDict;
 
                 // Zielrotationen für Körperteile festlegen.
                 bpDict[_armBase.transform].SetJointTargetRotation(0f, 0f, vectorAction[0]);
@@ -167,37 +126,57 @@
                 bpDict[_armHigh.transform].SetJointStrength(vectorAction[7]);
                 bpDict[_armTop.transform].SetJointStrength(vectorAction[8]);
                 bpDict[_armRotator.transform].SetJointStrength(vectorAction[9]);
-
             }
 
             IncrementDecisionTimer();
         }
+        #endregion
 
-        /**
-         * IncrementDecisionTimer() sorgt dafür, dass zwar jeden step ein Reward ausgesprochen werden kann,
-         * aber nicht jeden step die Zielrotationen geändert werden können.
-         * **/
-        public void IncrementDecisionTimer()
+        #region Private Functions
+        /// <summary>
+        /// IncrementDecisionTimer() sorgt dafür, dass zwar jeden step ein Reward ausgesprochen werden kann, aber nicht jeden step die Zielrotationen geändert werden können.
+        /// </summary>
+        /// <param name="bp"></param>
+        private void CollectObservationBodyPart(BodyPart bp)
         {
-            if (currentDecisionStep == agentParameters.numberOfActionsBetweenDecisions ||
-                agentParameters.numberOfActionsBetweenDecisions == 1)
+            var rb = bp.rb;
+            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground?
+            AddVectorObs(rb.velocity);
+            AddVectorObs(rb.angularVelocity);
+            Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
+            AddVectorObs(localPosRelToBase);
+
+            if (bp.rb.transform != _armBase)
             {
-                currentDecisionStep = 1;
-                isNewDecisionStep = true;
-            }
-            else
-            {
-                currentDecisionStep++;
-                isNewDecisionStep = false;
+                AddVectorObs(bp.currentXNormalizedRot);
+                AddVectorObs(bp.currentYNormalizedRot);
+                AddVectorObs(bp.currentZNormalizedRot);
+                AddVectorObs(bp.currentStrength / _jdController.maxJointForceLimit);
             }
         }
 
-
+        /// <summary>
+        /// TODO: Description
+        /// </summary>
+        private void IncrementDecisionTimer()
+        {
+            if (_currentDecisionStep == agentParameters.numberOfActionsBetweenDecisions ||
+                agentParameters.numberOfActionsBetweenDecisions == 1)
+            {
+                _currentDecisionStep = 1;
+                _isNewDecisionStep = true;
+            }
+            else
+            {
+                _currentDecisionStep++;
+                _isNewDecisionStep = false;
+            }
+        }
         #endregion
 
         #region Public Functions
         /// <summary>
-        /// 
+        /// Punishes the agent and stops the episode.
         /// </summary>
         public void Loose()
         {
@@ -205,6 +184,9 @@
             Done();
         }
 
+        /// <summary>
+        /// Rewards the agent and stops the episode.
+        /// </summary>
         public void Win()
         {
             AddReward(1f);

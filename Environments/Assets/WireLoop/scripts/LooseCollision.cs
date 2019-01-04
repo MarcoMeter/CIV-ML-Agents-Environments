@@ -3,12 +3,13 @@
     using UnityEngine;
 
     /// <summary>
-    /// 
+    /// Determines wether the agent looses or wins based on collisions with the wire, the starting base and the goal.
     /// </summary>
     public class LooseCollision : MonoBehaviour
     {
         #region Member Fields
-        public WireLoopAgent wireloopAgent;
+        [SerializeField]
+        private WireLoopAgent _wireloopAgent;
         #endregion
 
         #region Unity Lifecycle
@@ -16,12 +17,11 @@
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                //Debug.Log("Collision");
-                wireloopAgent.Loose();
+                _wireloopAgent.Loose();
             }
             if(collision.gameObject.tag == "Goal")
             {
-                wireloopAgent.Win();
+                _wireloopAgent.Win();
             }
         }
         #endregion

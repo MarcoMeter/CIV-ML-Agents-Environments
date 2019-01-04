@@ -113,19 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &19470708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
-  m_Name: (Clone)(Clone)
-  m_EditorClassIdentifier: 
-  broadcast: 1
-  brain: {fileID: 0}
 --- !u!43 &91979092
 Mesh:
   m_ObjectHideFlags: 0
@@ -479,22 +466,22 @@ Prefab:
         type: 2}
       propertyPath: CoreBrains.Array.data[0]
       value: 
-      objectReference: {fileID: 438962679}
+      objectReference: {fileID: 588436592}
     - target: {fileID: 114237866541297028, guid: a3eee3695c931a44289fcf0ed0ce56c2,
         type: 2}
       propertyPath: CoreBrains.Array.data[1]
       value: 
-      objectReference: {fileID: 19470708}
+      objectReference: {fileID: 773631485}
     - target: {fileID: 114237866541297028, guid: a3eee3695c931a44289fcf0ed0ce56c2,
         type: 2}
       propertyPath: CoreBrains.Array.data[2]
       value: 
-      objectReference: {fileID: 476397627}
+      objectReference: {fileID: 767270963}
     - target: {fileID: 114237866541297028, guid: a3eee3695c931a44289fcf0ed0ce56c2,
         type: 2}
       propertyPath: CoreBrains.Array.data[3]
       value: 
-      objectReference: {fileID: 1582609233}
+      objectReference: {fileID: 1777825206}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3eee3695c931a44289fcf0ed0ce56c2, type: 2}
   m_IsPrefabAsset: 0
@@ -624,34 +611,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &438962679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e9bda8f3cf1492fa74926a530f6f70, type: 3}
-  m_Name: (Clone)(Clone)
-  m_EditorClassIdentifier: 
-  broadcast: 1
-  keyContinuousPlayerActions: []
-  axisContinuousPlayerActions: []
-  discretePlayerActions: []
-  brain: {fileID: 0}
---- !u!114 &476397627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35813a1be64e144f887d7d5f15b963fa, type: 3}
-  m_Name: (Clone)(Clone)
-  m_EditorClassIdentifier: 
-  brain: {fileID: 215603170}
 --- !u!43 &507264177
 Mesh:
   m_ObjectHideFlags: 0
@@ -962,6 +921,22 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!114 &588436592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e9bda8f3cf1492fa74926a530f6f70, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  broadcast: 1
+  keyContinuousPlayerActions: []
+  axisContinuousPlayerActions: []
+  discretePlayerActions: []
+  brain: {fileID: 0}
 --- !u!1001 &752251916
 Prefab:
   m_ObjectHideFlags: 0
@@ -1082,6 +1057,31 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &767270963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35813a1be64e144f887d7d5f15b963fa, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  brain: {fileID: 215603170}
+--- !u!114 &773631485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  broadcast: 1
+  brain: {fileID: 0}
 --- !u!1001 &858154622
 Prefab:
   m_ObjectHideFlags: 0
@@ -1188,6 +1188,16 @@ Prefab:
     - target: {fileID: 1482230996649230, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.9829866
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.016709328
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
@@ -1303,6 +1313,16 @@ Prefab:
     - target: {fileID: 1482230996649230, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.9829866
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.016709328
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
@@ -1829,6 +1849,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.9829866
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.016709328
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
@@ -2064,29 +2094,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1582609233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: (Clone)(Clone)
-  m_EditorClassIdentifier: 
-  broadcast: 1
-  graphModel: {fileID: 0}
-  graphScope: 
-  graphPlaceholders: []
-  BatchSizePlaceholderName: batch_size
-  VectorObservationPlacholderName: vector_observation
-  RecurrentInPlaceholderName: recurrent_in
-  RecurrentOutPlaceholderName: recurrent_out
-  VisualObservationPlaceholderName: []
-  ActionPlaceholderName: action
-  PreviousActionPlaceholderName: prev_action
-  brain: {fileID: 0}
 --- !u!43 &1629047655
 Mesh:
   m_ObjectHideFlags: 0
@@ -2583,6 +2590,29 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!114 &1777825206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  broadcast: 1
+  graphModel: {fileID: 4900000, guid: c32be7ae06625c14b9d7f22c5c33cbf2, type: 3}
+  graphScope: 
+  graphPlaceholders: []
+  BatchSizePlaceholderName: batch_size
+  VectorObservationPlacholderName: vector_observation
+  RecurrentInPlaceholderName: recurrent_in
+  RecurrentOutPlaceholderName: recurrent_out
+  VisualObservationPlaceholderName: []
+  ActionPlaceholderName: action
+  PreviousActionPlaceholderName: prev_action
+  brain: {fileID: 215603170}
 --- !u!1001 &1869753592
 Prefab:
   m_ObjectHideFlags: 0
@@ -2622,21 +2652,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 116333057}
-    - target: {fileID: 64811607347079216, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 116333057}
     - target: {fileID: 114350143181545858, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
       propertyPath: brain
       value: 
       objectReference: {fileID: 215603170}
+    - target: {fileID: 64811607347079216, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 116333057}
+    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 116333057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
@@ -2694,24 +2724,14 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 515843509}
+    - target: {fileID: 1482230996649230, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
+      propertyPath: m_Name
+      value: WireLoopGame (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
       value: -0.00028048718
-      objectReference: {fileID: 0}
-    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0001489449
-      objectReference: {fileID: 0}
-    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.0000166893
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482230996649230, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
-      propertyPath: m_Name
-      value: WireLoopGame (2)
       objectReference: {fileID: 0}
     - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
@@ -2733,9 +2753,15 @@ Prefab:
       propertyPath: m_ConnectedAnchor.y
       value: 0.072192825
       objectReference: {fileID: 0}
-    - target: {fileID: 1482230996649230, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0001489449
+      objectReference: {fileID: 0}
+    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000166893
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}

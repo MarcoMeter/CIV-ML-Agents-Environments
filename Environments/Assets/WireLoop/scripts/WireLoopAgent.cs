@@ -75,7 +75,7 @@
 
 
             // Joint Controller zurücksetzen
-            foreach (var bodyPart in jdController.bodyPartsDict.Values)
+            foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 bodyPart.Reset(bodyPart);
             }

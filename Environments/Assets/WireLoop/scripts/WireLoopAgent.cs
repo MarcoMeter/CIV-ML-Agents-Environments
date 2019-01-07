@@ -74,7 +74,7 @@
             _ringVelocity = Vector3.zero;
 
 
-            // Reset JointController targetrotation and strength
+            // Reset JointController target rotation and strength
             foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 bodyPart.Reset(bodyPart);
@@ -94,7 +94,7 @@
 
         public override void AgentAction(float[] vectorAction, string textAction)
         {
-            // Calculates Ring Velocities
+            // Calculates ring velocities
             _ringNewPos = _ring.position;
             Vector3 media = _ringNewPos - _ringOldPos;
             _ringVelocity = media / Time.fixedDeltaTime;
@@ -105,7 +105,7 @@
             _localXVelocity = Mathf.Clamp(_ring.transform.InverseTransformVector(_ringVelocity).x, -5f, 5f);
             AddReward(_localXVelocity * 0.01f);
 
-            // Punishment for surviving
+            // Punishment for each time step to motivate the agent to keep moving
             AddReward(-0.001f);
 
             if (_isNewDecisionStep)
@@ -113,14 +113,14 @@
 
                 var bpDict = _jdController.bodyPartsDict;
 
-                // Set Targetrotation of Bodyparts
+                // Set target rotation of body parts
                 bpDict[_armBase.transform].SetJointTargetRotation(0f, 0f, vectorAction[0]);
                 bpDict[_armLow.transform].SetJointTargetRotation(vectorAction[1], 0f, 0f);
                 bpDict[_armHigh.transform].SetJointTargetRotation(vectorAction[2], 0f, 0f);
                 bpDict[_armTop.transform].SetJointTargetRotation(vectorAction[3], 0f, 0f);
                 bpDict[_armRotator.transform].SetJointTargetRotation(0f, vectorAction[4], 0f);
 
-                // Set Strength of Bodyparts (Speed at which it can move)
+                // Set joint strength of body parts (speed at which it can move)
                 bpDict[_armBase.transform].SetJointStrength(vectorAction[5]);
                 bpDict[_armLow.transform].SetJointStrength(vectorAction[6]);
                 bpDict[_armHigh.transform].SetJointStrength(vectorAction[7]);
@@ -134,13 +134,13 @@
 
         #region Private Functions
         /// <summary>
-        /// Collects the Observations for a single Bodypart. Including (Groundcontact, local velocity, angular velocity, local rotation, local position to base)
+        /// Collects the observations for a single body part. Including (ground contact, local velocity, angular velocity, local rotation, local position to base)
         /// </summary>
         /// <param name="bp"></param>
         private void CollectObservationBodyPart(BodyPart bp)
         {
             var rb = bp.rb;
-            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this bp touching the ground?
+            AddVectorObs(bp.groundContact.touchingGround ? 1 : 0); // Is this body part touching the ground?
             AddVectorObs(rb.velocity);
             AddVectorObs(rb.angularVelocity);
             Vector3 localPosRelToBase = _armBase.transform.InverseTransformPoint(rb.position);
@@ -156,7 +156,7 @@
         }
 
         /// <summary>
-        /// Increment Decision Step, so that not every Update changes the targetrotation of the bodyparts.
+        /// Increments decision step, so that not every update changes the target rotation of the body parts.
         /// </summary>
         private void IncrementDecisionTimer()
         {

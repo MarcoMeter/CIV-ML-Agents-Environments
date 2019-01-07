@@ -74,7 +74,7 @@
             _ringVelocity = Vector3.zero;
 
 
-            // Joint Controller zurücksetzen
+            // Reset JointController targetrotation and strength
             foreach (var bodyPart in _jdController.bodyPartsDict.Values)
             {
                 bodyPart.Reset(bodyPart);
@@ -101,11 +101,11 @@
             _ringOldPos = _ringNewPos;
 
 
-            // Reward für Geschwindigkeit des Rings in der lokalen X-Achse abhängig von der Rotation
+            // Reward for speed of ring on its local x-axis
             _localXVelocity = Mathf.Clamp(_ring.transform.InverseTransformVector(_ringVelocity).x, -5f, 5f);
             AddReward(_localXVelocity * 0.01f);
 
-            // Abzüge fürs Überleben
+            // Punishment for surviving
             AddReward(-0.001f);
 
             if (_isNewDecisionStep)
@@ -113,14 +113,14 @@
 
                 var bpDict = _jdController.bodyPartsDict;
 
-                // Zielrotationen für Körperteile festlegen.
+                // Set Targetrotation of Bodyparts
                 bpDict[_armBase.transform].SetJointTargetRotation(0f, 0f, vectorAction[0]);
                 bpDict[_armLow.transform].SetJointTargetRotation(vectorAction[1], 0f, 0f);
                 bpDict[_armHigh.transform].SetJointTargetRotation(vectorAction[2], 0f, 0f);
                 bpDict[_armTop.transform].SetJointTargetRotation(vectorAction[3], 0f, 0f);
                 bpDict[_armRotator.transform].SetJointTargetRotation(0f, vectorAction[4], 0f);
 
-                // Kraft der einzelnen Körperteile festlegen
+                // Set Strength of Bodyparts (Speed at which it can move)
                 bpDict[_armBase.transform].SetJointStrength(vectorAction[5]);
                 bpDict[_armLow.transform].SetJointStrength(vectorAction[6]);
                 bpDict[_armHigh.transform].SetJointStrength(vectorAction[7]);
@@ -134,7 +134,7 @@
 
         #region Private Functions
         /// <summary>
-        /// IncrementDecisionTimer() sorgt dafür, dass zwar jeden step ein Reward ausgesprochen werden kann, aber nicht jeden step die Zielrotationen geändert werden können.
+        /// Collects the Observations for a single Bodypart. Including (Groundcontact, local velocity, angular velocity, local rotation, local position to base)
         /// </summary>
         /// <param name="bp"></param>
         private void CollectObservationBodyPart(BodyPart bp)
@@ -156,7 +156,7 @@
         }
 
         /// <summary>
-        /// TODO: Description
+        /// Increment Decision Step, so that not every Update changes the targetrotation of the bodyparts.
         /// </summary>
         private void IncrementDecisionTimer()
         {

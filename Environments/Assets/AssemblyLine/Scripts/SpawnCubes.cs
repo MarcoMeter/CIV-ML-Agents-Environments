@@ -1,7 +1,9 @@
-﻿namespace CIV_ML_Agents.AssemblyLine
+﻿
+namespace CIV_ML_Agents.AssemblyLine
 {
     using System.Collections.Generic;
     using UnityEngine;
+
 
     public class SpawnCubes : MonoBehaviour
     {
@@ -15,16 +17,22 @@
         private float _moveSpeed = 3f;
         [SerializeField]
         private bool _resetCubes = true;
-        
+        [SerializeField]
+        private float posRange = 0.3f;
+
         private float _nextSpawn = 0f;
         private float _npos = 0.0f;
         private List<GameObject> _cubes = new List<GameObject>();
         private int _numPrefabs = 0;
+
+        public SpawnCubes()
+        {
+        }
         #endregion
 
         #region Unity Lifecycle
         private void Start() => _numPrefabs = _prefabs.Length;
-        
+
         private void Update()
         {
             if (Time.time >= _nextSpawn)
@@ -37,12 +45,12 @@
                     rotation: Quaternion.identity);
 
                 _cubes.Add(cube.gameObject);
-                _npos = Random.Range(-0.3f, 0.3f);
+                _npos = Random.Range(-posRange, posRange);
             }
 
             transform.localPosition = Vector3.Lerp(
                 a: transform.localPosition,
-                b: new Vector3(transform.localPosition.x, transform.localPosition.y, _npos),
+                b: new Vector3(transform.localPosition.x, _npos, transform.localPosition.z),
                 t: Time.deltaTime * _moveSpeed);
         }
         #endregion
@@ -57,7 +65,7 @@
             {
                 for (int i = 0; i < _cubes.Count; i++)
                     Destroy(_cubes[i]);
-                
+
 
                 _cubes.Clear();
             }

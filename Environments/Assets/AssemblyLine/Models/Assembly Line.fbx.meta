@@ -16,6 +16,7 @@ ModelImporter:
     100020: Structure
     100022: Table
     100024: Wire
+    100026: Rollers
     400000: //RootNode
     400002: Boxes
     400004: Camera
@@ -29,6 +30,7 @@ ModelImporter:
     400020: Structure
     400022: Table
     400024: Wire
+    400026: Rollers
     2000000: Camera
     2100000: Dark
     2100002: Red
@@ -46,6 +48,7 @@ ModelImporter:
     2300014: Structure
     2300016: Table
     2300018: Wire
+    2300020: Rollers
     3300000: Boxes
     3300002: Dropper
     3300004: DropperArm
@@ -56,6 +59,7 @@ ModelImporter:
     3300014: Structure
     3300016: Table
     3300018: Wire
+    3300020: Rollers
     4300000: Dropper
     4300002: DropperArm
     4300004: Structure
@@ -66,6 +70,7 @@ ModelImporter:
     4300014: Table
     4300016: Pusher
     4300018: Roller
+    4300020: Rollers
     2186277476908879412: ImportLogs
   externalObjects:
   - first:

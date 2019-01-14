@@ -13,16 +13,22 @@ public class ArmMotor : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        LiftRotate();
+        Rotate();
     }
 
+    /// <summary>
+    /// Moves arm on X/Z axis
+    /// </summary>
     private void Move()
     {
         rigidbody.velocity = Vector3.zero;
         rigidbody.MovePosition(rigidbody.position + (MoveInput * movementSpeed * Time.fixedDeltaTime));
     }
 
-    private void LiftRotate()
+    /// <summary>
+    /// Rotates arm
+    /// </summary>
+    private void Rotate()
     {
         rigidbody.angularVelocity = Vector3.zero;
         rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(0f, RotateInput * rotationSpeed * Mathf.Deg2Rad, 0f));

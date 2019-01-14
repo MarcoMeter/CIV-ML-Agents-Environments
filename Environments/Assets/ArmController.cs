@@ -8,6 +8,7 @@ public class ArmController : MonoBehaviour
 
     private void Update()
     {
+        // Movement
         var leftInput = default(Vector3);
         if (Input.GetKey(KeyCode.W))
             leftInput.z += 1;
@@ -29,6 +30,7 @@ public class ArmController : MonoBehaviour
         motor.MoveInput = leftInput;
 
 
+        // Rotation
         var rightInput = 0f;
         if (Input.GetKey(KeyCode.LeftArrow))
             rightInput -= 1;
@@ -37,6 +39,8 @@ public class ArmController : MonoBehaviour
             rightInput += 1;
         motor.RotateInput = rightInput;
 
+
+        // Open/Close hook
         if (Input.GetKeyDown(KeyCode.Space))
         {
             bool state = hookAnimator.GetBool("Closed");

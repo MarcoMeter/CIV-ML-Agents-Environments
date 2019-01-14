@@ -929,7 +929,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: dbce4b83440c18f40ab73d4251087264, type: 3}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38436,7 +38436,6 @@ MonoBehaviour:
   _armTop: {fileID: 54779708653667888}
   _armRotator: {fileID: 54196238400443956}
   _ring: {fileID: 4478279056935284}
-  _force: 2
   _generateCurve: {fileID: 114937470080681742}
 --- !u!114 &114417924355144354
 MonoBehaviour:

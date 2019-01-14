@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+/*
+ * BROKEN: Similar to HookLogic, not fully functional yet
+ * Needs refractoring compared to HookLogic.cs
+ * Joint logic should be moved in new script attached to lid itself
+ */
+ 
 public class HoleLogic : MonoBehaviour
 {
     public LayerMask lidLayer;

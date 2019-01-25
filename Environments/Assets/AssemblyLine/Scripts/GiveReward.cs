@@ -16,7 +16,7 @@
         [SerializeField]
         private Agent _agent;
         [SerializeField]
-        private SpawnCubes _spawner;
+        private CubeSpawner _spawner;
         #endregion
 
         #region Unity Lifecycle        
@@ -28,7 +28,7 @@
             else
                 _agent.AddReward(-_punish);
 
-            _spawner.Unregister(collision.transform.gameObject);
+            _spawner.DestroyCube(collision.transform.gameObject);
         }
         #endregion
     }

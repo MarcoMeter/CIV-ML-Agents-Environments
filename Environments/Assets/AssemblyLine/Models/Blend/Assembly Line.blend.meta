@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4373fcf4d7a0b8e4c9fbb2548621c526
+guid: dddc68aa9a18f5e45b05ebcac9f26e94
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -16,6 +16,8 @@ ModelImporter:
     100020: Structure
     100022: Table
     100024: Wire
+    100026: Box_left
+    100028: Box_right
     400000: //RootNode
     400002: Boxes
     400004: Dropper
@@ -29,11 +31,13 @@ ModelImporter:
     400020: Structure
     400022: Table
     400024: Wire
+    400026: Box_left
+    400028: Box_right
     2100000: Dark
     2100002: Red
     2100004: Dark_Shiny
-    2100006: Yellow
-    2100008: Silver_Shiny
+    2100006: Silver_Shiny
+    2100008: Yellow
     2100010: Blue
     2300000: Boxes
     2300002: Dropper
@@ -46,6 +50,8 @@ ModelImporter:
     2300016: Structure
     2300018: Table
     2300020: Wire
+    2300022: Box_left
+    2300024: Box_right
     3300000: Boxes
     3300002: Dropper
     3300004: DropperArm
@@ -57,17 +63,21 @@ ModelImporter:
     3300016: Structure
     3300018: Table
     3300020: Wire
+    3300022: Box_left
+    3300024: Box_right
     4300000: Dropper
     4300002: DropperArm
     4300004: Structure
-    4300006: Motor
-    4300008: Wire
+    4300006: Wire
+    4300008: Motor
     4300010: Boxes
     4300012: PusherRoller
     4300014: Table
     4300016: Pusher
     4300018: Rollers
     4300020: Roller
+    4300022: Box_left
+    4300024: Box_right
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs

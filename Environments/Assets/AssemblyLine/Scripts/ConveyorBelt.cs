@@ -2,12 +2,12 @@
 {
     using UnityEngine;
 
-    public class AssemblyLineMover : MonoBehaviour
+    public class ConveyorBelt : MonoBehaviour
     {
         #region Member Fields
         // Inspector
         [SerializeField]
-        private float _speed = 30f;
+        private Vector3 _speed;
         
         private Rigidbody _rig;
         private ConstantForce _cf;
@@ -21,9 +21,9 @@
             _cf = GetComponent<ConstantForce>();
         }
         
-        private void OnCollisionStay(Collision collision) => collision.rigidbody.MovePosition(collision.transform.position + (Vector3.right * _speed * Time.deltaTime));
+        private void OnCollisionStay(Collision collision) => collision.rigidbody.MovePosition(collision.transform.position + (_speed * Time.fixedDeltaTime));
 
-        private void OnCollisionExit(Collision collision) => collision.rigidbody.AddForce(Vector3.right * _speed * collision.rigidbody.mass, ForceMode.Impulse);
+        private void OnCollisionExit(Collision collision) => collision.rigidbody.AddForce(_speed * collision.rigidbody.mass, ForceMode.Impulse);
         #endregion
     }
 }

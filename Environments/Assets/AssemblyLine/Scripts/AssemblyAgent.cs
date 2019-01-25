@@ -7,22 +7,35 @@
     {
         #region Member Fields
         // Inspector
+        [Header("References")]
         [SerializeField]
-        private Rigidbody _mover;
-        [SerializeField]
-        private Vector3 _maxMoverDirection = new Vector3(0f, 0f, 1f);
+        [Tooltip("Raycast origin point")]
+        private Rigidbody _pusher;
         [SerializeField]
         private Transform _raySpawner;
         [SerializeField]
-        private float _rayDistance = 0.1f;
+        private RayPerception _rayPerception;
+        [SerializeField]
+        private CubeSpawner _cubeSpawner;
+
+        [Header("Pusher")]
+        [SerializeField]
+        [Tooltip("Maximal positive and negative pusher movement from origin")]
+        private Vector3 _maxPusherMovement;
+        [SerializeField]
+        private float _pusherSpeed = 1f;
+
+        [Header("Raycasting")]
+        [SerializeField]
+        private float _rayDistance;
+        [SerializeField]
+        private float _raySpacing;
         [SerializeField]
         private Vector2 _rayAmount = new Vector2(5, 5);
-        [SerializeField]
-        private SpawnCubes _spawner;
 
-        private Vector3 _moverOrigin;
-        private RayPerception _rayPer;
-        private float[] _movementBuckets = new float[] 
+        // Privates
+        private Vector3 _pusherOrigin;
+        private float[] _movementBuckets = new float[]
         {
             -1.0f,
             -0.8f,
@@ -39,17 +52,12 @@
         #endregion
 
         #region ML-Agents Lifecycle
-        public override void InitializeAgent()
-        {
-            _rayPer = GetComponent<RayPerception>();
-            _moverOrigin = _mover.transform.position;
-        }
-
+        public override void InitializeAgent() => _pusherOrigin = _pusher.transform.position;
 
         public override void AgentReset()
         {
-            _spawner.ResetCubes();
-            _mover.position = _moverOrigin;
+            _cubeSpawner.ResetCubes();
+            _pusher.position = _pusherOrigin;
         }
 
         public override void CollectObservations()
@@ -89,27 +97,26 @@
 
             // Raycast return
             AddVectorObs(
-                _rayPer.Perceive(
+                _rayPerception.Perceive(
                     rayDistance: 12f,
                     rays: rays,
                     detectableObjects: detectableObjects,
                     startOffset: 0f,
                     endOffset: 0f));
 
-
             // Mover position
-            AddVectorObs(_mover.transform.localPosition.z);
+            AddVectorObs(_pusher.transform.localPosition.z);
         }
 
         public override void AgentAction(float[] vectorAction, string textAction)
         {
-            float actionY = _movementBuckets[(int)vectorAction[0]];
+            float moveAction = _movementBuckets[(int)vectorAction[0]];
 
-            _mover.MovePosition(
+            _pusher.MovePosition(
                 Vector3.Lerp(
-                    a: _mover.position,
-                    b: _moverOrigin + (_maxMoverDirection * actionY),
-                    t: Time.deltaTime * 10.0f));
+                    a: _pusher.position,
+                    b: _pusherOrigin + (_maxPusherMovement * moveAction),
+                    t: Time.deltaTime * _pusherSpeed));
         }
         #endregion
     }

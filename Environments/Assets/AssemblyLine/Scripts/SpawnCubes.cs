@@ -1,10 +1,12 @@
 ﻿
 namespace CIV_ML_Agents.AssemblyLine
 {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
 
 
+    [Obsolete("Please use CubeSpawner instead", true)]
     public class SpawnCubes : MonoBehaviour
     {
         #region Member Fields
@@ -24,10 +26,6 @@ namespace CIV_ML_Agents.AssemblyLine
         private float _npos = 0.0f;
         private List<GameObject> _cubes = new List<GameObject>();
         private int _numPrefabs = 0;
-
-        public SpawnCubes()
-        {
-        }
         #endregion
 
         #region Unity Lifecycle
@@ -40,12 +38,12 @@ namespace CIV_ML_Agents.AssemblyLine
                 _nextSpawn = Time.time + _intervall;
 
                 Transform cube = Instantiate(
-                    original: _prefabs[Random.Range(0, _numPrefabs)].transform,
+                    original: _prefabs[UnityEngine.Random.Range(0, _numPrefabs)].transform,
                     position: transform.position,
                     rotation: Quaternion.identity);
 
                 _cubes.Add(cube.gameObject);
-                _npos = Random.Range(-posRange, posRange);
+                _npos = UnityEngine.Random.Range(-posRange, posRange);
             }
 
             transform.localPosition = Vector3.Lerp(

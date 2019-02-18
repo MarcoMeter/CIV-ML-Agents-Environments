@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: d9724e4f25c3c5c4cbccfb57991d5b67
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm1
+    100002: Arm1_001
+    100004: ArmBase
+    100006: ArmBase_001
+    100008: ArmBase_002
+    100010: ArmBase_003
+    100012: Camera
+    100014: Cube
+    100016: Cube_001
+    100018: Cylinder
+    100020: Empty
+    100022: Plane
+    100024: Roboterarm
+    100026: Sun
+    100028: //RootNode
+    100030: Finish
+    100032: Floor
+    100034: Rail
+    100036: RailStopLeft
+    100038: RailStopRight
+    100040: Start
+    100042: Wire
+    100044: Wire_001
+    100046: Arm2
+    100048: ArmRingRotator
+    100050: ArmRotator
+    100052: ArmTop
+    100054: WireObject
+    100056: ArmRing
+    400000: Arm1
+    400002: Arm1_001
+    400004: ArmBase
+    400006: ArmBase_001
+    400008: ArmBase_002
+    400010: ArmBase_003
+    400012: Camera
+    400014: Cube
+    400016: Cube_001
+    400018: Cylinder
+    400020: Empty
+    400022: Plane
+    400024: Roboterarm
+    400026: Sun
+    400028: //RootNode
+    400030: Finish
+    400032: Floor
+    400034: Rail
+    400036: RailStopLeft
+    400038: RailStopRight
+    400040: Start
+    400042: Wire
+    400044: Wire_001
+    400046: Arm2
+    400048: ArmRingRotator
+    400050: ArmRotator
+    400052: ArmTop
+    400054: WireObject
+    400056: ArmRing
+    2000000: Camera
+    2100000: Socket
+    2100002: Connector
+    2100004: Arm
+    2100006: Ring
+    2100008: Wire
+    2100010: Floor
+    2100012: Start
+    2100014: Metal_Silver
+    2100016: Finish_001
+    2100018: Red
+    2300000: Arm1
+    2300002: Arm1_001
+    2300004: ArmBase
+    2300006: ArmBase_001
+    2300008: ArmBase_002
+    2300010: ArmBase_003
+    2300012: Cube
+    2300014: Cube_001
+    2300016: Cylinder
+    2300018: Plane
+    2300020: Roboterarm
+    2300022: Finish
+    2300024: Floor
+    2300026: Rail
+    2300028: RailStopLeft
+    2300030: RailStopRight
+    2300032: Start
+    2300034: Wire_001
+    2300036: Arm2
+    2300038: ArmRingRotator
+    2300040: ArmRotator
+    2300042: ArmTop
+    2300044: Wire
+    2300046: ArmRing
+    3300000: Arm1
+    3300002: Arm1_001
+    3300004: ArmBase
+    3300006: ArmBase_001
+    3300008: ArmBase_002
+    3300010: ArmBase_003
+    3300012: Cube
+    3300014: Cube_001
+    3300016: Cylinder
+    3300018: Plane
+    3300020: Roboterarm
+    3300022: Finish
+    3300024: Floor
+    3300026: Rail
+    3300028: RailStopLeft
+    3300030: RailStopRight
+    3300032: Start
+    3300034: Wire_001
+    3300036: Arm2
+    3300038: ArmRingRotator
+    3300040: ArmRotator
+    3300042: ArmTop
+    3300044: Wire
+    3300046: ArmRing
+    4300000: Roboterarm
+    4300002: ArmBase
+    4300004: Arm1
+    4300006: Arm1_001
+    4300008: ArmBase_001
+    4300010: ArmBase_003
+    4300012: ArmBase_002
+    4300014: Cylinder
+    4300016: Cube
+    4300018: Cube_001
+    4300020: Plane
+    4300022: Wire_001
+    4300024: Start
+    4300026: Finish
+    4300028: Floor
+    4300030: Rail
+    4300032: RailStopRight
+    4300034: ArmTop
+    4300036: ArmRingRotator
+    4300038: ArmRotator
+    4300040: Wire
+    4300042: ArmRing
+    10800000: Sun
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arm
+    second: {fileID: 2100000, guid: 7ecbee78ecd6f104687b6d82665cb057, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Connector
+    second: {fileID: 2100000, guid: 294ea74e17f74254fbc18ce5d1692a1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Finish_001
+    second: {fileID: 2100000, guid: e22b34659f8edfe41a8ee217718f7710, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 7dad38c212cb6b04d815209edbf4709e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Silver
+    second: {fileID: 2100000, guid: 76c79e9153593f240a609baea5661501, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: f4c9c42bb77145044ac6ef332062cdb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ring
+    second: {fileID: 2100000, guid: 5188c3046f3b42d4699e56fba5f82188, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Start
+    second: {fileID: 2100000, guid: 55dc6ffacdc39f24e9dd650598be4d6d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

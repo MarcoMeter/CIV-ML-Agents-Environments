@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 479dfeb1d1088c949b7587dbddf64521
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm1
+    100002: Arm1_001
+    100004: ArmBase
+    100006: ArmBase_001
+    100008: ArmBase_003
+    100010: Base
+    100012: Cube
+    100014: Cube_001
+    100016: Cylinder
+    100018: Empty
+    100020: NurbsPath
+    100022: Plane
+    100024: //RootNode
+    100026: ArmBase_002
+    100028: Roboterarm
+    100030: Finish
+    100032: Floor
+    100034: Rail
+    100036: RailStopLeft
+    100038: RailStopRight
+    100040: Start
+    100042: Wire
+    100044: Wire_001
+    100046: Arm2
+    100048: ArmRingRotator
+    100050: ArmRotator
+    100052: ArmTop
+    100054: WireObject
+    100056: ArmRing
+    400000: Arm1
+    400002: Arm1_001
+    400004: ArmBase
+    400006: ArmBase_001
+    400008: ArmBase_003
+    400010: Base
+    400012: Cube
+    400014: Cube_001
+    400016: Cylinder
+    400018: Empty
+    400020: NurbsPath
+    400022: Plane
+    400024: //RootNode
+    400026: ArmBase_002
+    400028: Roboterarm
+    400030: Finish
+    400032: Floor
+    400034: Rail
+    400036: RailStopLeft
+    400038: RailStopRight
+    400040: Start
+    400042: Wire
+    400044: Wire_001
+    400046: Arm2
+    400048: ArmRingRotator
+    400050: ArmRotator
+    400052: ArmTop
+    400054: WireObject
+    400056: ArmRing
+    2100000: Floor
+    2100002: Wire
+    2100004: Socket
+    2100006: Connector
+    2100008: Arm
+    2100010: Ring
+    2100012: Metal_Silver
+    2100014: Red
+    2100016: Start
+    2100018: Finish_001
+    2300000: Arm1
+    2300002: Arm1_001
+    2300004: ArmBase
+    2300006: ArmBase_001
+    2300008: ArmBase_003
+    2300010: Base
+    2300012: Cube
+    2300014: Cube_001
+    2300016: Cylinder
+    2300018: NurbsPath
+    2300020: Plane
+    2300022: ArmBase_002
+    2300024: Roboterarm
+    2300026: Finish
+    2300028: Floor
+    2300030: Rail
+    2300032: RailStopLeft
+    2300034: RailStopRight
+    2300036: Start
+    2300038: Wire_001
+    2300040: Arm2
+    2300042: ArmRingRotator
+    2300044: ArmRotator
+    2300046: ArmTop
+    2300048: Wire
+    2300050: ArmRing
+    3300000: Arm1
+    3300002: Arm1_001
+    3300004: ArmBase
+    3300006: ArmBase_001
+    3300008: ArmBase_003
+    3300010: Base
+    3300012: Cube
+    3300014: Cube_001
+    3300016: Cylinder
+    3300018: NurbsPath
+    3300020: Plane
+    3300022: ArmBase_002
+    3300024: Roboterarm
+    3300026: Finish
+    3300028: Floor
+    3300030: Rail
+    3300032: RailStopLeft
+    3300034: RailStopRight
+    3300036: Start
+    3300038: Wire_001
+    3300040: Arm2
+    3300042: ArmRingRotator
+    3300044: ArmRotator
+    3300046: ArmTop
+    3300048: Wire
+    3300050: ArmRing
+    4300000: Plane
+    4300002: Cylinder
+    4300004: Base
+    4300006: ArmBase
+    4300008: Arm1
+    4300010: Arm1_001
+    4300012: ArmBase_001
+    4300014: ArmBase_003
+    4300016: NurbsPath
+    4300018: Cube_001
+    4300020: Cube
+    4300022: Roboterarm
+    4300024: ArmBase_002
+    4300026: Rail
+    4300028: RailStopLeft
+    4300030: RailStopRight
+    4300032: Floor
+    4300034: Finish
+    4300036: Start
+    4300038: Wire_001
+    4300040: Arm2
+    4300042: ArmTop
+    4300044: ArmRingRotator
+    4300046: ArmRotator
+    4300048: Wire
+    4300050: ArmRing
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

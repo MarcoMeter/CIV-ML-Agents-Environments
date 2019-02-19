@@ -8,11 +8,11 @@
         #region Member Fields
         // Inspector
         [SerializeField]
+        private string _acceptedClasses;
+        [SerializeField]
         private float _reward = 1f;
         [SerializeField]
         private float _punish = 0f;
-        [SerializeField]
-        private string _acceptedClass = "blueClass";
         [SerializeField]
         private Agent _agent;
         [SerializeField]
@@ -22,9 +22,8 @@
         #region Unity Lifecycle        
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.gameObject.tag == _acceptedClass)
+            if (collision.transform.gameObject.tag == _acceptedClasses)
                 _agent.AddReward(_reward);
-
             else
                 _agent.AddReward(-_punish);
 

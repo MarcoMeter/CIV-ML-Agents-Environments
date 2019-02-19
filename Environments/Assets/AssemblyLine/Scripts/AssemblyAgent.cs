@@ -9,10 +9,9 @@
         // Inspector
         [Header("References")]
         [SerializeField]
-        [Tooltip("Raycast origin point")]
         private Rigidbody _pusher;
         [SerializeField]
-        private Transform _raySpawner;
+        private Transform _raySpawnOrigin;
         [SerializeField]
         private RayPerception _rayPerception;
         [SerializeField]
@@ -70,7 +69,7 @@
 
             string[] detectableObjects = { "blueBox", "redBox", "Untagged" };
 
-            var rot = Matrix4x4.Rotate(_raySpawner.rotation);
+            var rot = Matrix4x4.Rotate(_raySpawnOrigin.rotation);
 
 
             // Setup raycast array
@@ -87,7 +86,7 @@
 
                     origin = rot.MultiplyPoint3x4(origin);
                     direction = rot.MultiplyPoint3x4(direction);
-                    origin += _raySpawner.position;
+                    origin += _raySpawnOrigin.position;
 
                     var ray = new Ray(origin, direction);
 

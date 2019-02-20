@@ -97,7 +97,7 @@
             // Raycast return
             AddVectorObs(
                 _rayPerception.Perceive(
-                    rayDistance: 12f,
+                    rayDistance: 1.8f,
                     rays: rays,
                     detectableObjects: detectableObjects,
                     startOffset: 0f,

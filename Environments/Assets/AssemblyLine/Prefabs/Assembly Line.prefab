@@ -1245,7 +1245,7 @@ MonoBehaviour:
   _rayPerception: {fileID: 114102386586669600}
   _cubeSpawner: {fileID: 114417519581582990}
   _maxPusherMovement: {x: 0.3, y: 0, z: 0}
-  _pusherSpeed: 1
+  _pusherSpeed: 10
   _rayDistance: 0.12
   _raySpacing: 0
   _rayAmount: {x: 5, y: 5}
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _acceptedClasses: blueBox
   _reward: 1
-  _punish: -1
+  _punish: 1
   _agent: {fileID: 114700012376781358}
   _spawner: {fileID: 114417519581582990}
 --- !u!114 &114860272948812742
@@ -1306,6 +1306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _acceptedClasses: redBox
   _reward: 1
-  _punish: -1
+  _punish: 1
   _agent: {fileID: 114700012376781358}
   _spawner: {fileID: 114417519581582990}

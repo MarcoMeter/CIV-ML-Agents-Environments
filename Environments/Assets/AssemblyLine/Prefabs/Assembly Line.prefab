@@ -1246,9 +1246,13 @@ MonoBehaviour:
   _cubeSpawner: {fileID: 114417519581582990}
   _maxPusherMovement: {x: 0.3, y: 0, z: 0}
   _pusherSpeed: 10
-  _rayDistance: 0.12
-  _raySpacing: 0
   _rayAmount: {x: 5, y: 5}
+  _raySpacing: 0.12
+  _rayLength: 1.5
+  _detectableObjects:
+  - redBox
+  - blueBox
+  - Untagged
 --- !u!114 &114774217140414256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1269,12 +1273,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1414098924962516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ddcd52b0cf65c4b8d0ba670fc98fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 822e42a1d3e3abd4193a34521f469a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceptedClasses: blueBox
+  _acceptedTag: blueBox
   _reward: 1
-  _punish: 1
+  _punish: -1
   _agent: {fileID: 114700012376781358}
   _spawner: {fileID: 114417519581582990}
 --- !u!114 &114860272948812742
@@ -1285,10 +1289,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1609518798331140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ddcd52b0cf65c4b8d0ba670fc98fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 822e42a1d3e3abd4193a34521f469a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceptedClasses: 
+  _acceptedTag: 
   _reward: 1
   _punish: -1
   _agent: {fileID: 114700012376781358}
@@ -1301,11 +1305,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437161517144982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ddcd52b0cf65c4b8d0ba670fc98fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 822e42a1d3e3abd4193a34521f469a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceptedClasses: redBox
+  _acceptedTag: redBox
   _reward: 1
-  _punish: 1
+  _punish: -1
   _agent: {fileID: 114700012376781358}
   _spawner: {fileID: 114417519581582990}

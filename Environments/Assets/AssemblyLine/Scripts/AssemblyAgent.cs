@@ -26,11 +26,13 @@
 
         [Header("Raycasting")]
         [SerializeField]
-        private float _rayDistance;
+        private Vector2 _rayAmount = new Vector2(5, 5);
         [SerializeField]
         private float _raySpacing;
         [SerializeField]
-        private Vector2 _rayAmount = new Vector2(5, 5);
+        private float _rayLength;
+        [SerializeField]
+        private string[] _detectableObjects;
 
         // Privates
         private Vector3 _pusherOrigin;
@@ -64,10 +66,8 @@
             // Generate array of raycasts
             var rays = new Ray[(int)_rayAmount.x * (int)_rayAmount.y];
 
-            float halfX = ((int)_rayAmount.x - 1) * _rayDistance / 2.0f;
-            float halfY = ((int)_rayAmount.y - 1) * _rayDistance / 2.0f;
-
-            string[] detectableObjects = { "blueBox", "redBox", "Untagged" };
+            float halfX = ((int)_rayAmount.x - 1) * _raySpacing / 2.0f;
+            float halfY = ((int)_rayAmount.y - 1) * _raySpacing / 2.0f;
 
             var rot = Matrix4x4.Rotate(_raySpawnOrigin.rotation);
 
@@ -78,11 +78,11 @@
                 for (int y = 0; y < (int)_rayAmount.y; y++)
                 {
                     var origin = new Vector3(
-                        x: (x * _rayDistance) - halfX,
-                        y: (y * _rayDistance) - halfY,
+                        x: (x * _raySpacing) - halfX,
+                        y: (y * _raySpacing) - halfY,
                         z: 0f);
 
-                    var direction = new Vector3(0, 0, 1f);
+                    Vector3 direction = _raySpawnOrigin.forward;
 
                     origin = rot.MultiplyPoint3x4(origin);
                     direction = rot.MultiplyPoint3x4(direction);
@@ -97,14 +97,15 @@
             // Raycast return
             AddVectorObs(
                 _rayPerception.Perceive(
-                    rayDistance: 1.8f,
+                    rayDistance: _rayLength,
                     rays: rays,
-                    detectableObjects: detectableObjects,
+                    detectableObjects: _detectableObjects,
                     startOffset: 0f,
                     endOffset: 0f));
 
             // Mover position
-            AddVectorObs(_pusher.transform.localPosition.z);
+            // TODO: Remove hardcode
+            AddVectorObs(_pusher.transform.localPosition.x);
         }
 
         public override void AgentAction(float[] vectorAction, string textAction)

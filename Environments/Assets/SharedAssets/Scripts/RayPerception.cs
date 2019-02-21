@@ -10,9 +10,9 @@ namespace MLAgents
     /// </summary>
     public class RayPerception : MonoBehaviour
     {
-        List<float> perceptionBuffer = new List<float>();
-        Vector3 endPosition;
-        RaycastHit hit;
+        private List<float> perceptionBuffer = new List<float>();
+        private Vector3 endPosition;
+        private RaycastHit hit;
 
         /// <summary>
         /// Creates perception vector to be used as part of an observation of an agent.
@@ -23,9 +23,12 @@ namespace MLAgents
         /// <param name="detectableObjects">List of tags which correspond to object types agent can see</param>
         /// <param name="startOffset">Starting heigh offset of ray from center of agent.</param>
         /// <param name="endOffset">Ending height offset of ray from center of agent.</param>
-        public List<float> Perceive(float rayDistance,
-            float[] rayAngles, string[] detectableObjects,
-            float startOffset, float endOffset)
+        public List<float> Perceive(
+            float rayDistance,
+            float[] rayAngles,
+            string[] detectableObjects,
+            float startOffset,
+            float endOffset)
         {
             perceptionBuffer.Clear();
             // For each ray sublist stores categorial information on detected object
@@ -67,13 +70,16 @@ namespace MLAgents
             return perceptionBuffer;
         }
 
-        public List<float> Perceive(float rayDistance,
-            Ray[] rays, string[] detectableObjects,
-            float startOffset, float endOffset)
+        public List<float> Perceive(
+            float rayDistance,
+            Ray[] rays,
+            string[] detectableObjects,
+            float startOffset,
+            float endOffset)
         {
             perceptionBuffer.Clear();
 
-            foreach(Ray ray in rays)
+            foreach (Ray ray in rays)
             {
                 if (Application.isEditor)
                 {
@@ -119,9 +125,6 @@ namespace MLAgents
         /// <summary>
         /// Converts degrees to radians.
         /// </summary>
-        public static float DegreeToRadian(float degree)
-        {
-            return degree * Mathf.PI / 180f;
-        }
+        public static float DegreeToRadian(float degree) => degree * Mathf.PI / 180f;
     }
 }

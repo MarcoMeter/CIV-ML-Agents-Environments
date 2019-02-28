@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa24c0e6fbc19c40b8289e086264636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnIntervall: 1
+  _spawnIntervall: 3
   _cubePrefabs:
   - {fileID: 4249998011662008, guid: 8b68f8432a286dd4a889bb2f06524039, type: 2}
   - {fileID: 4680383516021690, guid: 389c71baeb030264081119d8951da27a, type: 2}

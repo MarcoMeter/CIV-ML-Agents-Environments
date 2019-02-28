@@ -1247,12 +1247,15 @@ MonoBehaviour:
   _maxPusherMovement: {x: 0.3, y: 0, z: 0}
   _pusherSpeed: 10
   _rayAmount: {x: 5, y: 5}
-  _raySpacing: 0.12
+  _raySpacing: 0.1
   _rayLength: 1.5
+  _rayThickness: 0.05
   _detectableObjects:
   - redBox
   - blueBox
-  - Untagged
+  _physicsLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114774217140414256
 MonoBehaviour:
   m_ObjectHideFlags: 1

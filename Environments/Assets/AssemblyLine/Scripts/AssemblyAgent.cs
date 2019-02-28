@@ -32,7 +32,11 @@
         [SerializeField]
         private float _rayLength;
         [SerializeField]
+        private float _rayThickness;
+        [SerializeField]
         private string[] _detectableObjects;
+        [SerializeField]
+        private LayerMask _physicsLayer;
 
         // Privates
         private Vector3 _pusherOrigin;
@@ -99,13 +103,15 @@
         public override void CollectObservations()
         {
             // Raycast return
-            AddVectorObs(
-                _rayPerception.Perceive(
-                    rayDistance: _rayLength,
-                    rays: _rayArray,
-                    detectableObjects: _detectableObjects,
-                    startOffset: 0f,
-                    endOffset: 0f));
+
+            AddVectorObs(_rayPerception.Perceive(
+                _rayLength,
+                _rayThickness,
+                _rayArray,
+                _detectableObjects,
+                _physicsLayer,
+                0f,
+                0f));
 
             // Mover position
             Vector3 offset = _pusherOrigin - _pusher.transform.localPosition;

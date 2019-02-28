@@ -15,8 +15,8 @@ namespace CIV_ML_Agents.AssemblyLine
         private Transform[] _cubePrefabs;
         [SerializeField]
         private float _moveSpeed = 3f;
-        [Tooltip("Maximal positive and negative spawner movement from origin")]
         [SerializeField]
+        [Tooltip("Maximal positive and negative spawner movement from origin")]
         private Vector3 _maxSpawnerMovement;
         [SerializeField]
         private bool _resetCubes = true;
@@ -56,6 +56,8 @@ namespace CIV_ML_Agents.AssemblyLine
                 t: Time.deltaTime * _moveSpeed);
         }
         #endregion
+
+        private void OnGUI() => GUILayout.Label(Time.time.ToString());
 
         #region Public Functions
         /// <summary>

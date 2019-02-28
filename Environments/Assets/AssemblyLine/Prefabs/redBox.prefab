@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23337767804804892}
   - component: {fileID: 65258659570459940}
   - component: {fileID: 54205943723362304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: redBox
   m_TagString: redBox
   m_Icon: {fileID: 0}

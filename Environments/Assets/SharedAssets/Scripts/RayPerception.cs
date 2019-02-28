@@ -76,32 +76,30 @@ namespace MLAgents
         }
 
         public List<float> Perceive(
-            float rayDistance,
+            float rayLength,
+            float rayThickness,
             Ray[] rays,
             string[] detectableObjects,
+            LayerMask physicsLayer,
             float startOffset,
             float endOffset)
         {
+            // "One hot fashion"
+
             perceptionBuffer.Clear();
 
             foreach (Ray ray in rays)
             {
-                if (Application.isEditor)
-                {
-                    Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.black, 0.01f, true);
-                }
-
                 float[] subList = new float[detectableObjects.Length + 2];
 
-                if (Physics.SphereCast(ray.origin, 0.5f, ray.direction, out hit, rayDistance))
+                if (Physics.SphereCast(ray.origin, rayThickness, ray.direction, out hit, rayLength, physicsLayer))
                 {
                     for (int i = 0; i < detectableObjects.Length; i++)
                     {
                         if (hit.collider.gameObject.CompareTag(detectableObjects[i]))
                         {
-                            Debug.DrawLine(hit.point, hit.point + Vector3.up);
                             subList[i] = 1;
-                            subList[detectableObjects.Length + 1] = hit.distance / rayDistance;
+                            subList[detectableObjects.Length + 1] = hit.distance / rayLength;
                             break;
                         }
                     }
@@ -111,20 +109,18 @@ namespace MLAgents
                     subList[detectableObjects.Length] = 1f;
                 }
 
+                if (Application.isEditor)
+                {
+                    Debug.DrawLine(hit.point, hit.point + (Vector3.up / 4f));
+                    Debug.DrawLine(ray.origin, ray.origin + (ray.direction * rayLength), Color.black, 0.01f, true);
+                }
+
                 perceptionBuffer.AddRange(subList);
             }
 
-
-            string log = "";
-            for (int i = 0; i < perceptionBuffer.Count; i++)
-            {
-                log += $"{i}: {perceptionBuffer[i]}\n";
-            }
-            Debug.Log(log);
-
             return perceptionBuffer;
         }
-
+        
         /// <summary>
         /// Converts polar coordinate to cartesian coordinate.
         /// </summary>

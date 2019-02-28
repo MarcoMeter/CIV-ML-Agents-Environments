@@ -314,7 +314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832512263798492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.25}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4433817315219294}
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   _pusherSpeed: 10
   _rayAmount: {x: 5, y: 5}
   _raySpacing: 0.1
-  _rayLength: 1.5
+  _rayLength: 2
   _rayThickness: 0.05
   _detectableObjects:
   - redBox

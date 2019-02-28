@@ -25,29 +25,34 @@ namespace MLAgents
         /// <param name="endOffset">Ending height offset of ray from center of agent.</param>
         public List<float> Perceive(
             float rayDistance,
+            float sphereCastRadius,
             float[] rayAngles,
             string[] detectableObjects,
             float startOffset,
             float endOffset)
         {
             perceptionBuffer.Clear();
+
             // For each ray sublist stores categorial information on detected object
             // along with object distance.
             foreach (float angle in rayAngles)
             {
-                endPosition = transform.TransformDirection(
-                    PolarToCartesian(rayDistance, angle));
+                endPosition = transform.TransformDirection(PolarToCartesian(rayDistance, angle));
                 endPosition.y = endOffset;
+
                 if (Application.isEditor)
                 {
-                    Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f),
-                        endPosition, Color.black, 0.01f, true);
+                    Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f), endPosition, Color.black, 0.01f, true);
                 }
 
                 float[] subList = new float[detectableObjects.Length + 2];
-                if (Physics.SphereCast(transform.position +
-                                       new Vector3(0f, startOffset, 0f), 0.5f,
-                    endPosition, out hit, rayDistance))
+
+                if (Physics.SphereCast(
+                    transform.position + new Vector3(0f, startOffset, 0f),
+                    sphereCastRadius,
+                    endPosition,
+                    out hit,
+                    rayDistance))
                 {
                     for (int i = 0; i < detectableObjects.Length; i++)
                     {
@@ -88,13 +93,13 @@ namespace MLAgents
 
                 float[] subList = new float[detectableObjects.Length + 2];
 
-                if (Physics.SphereCast(ray.origin, 0.5f,
-                    ray.direction, out hit, rayDistance))
+                if (Physics.SphereCast(ray.origin, 0.5f, ray.direction, out hit, rayDistance))
                 {
                     for (int i = 0; i < detectableObjects.Length; i++)
                     {
                         if (hit.collider.gameObject.CompareTag(detectableObjects[i]))
                         {
+                            Debug.DrawLine(hit.point, hit.point + Vector3.up);
                             subList[i] = 1;
                             subList[detectableObjects.Length + 1] = hit.distance / rayDistance;
                             break;
@@ -108,6 +113,14 @@ namespace MLAgents
 
                 perceptionBuffer.AddRange(subList);
             }
+
+
+            string log = "";
+            for (int i = 0; i < perceptionBuffer.Count; i++)
+            {
+                log += $"{i}: {perceptionBuffer[i]}\n";
+            }
+            Debug.Log(log);
 
             return perceptionBuffer;
         }

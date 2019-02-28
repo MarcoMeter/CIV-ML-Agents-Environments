@@ -50,27 +50,21 @@
             0.8f,
             1.0f
         };
+        private Ray[] _rayArray;
         #endregion
 
         #region ML-Agents Lifecycle
-        public override void InitializeAgent() => _pusherOrigin = _pusher.transform.position;
-
-        public override void AgentReset()
+        public override void InitializeAgent()
         {
-            _cubeSpawner.ResetCubes();
-            _pusher.position = _pusherOrigin;
-        }
+            _pusherOrigin = _pusher.transform.position;
 
-        public override void CollectObservations()
-        {
             // Generate array of raycasts
-            var rays = new Ray[(int)_rayAmount.x * (int)_rayAmount.y];
+            _rayArray = new Ray[(int)_rayAmount.x * (int)_rayAmount.y];
 
             float halfX = ((int)_rayAmount.x - 1) * _raySpacing / 2.0f;
             float halfY = ((int)_rayAmount.y - 1) * _raySpacing / 2.0f;
 
             var rot = Matrix4x4.Rotate(_raySpawnOrigin.rotation);
-
 
             // Setup raycast array
             for (int x = 0; x < (int)_rayAmount.x; x++)
@@ -82,30 +76,40 @@
                         y: (y * _raySpacing) - halfY,
                         z: 0f);
 
-                    Vector3 direction = _raySpawnOrigin.forward;
+                    var direction = new Vector3(0, 0, 1);
 
+                    //TODO: Rotation broken
                     origin = rot.MultiplyPoint3x4(origin);
                     direction = rot.MultiplyPoint3x4(direction);
                     origin += _raySpawnOrigin.position;
 
                     var ray = new Ray(origin, direction);
 
-                    rays[(x * (int)_rayAmount.x) + y] = ray;
+                    _rayArray[(x * (int)_rayAmount.x) + y] = ray;
                 }
             }
+        }
 
+        public override void AgentReset()
+        {
+            _cubeSpawner.ResetCubes();
+            _pusher.position = _pusherOrigin;
+        }
+
+        public override void CollectObservations()
+        {
             // Raycast return
             AddVectorObs(
                 _rayPerception.Perceive(
                     rayDistance: _rayLength,
-                    rays: rays,
+                    rays: _rayArray,
                     detectableObjects: _detectableObjects,
                     startOffset: 0f,
                     endOffset: 0f));
 
             // Mover position
-            // TODO: Remove hardcode
-            AddVectorObs(_pusher.transform.localPosition.x);
+            Vector3 offset = _pusherOrigin - _pusher.transform.localPosition;
+            AddVectorObs(offset);
         }
 
         public override void AgentAction(float[] vectorAction, string textAction)

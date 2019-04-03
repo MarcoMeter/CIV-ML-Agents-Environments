@@ -5,7 +5,6 @@
     public class ConveyorBelt : MonoBehaviour
     {
         #region Member Fields
-        // Inspector
         [SerializeField]
         private Vector3 _speed;
 

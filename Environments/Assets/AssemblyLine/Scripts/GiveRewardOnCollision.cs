@@ -6,7 +6,6 @@
     public class GiveRewardOnCollision : MonoBehaviour
     {
         #region Member Fields
-        // Inspector
         [SerializeField]
         private string _acceptedTag;
         [SerializeField]

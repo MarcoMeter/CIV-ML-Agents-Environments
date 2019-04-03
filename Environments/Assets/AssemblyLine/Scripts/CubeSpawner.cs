@@ -1,5 +1,4 @@
-﻿
-namespace CIV_ML_Agents.AssemblyLine
+﻿namespace CIV_ML_Agents.AssemblyLine
 {
     using System.Collections.Generic;
     using UnityEngine;
@@ -8,7 +7,6 @@ namespace CIV_ML_Agents.AssemblyLine
     public class CubeSpawner : MonoBehaviour
     {
         #region Member Fields
-        // Inspector
         [SerializeField]
         private float _spawnIntervall = 1.0f;
         [SerializeField]
@@ -21,6 +19,7 @@ namespace CIV_ML_Agents.AssemblyLine
         [SerializeField]
         private bool _resetCubes = true;
 
+        // Private Fields
         private float _nextSpawnTime = 0f;
         private Vector3 _spawnerOrigin;
         private Vector3 _newSpawnerPosition;

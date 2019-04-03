@@ -6,7 +6,6 @@
     public class AssemblyAgent : Agent
     {
         #region Member Fields
-        // Inspector
         [Header("References")]
         [SerializeField]
         private Rigidbody _pusher;
@@ -38,7 +37,7 @@
         [SerializeField]
         private LayerMask _physicsLayer;
 
-        // Privates
+        // Private Fields
         private Vector3 _pusherOrigin;
         private float[] _movementBuckets = new float[]
         {
@@ -102,8 +101,7 @@
 
         public override void CollectObservations()
         {
-            // Raycast return
-
+            // Returns of the raycasts
             AddVectorObs(_rayPerception.Perceive(
                 _rayLength,
                 _rayThickness,

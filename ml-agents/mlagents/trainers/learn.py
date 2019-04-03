@@ -2,6 +2,7 @@
 
 import logging
 
+import time
 import os
 import multiprocessing
 import numpy as np
@@ -109,4 +110,4 @@ def main():
         p = multiprocessing.Process(target=run_training, args=(i, run_seed, options))
         jobs.append(p)
         p.start()
-        time.sleep(5)
+        time.sleep(10)

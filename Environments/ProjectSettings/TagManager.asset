@@ -7,6 +7,9 @@ TagManager:
   - AssemblyLine
   - blueBox
   - redBox
+  - Goal
+  - Enemy
+  - ground
   layers:
   - Default
   - TransparentFX

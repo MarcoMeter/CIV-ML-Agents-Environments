@@ -38416,7 +38416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376b67af8698bac47a486993cf825b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 0}
+  brain: {fileID: 11400000, guid: cc67e1287b2cd15479e3f5dcc3a92c42, type: 2}
   agentParameters:
     agentCameras: []
     maxStep: 0

@@ -6,6 +6,7 @@ import time
 import os
 import multiprocessing
 import numpy as np
+import time
 from docopt import docopt
 
 from .trainer_controller import TrainerController

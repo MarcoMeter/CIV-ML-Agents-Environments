@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - AssemblyLine
+  - blueBox
+  - redBox
   - Goal
   - Enemy
   - ground
@@ -16,6 +19,7 @@ TagManager:
   - UI
   - 
   - 
+  - AssemblyLine
   - 
   - 
   - 
@@ -38,8 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - PostProcessing
   m_SortingLayers:
   - name: Default
     uniqueID: 0

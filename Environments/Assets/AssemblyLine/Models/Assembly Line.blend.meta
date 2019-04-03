@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 54d4f9ed62091df479d9f5fffa81719a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box_left
+    100004: Box_right
+    100006: Dropper
+    100008: DropperArm
+    100010: Motor
+    100012: Pusher
+    100014: PusherRoller
+    100016: Roller
+    100018: Rollers
+    100020: Sorter
+    100022: Structure
+    100024: Table
+    100026: Wire
+    400000: //RootNode
+    400002: Box_left
+    400004: Box_right
+    400006: Dropper
+    400008: DropperArm
+    400010: Motor
+    400012: Pusher
+    400014: PusherRoller
+    400016: Roller
+    400018: Rollers
+    400020: Sorter
+    400022: Structure
+    400024: Table
+    400026: Wire
+    2100000: Dark
+    2100002: Red
+    2100004: Dark_Shiny
+    2100006: Silver_Shiny
+    2100008: Blue
+    2300000: Box_left
+    2300002: Box_right
+    2300004: Dropper
+    2300006: DropperArm
+    2300008: Motor
+    2300010: Pusher
+    2300012: PusherRoller
+    2300014: Roller
+    2300016: Rollers
+    2300018: Structure
+    2300020: Table
+    2300022: Wire
+    3300000: Box_left
+    3300002: Box_right
+    3300004: Dropper
+    3300006: DropperArm
+    3300008: Motor
+    3300010: Pusher
+    3300012: PusherRoller
+    3300014: Roller
+    3300016: Rollers
+    3300018: Structure
+    3300020: Table
+    3300022: Wire
+    4300000: Dropper
+    4300002: DropperArm
+    4300004: Structure
+    4300006: Box_left
+    4300008: Wire
+    4300010: Motor
+    4300012: Box_right
+    4300014: PusherRoller
+    4300016: Table
+    4300018: Pusher
+    4300020: Rollers
+    4300022: Roller
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 1afc4e8741dd2a5459f2686bc01dce7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark
+    second: {fileID: 2100000, guid: 6781db9c482abfd40bc8bc76984892c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark_Shiny
+    second: {fileID: 2100000, guid: c73def2814834a940a1a0385875a93df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: 4d3750e5a611fa14992e01b812d910fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver_Shiny
+    second: {fileID: 2100000, guid: 22e3cd7711236d7488052ccec4c42c54, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

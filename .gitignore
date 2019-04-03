@@ -8,6 +8,9 @@
 /Environments/Assets/AssetStoreTools*
 /Environments/Assets/Plugins*
 /Environments/Assets/Gizmos*
+/Environments/UnitySDK.log
+/Environments/Assets/SMG/
+/Environments/Assets/SMG.meta
 
 # Tensorflow Model Info
 /models
@@ -93,5 +96,3 @@ ml-agents-protobuf/Grpc*
 # Ignore PyPi build files.
 dist/
 build/
-Environments/Assets/SMG/
-Environments/Assets/SMG.meta

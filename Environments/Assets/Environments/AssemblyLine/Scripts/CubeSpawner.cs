@@ -56,8 +56,6 @@
         }
         #endregion
 
-        private void OnGUI() => GUILayout.Label(Time.time.ToString());
-
         #region Public Functions
         /// <summary>
         /// Destroys all cubes and clears <see cref="_cubes"/>

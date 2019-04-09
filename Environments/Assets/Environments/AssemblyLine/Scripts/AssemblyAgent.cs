@@ -81,7 +81,6 @@
 
                     var direction = new Vector3(0, 0, 1);
 
-                    //TODO: Rotation broken
                     origin = rot.MultiplyPoint3x4(origin);
                     direction = rot.MultiplyPoint3x4(direction);
                     origin += _raySpawnOrigin.position;
@@ -99,22 +98,7 @@
             _pusher.position = _pusherOrigin;
         }
 
-        public override void CollectObservations()
-        {
-            // Returns of the raycasts
-            AddVectorObs(_rayPerception.Perceive(
-                _rayLength,
-                _rayThickness,
-                _rayArray,
-                _detectableObjects,
-                _physicsLayer,
-                0f,
-                0f));
-
-            // Mover position
-            Vector3 offset = _pusherOrigin - _pusher.transform.localPosition;
-            AddVectorObs(offset);
-        }
+        public override void CollectObservations(){ }
 
         public override void AgentAction(float[] vectorAction, string textAction)
         {

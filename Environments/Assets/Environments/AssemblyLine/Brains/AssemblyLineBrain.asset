@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Name: AssemblyLineBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 103
-    numStackedVectorObservations: 1
+    vectorObservationSize: 0
+    numStackedVectorObservations: 4
     vectorActionSize: 0b000000
-    cameraResolutions: []
+    cameraResolutions:
+    - width: 84
+      height: 84
+      blackAndWhite: 0
     vectorActionDescriptions:
     - 
     vectorActionSpaceType: 0

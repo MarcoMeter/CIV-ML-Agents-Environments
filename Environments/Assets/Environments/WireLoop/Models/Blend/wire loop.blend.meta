@@ -71,6 +71,8 @@ ModelImporter:
     2100014: Red
     2100016: Start
     2100018: Finish_001
+    2100020: Metal Silver
+    2100022: Finish.001
     2300000: Arm1
     2300002: Arm1_001
     2300004: ArmBase
@@ -224,7 +226,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

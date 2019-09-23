@@ -1620,6 +1620,51 @@ Prefab:
       propertyPath: m_Name
       value: WireLoopGame (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 153879555802515338, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000016331673
+      objectReference: {fileID: 0}
+    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.00009951554
+      objectReference: {fileID: 0}
+    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.008382559
+      objectReference: {fileID: 0}
+    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 8.024678
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.00047432445
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.98270434
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.012218177
+      objectReference: {fileID: 0}
+    - target: {fileID: 153032525006997970, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.000651435
+      objectReference: {fileID: 0}
+    - target: {fileID: 153032525006997970, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.07493249
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
@@ -2018,7 +2063,8 @@ MonoBehaviour:
   broadcastHub:
     broadcastingBrains:
     - {fileID: 11400000, guid: cc67e1287b2cd15479e3f5dcc3a92c42, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: cc67e1287b2cd15479e3f5dcc3a92c42, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -2301,6 +2347,26 @@ Prefab:
       propertyPath: m_ConnectedAnchor.y
       value: 0.07493245
       objectReference: {fileID: 0}
+    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 8.024678
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.98270434
+      objectReference: {fileID: 0}
+    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.012218177
+      objectReference: {fileID: 0}
+    - target: {fileID: 153879555802515338, guid: 5e181dfa9578cf747b41a0c77835ac54,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000016331673
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0
@@ -2564,81 +2630,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 116333057}
     - target: {fileID: 64811607347079216, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 116333057}
-    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
+    - target: {fileID: 33743223732541774, guid: 5e181dfa9578cf747b41a0c77835ac54,
         type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.00047470978
-      objectReference: {fileID: 0}
-    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.9827031
-      objectReference: {fileID: 0}
-    - target: {fileID: 153109964597783062, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.012217671
-      objectReference: {fileID: 0}
-    - target: {fileID: 153032525006997970, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0006511947
-      objectReference: {fileID: 0}
-    - target: {fileID: 153032525006997970, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.074931085
-      objectReference: {fileID: 0}
-    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0011947714
-      objectReference: {fileID: 0}
-    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.00002002716
-      objectReference: {fileID: 0}
-    - target: {fileID: 153171262531199138, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: 8.000527
-      objectReference: {fileID: 0}
-    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.00009913184
-      objectReference: {fileID: 0}
-    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.00838089
-      objectReference: {fileID: 0}
-    - target: {fileID: 153686081449289018, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: 8.024679
-      objectReference: {fileID: 0}
-    - target: {fileID: 153879555802515338, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.000000067055225
-      objectReference: {fileID: 0}
-    - target: {fileID: 153879555802515338, guid: 5e181dfa9578cf747b41a0c77835ac54,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.00001335144
-      objectReference: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 116333057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e181dfa9578cf747b41a0c77835ac54, type: 2}
   m_IsPrefabAsset: 0

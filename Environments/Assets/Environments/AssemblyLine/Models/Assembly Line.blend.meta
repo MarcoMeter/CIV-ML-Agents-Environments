@@ -17,6 +17,8 @@ ModelImporter:
     100022: Structure
     100024: Table
     100026: Wire
+    100028: Box left
+    100030: Box right
     400000: //RootNode
     400002: Box_left
     400004: Box_right
@@ -31,11 +33,15 @@ ModelImporter:
     400022: Structure
     400024: Table
     400026: Wire
+    400028: Box left
+    400030: Box right
     2100000: Dark
     2100002: Red
     2100004: Dark_Shiny
     2100006: Silver_Shiny
     2100008: Blue
+    2100010: Dark Shiny
+    2100012: Silver Shiny
     2300000: Box_left
     2300002: Box_right
     2300004: Dropper
@@ -48,6 +54,8 @@ ModelImporter:
     2300018: Structure
     2300020: Table
     2300022: Wire
+    2300024: Box left
+    2300026: Box right
     3300000: Box_left
     3300002: Box_right
     3300004: Dropper
@@ -60,6 +68,8 @@ ModelImporter:
     3300018: Structure
     3300020: Table
     3300022: Wire
+    3300024: Box left
+    3300026: Box right
     4300000: Dropper
     4300002: DropperArm
     4300004: Structure
@@ -72,6 +82,8 @@ ModelImporter:
     4300018: Pusher
     4300020: Rollers
     4300022: Roller
+    4300024: Box left
+    4300026: Box right
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs

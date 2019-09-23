@@ -19,6 +19,7 @@ ModelImporter:
     100026: Wire
     100028: Box left
     100030: Box right
+    100032: Camera
     400000: //RootNode
     400002: Box_left
     400004: Box_right
@@ -35,6 +36,8 @@ ModelImporter:
     400026: Wire
     400028: Box left
     400030: Box right
+    400032: Camera
+    2000000: Camera
     2100000: Dark
     2100002: Red
     2100004: Dark_Shiny
@@ -146,6 +149,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -170,6 +174,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 0
   copyAvatar: 0
   humanDescription:

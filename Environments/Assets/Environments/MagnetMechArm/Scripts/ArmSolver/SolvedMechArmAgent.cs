@@ -10,20 +10,20 @@ public class SolvedMechArmAgent : Agent
 
     public bool grabbing = false;
 
-    public GenerateObject generator;
+    public GenerateTestField generator;
 
     public int tries = 20;
 
     public override void AgentReset()
     {
         armController.ResetPositions();
-
-        if(tries > 20 || tries < 0)
+        generator.Reset();
+        /*if(tries > 20 || tries < 0)
         {
             generator.Reset();
             tries = 0;
         }
-        tries++;
+        tries++;*/
 
         grabbing = true;
     }
@@ -54,8 +54,9 @@ public class SolvedMechArmAgent : Agent
         if (!grabbing)
         {
             RaycastHit hit;
-            if (Physics.Raycast(head.position, head.forward, out hit, 5f))
+            if (Physics.Raycast(head.position, head.forward, out hit, 3f))
             {
+                Debug.DrawRay(head.position, head.forward * hit.distance, Color.red);
                 Magnet magnet = null;
                 if (magnet = hit.transform.GetComponent<Magnet>())
                 {
@@ -63,14 +64,14 @@ public class SolvedMechArmAgent : Agent
                 }
                 else
                 {
-                    AddReward(-1f);
+                    AddReward(-0.001f);
                     Done();
                 }
             }
             else
             {
-                AddReward(-1f);
-                Done();
+                //AddReward(-1f);
+                //Done();
             }
         }
     }

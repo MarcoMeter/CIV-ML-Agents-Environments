@@ -121,7 +121,7 @@ public class GenerateObject : MonoBehaviour {
 
         Magnet magnetScript = magnet.AddComponent<Magnet>();
         magnetScript.agent = agent;
-        magnetScript.generateObject = this;
+        //magnetScript.generateObject = this;
 
         return magnet;
     }

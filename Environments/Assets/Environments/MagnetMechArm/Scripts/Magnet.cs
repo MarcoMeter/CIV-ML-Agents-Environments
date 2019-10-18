@@ -8,19 +8,20 @@ public class Magnet : MonoBehaviour
 
     public bool hasMagnet = false;
     public Agent agent;
-    public GenerateObject generateObject;
+    public GenerateTestField generateObject;
 
     public void DropMagnet()
     {
         if(hasMagnet)
         {
-            agent.AddReward(-1f);
+            agent.AddReward(-0.1f);
             agent.Done();
         }
         else
         {
             hasMagnet = true;
-            GetComponent<MeshRenderer>().enabled = hasMagnet;
+            GetComponent<MeshRenderer>().material.color = Color.red;
+            //GetComponent<MeshRenderer>().enabled = hasMagnet;
             agent.AddReward(1f);
             generateObject.PlaceMagnet();
         }

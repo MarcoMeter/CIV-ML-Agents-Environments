@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2378,61 +2378,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 553914357}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129884232883785424, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6129884232883491569, guid: 6bc444e3edd09ad4ebc4e9122e991173,
         type: 3}
       propertyPath: targetPoint
       value: 
       objectReference: {fileID: 57229200}
-    - target: {fileID: 758327505133059660, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: grabbing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758327505133059660, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: tries
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758327505133059660, guid: 6bc444e3edd09ad4ebc4e9122e991173,
-        type: 3}
-      propertyPath: agentParameters.maxStep
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 4593040023929402512, guid: 6bc444e3edd09ad4ebc4e9122e991173,
         type: 3}
       propertyPath: m_Mesh

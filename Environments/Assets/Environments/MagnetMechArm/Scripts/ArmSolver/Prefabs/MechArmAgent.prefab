@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &956468523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956468524}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &956468524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956468523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1878760966854421004}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348812270434295070
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +503,7 @@ Transform:
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children: []
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1424940837854063794
 MeshFilter:
@@ -749,7 +779,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &1878760966202553747
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +810,7 @@ Transform:
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children: []
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!33 &1878760966202553751
 MeshFilter:
@@ -1039,7 +1068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &1878760966854421005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1095,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3338124508121397226}
   - {fileID: 1878760967950340653}
   - {fileID: 1424940837854063793}
   - {fileID: 1878760966202553746}
@@ -1074,6 +1103,7 @@ Transform:
   - {fileID: 1878760967613877810}
   - {fileID: 1878760967541082273}
   - {fileID: 6129884232883785424}
+  - {fileID: 956468524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1108,7 +1138,7 @@ Transform:
   m_LocalScale: {x: 50.00003, y: 0.10000006, z: 50.00003}
   m_Children: []
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90.00001}
 --- !u!33 &1878760967541082278
 MeshFilter:
@@ -1199,7 +1229,7 @@ Transform:
   m_LocalScale: {x: 50.00003, y: 0.10000006, z: 50.00003}
   m_Children: []
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90.00001}
 --- !u!33 &1878760967613877815
 MeshFilter:
@@ -1368,7 +1398,7 @@ Transform:
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children: []
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!33 &1878760967916212849
 MeshFilter:
@@ -1446,7 +1476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1878760967950340653
 Transform:
   m_ObjectHideFlags: 0
@@ -1489,7 +1519,7 @@ Transform:
   - {fileID: 4045180379875027507}
   - {fileID: 5410241516470395864}
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1878760967950340642
 MeshFilter:
@@ -1747,7 +1777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &1976190175390471208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,7 +2365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &2953290077902788677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2563,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &3349904137265048988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,7 +2761,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &3729184252198006923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,7 +3050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &4168542666262794983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,7 +3157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &4225265635877251638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,7 +3511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &5020317698929903609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,7 +3787,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &5705687548926866218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3878,53 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5801006224558413290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3338124508121397226}
+  - component: {fileID: 4423885642669567618}
+  m_Layer: 0
+  m_Name: GenerateObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3338124508121397226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801006224558413290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1878760966854421004}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4423885642669567618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801006224558413290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86141b8d91e3ac438f0f5160158508f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSize: {x: 3, y: 0.5, z: 3}
+  maxSize: {x: 5, y: 1, z: 5}
+  partsRange: {x: 5, y: 7}
+  agent: {fileID: 758327505133059660}
 --- !u!1 &6129884232883491488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,13 +6170,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6129884232883491568}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0, z: -1.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6129884232883785388}
   m_Father: {fileID: 1878760966854421004}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &6129884232886652620
 MeshFilter:
@@ -6229,14 +6298,15 @@ MonoBehaviour:
     agentCameras:
     - {fileID: 5614482669450705320}
     agentRenderTextures: []
-    maxStep: 0
+    maxStep: 5000
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   armController: {fileID: 6129884232883491569}
   head: {fileID: 6278492522762671384}
-  grabbing: 0
-  generator: {fileID: 1878760967950340643}
+  grabbing: 1
+  generator: {fileID: 4423885642669567618}
+  tries: -1
 --- !u!1 &6129884232883491576
 GameObject:
   m_ObjectHideFlags: 0
@@ -6479,7 +6549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &6605094671860214968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7262,7 +7331,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
-  generateObject: {fileID: 1878760967950340643}
 --- !u!1 &8591777152898397882
 GameObject:
   m_ObjectHideFlags: 0

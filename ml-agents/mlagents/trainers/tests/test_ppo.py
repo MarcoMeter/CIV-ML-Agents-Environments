@@ -10,8 +10,10 @@ from mlagents.trainers.ppo.trainer import PPOTrainer, discount_rewards
 from mlagents.trainers.ppo.policy import PPOPolicy
 from mlagents.trainers.rl_trainer import AllRewardsOutput
 from mlagents.trainers.components.reward_signals import RewardSignalResult
-from mlagents.envs import UnityEnvironment, BrainParameters
+from mlagents.envs.brain import BrainParameters
+from mlagents.envs.environment import UnityEnvironment
 from mlagents.envs.mock_communicator import MockCommunicator
+from mlagents.trainers.tests import mock_brain as mb
 
 
 @pytest.fixture
@@ -37,6 +39,8 @@ def dummy_config():
         memory_size: 8
         curiosity_strength: 0.0
         curiosity_enc_size: 1
+        summary_path: test
+        model_path: test
         reward_signals:
           extrinsic:
             strength: 1.0
@@ -45,8 +49,15 @@ def dummy_config():
     )
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+VECTOR_ACTION_SPACE = [2]
+VECTOR_OBS_SPACE = 8
+DISCRETE_ACTION_SPACE = [3, 3, 3, 2]
+BUFFER_INIT_SAMPLES = 32
+NUM_AGENTS = 12
+
+
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_policy_evaluate(mock_communicator, mock_launcher, dummy_config):
     tf.reset_default_graph()
     mock_communicator.return_value = MockCommunicator(
@@ -68,8 +79,8 @@ def test_ppo_policy_evaluate(mock_communicator, mock_launcher, dummy_config):
     env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_get_value_estimates(mock_communicator, mock_launcher, dummy_config):
     tf.reset_default_graph()
     mock_communicator.return_value = MockCommunicator(
@@ -106,8 +117,8 @@ def test_ppo_get_value_estimates(mock_communicator, mock_launcher, dummy_config)
     env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_cc_vector(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -138,8 +149,8 @@ def test_ppo_model_cc_vector(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_cc_visual(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -172,8 +183,8 @@ def test_ppo_model_cc_visual(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_dc_visual(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -205,8 +216,8 @@ def test_ppo_model_dc_visual(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_dc_vector(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -236,8 +247,8 @@ def test_ppo_model_dc_vector(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_dc_vector_rnn(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -273,8 +284,8 @@ def test_ppo_model_dc_vector_rnn(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_ppo_model_cc_vector_rnn(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -316,34 +327,8 @@ def test_rl_functions():
     np.testing.assert_array_almost_equal(returns, np.array([0.729, 0.81, 0.9, 1.0]))
 
 
-def test_trainer_increment_step():
-    trainer_params = {
-        "trainer": "ppo",
-        "batch_size": 2048,
-        "beta": 0.005,
-        "buffer_size": 20480,
-        "epsilon": 0.2,
-        "gamma": 0.995,
-        "hidden_units": 512,
-        "lambd": 0.95,
-        "learning_rate": 0.0003,
-        "max_steps": "2e6",
-        "memory_size": 256,
-        "normalize": True,
-        "num_epoch": 3,
-        "num_layers": 3,
-        "time_horizon": 1000,
-        "sequence_length": 64,
-        "summary_freq": 3000,
-        "use_recurrent": False,
-        "use_curiosity": False,
-        "curiosity_strength": 0.01,
-        "curiosity_enc_size": 128,
-        "summary_path": "./summaries/test_trainer_summary",
-        "model_path": "./models/test_trainer_models/TestModel",
-        "keep_checkpoints": 5,
-        "reward_signals": {"extrinsic": {"strength": 1.0, "gamma": 0.99}},
-    }
+def test_trainer_increment_step(dummy_config):
+    trainer_params = dummy_config
     brain_params = BrainParameters("test_brain", 1, 1, [], [2], [], 0)
 
     trainer = PPOTrainer(brain_params, 0, trainer_params, True, False, 0, "0", False)
@@ -355,6 +340,39 @@ def test_trainer_increment_step():
     trainer.increment_step(5)
     policy_mock.increment_step.assert_called_with(5)
     assert trainer.step == 10
+
+
+@mock.patch("mlagents.envs.environment.UnityEnvironment")
+@pytest.mark.parametrize("use_discrete", [True, False])
+def test_trainer_update_policy(mock_env, dummy_config, use_discrete):
+    env, mock_brain, _ = mb.setup_mock_env_and_brains(
+        mock_env,
+        use_discrete,
+        False,
+        num_agents=NUM_AGENTS,
+        vector_action_space=VECTOR_ACTION_SPACE,
+        vector_obs_space=VECTOR_OBS_SPACE,
+        discrete_action_space=DISCRETE_ACTION_SPACE,
+    )
+
+    trainer_params = dummy_config
+    trainer_params["use_recurrent"] = True
+
+    trainer = PPOTrainer(mock_brain, 0, trainer_params, True, False, 0, "0", False)
+    # Test update with sequence length smaller than batch size
+    buffer = mb.simulate_rollout(env, trainer.policy, BUFFER_INIT_SAMPLES)
+    # Mock out reward signal eval
+    buffer.update_buffer["extrinsic_rewards"] = buffer.update_buffer["rewards"]
+    buffer.update_buffer["extrinsic_returns"] = buffer.update_buffer["rewards"]
+    buffer.update_buffer["extrinsic_value_estimates"] = buffer.update_buffer["rewards"]
+    trainer.training_buffer = buffer
+    trainer.update_policy()
+    # Make batch length a larger multiple of sequence length
+    trainer.trainer_parameters["batch_size"] = 128
+    trainer.update_policy()
+    # Make batch length a larger non-multiple of sequence length
+    trainer.trainer_parameters["batch_size"] = 100
+    trainer.update_policy()
 
 
 def test_add_rewards_output(dummy_config):

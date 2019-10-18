@@ -1,5 +1,4 @@
 import unittest.mock as mock
-import pytest
 import numpy as np
 
 from mlagents.trainers.buffer import Buffer
@@ -210,6 +209,16 @@ def create_mock_3dball_brain():
         vector_observation_space_size=8,
     )
     mock_brain.brain_name = "Ball3DBrain"
+    return mock_brain
+
+
+def create_mock_pushblock_brain():
+    mock_brain = create_mock_brainparams(
+        vector_action_space_type="discrete",
+        vector_action_space_size=[7],
+        vector_observation_space_size=70,
+    )
+    mock_brain.brain_name = "PushblockLearning"
     return mock_brain
 
 

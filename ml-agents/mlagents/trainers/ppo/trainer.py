@@ -4,17 +4,14 @@
 
 import logging
 from collections import defaultdict
-from typing import List, Any, Dict
+from typing import Dict
 
 import numpy as np
 
-from mlagents.envs import AllBrainInfo, BrainInfo
-from mlagents.trainers.buffer import Buffer
+from mlagents.envs.brain import AllBrainInfo
 from mlagents.trainers.ppo.policy import PPOPolicy
 from mlagents.trainers.ppo.multi_gpu_policy import MultiGpuPPOPolicy, get_devices
-from mlagents.trainers.trainer import UnityTrainerException
 from mlagents.trainers.rl_trainer import RLTrainer, AllRewardsOutput
-from mlagents.trainers.components.reward_signals import RewardSignalResult
 from mlagents.envs.action_info import ActionInfoOutputs
 
 logger = logging.getLogger("mlagents.trainers")
@@ -91,6 +88,8 @@ class PPOTrainer(RLTrainer):
         :param new_info: Dictionary of all next brains and corresponding BrainInfo.
         """
         info = new_info[self.brain_name]
+        if self.is_training:
+            self.policy.update_normalization(info.vector_observations)
         for l in range(len(info.agents)):
             agent_actions = self.training_buffer[info.agents[l]]["actions"]
             if (
@@ -230,7 +229,16 @@ class PPOTrainer(RLTrainer):
             mean_return=float(np.mean(self.cumulative_returns_since_policy_update)),
         )
         self.cumulative_returns_since_policy_update = []
-        batch_size = self.trainer_parameters["batch_size"]
+
+        # Make sure batch_size is a multiple of sequence length. During training, we
+        # will need to reshape the data into a batch_size x sequence_length tensor.
+        batch_size = (
+            self.trainer_parameters["batch_size"]
+            - self.trainer_parameters["batch_size"] % self.policy.sequence_length
+        )
+        # Make sure there is at least one sequence
+        batch_size = max(batch_size, self.policy.sequence_length)
+
         n_sequences = max(
             int(self.trainer_parameters["batch_size"] / self.policy.sequence_length), 1
         )

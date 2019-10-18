@@ -10,7 +10,7 @@ from mlagents.trainers.bc.models import BehavioralCloningModel
 import mlagents.trainers.tests.mock_brain as mb
 from mlagents.trainers.bc.policy import BCPolicy
 from mlagents.trainers.bc.offline_trainer import BCTrainer
-from mlagents.envs import UnityEnvironment
+from mlagents.envs.environment import UnityEnvironment
 from mlagents.envs.mock_communicator import MockCommunicator
 
 
@@ -32,10 +32,18 @@ def dummy_config():
     )
 
 
-def create_bc_trainer(dummy_config):
+def create_bc_trainer(dummy_config, is_discrete=False):
     mock_env = mock.Mock()
-    mock_brain = mb.create_mock_3dball_brain()
-    mock_braininfo = mb.create_mock_braininfo(num_agents=12, num_vector_observations=8)
+    if is_discrete:
+        mock_brain = mb.create_mock_pushblock_brain()
+        mock_braininfo = mb.create_mock_braininfo(
+            num_agents=12, num_vector_observations=70
+        )
+    else:
+        mock_brain = mb.create_mock_3dball_brain()
+        mock_braininfo = mb.create_mock_braininfo(
+            num_agents=12, num_vector_observations=8
+        )
     mb.setup_mock_unityenvironment(mock_env, mock_brain, mock_braininfo)
     env = mock_env()
 
@@ -97,8 +105,8 @@ def test_bc_trainer_end_episode(dummy_config):
         assert trainer.cumulative_rewards[agent_id] == 0
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_bc_policy_evaluate(mock_communicator, mock_launcher, dummy_config):
     tf.reset_default_graph()
     mock_communicator.return_value = MockCommunicator(
@@ -119,8 +127,8 @@ def test_bc_policy_evaluate(mock_communicator, mock_launcher, dummy_config):
     env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_cc_bc_model(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -143,8 +151,8 @@ def test_cc_bc_model(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_dc_bc_model(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -169,8 +177,8 @@ def test_dc_bc_model(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_visual_dc_bc_model(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:
@@ -197,8 +205,8 @@ def test_visual_dc_bc_model(mock_communicator, mock_launcher):
             env.close()
 
 
-@mock.patch("mlagents.envs.UnityEnvironment.executable_launcher")
-@mock.patch("mlagents.envs.UnityEnvironment.get_communicator")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.executable_launcher")
+@mock.patch("mlagents.envs.environment.UnityEnvironment.get_communicator")
 def test_visual_cc_bc_model(mock_communicator, mock_launcher):
     tf.reset_default_graph()
     with tf.Session() as sess:

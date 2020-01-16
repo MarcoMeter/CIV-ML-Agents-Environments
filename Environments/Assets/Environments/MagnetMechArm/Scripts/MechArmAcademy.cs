@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MLAgents;
-public class MechArmAcademy : Academy {}
+//public class MechArmAcademy : MLAgents.Academy {}

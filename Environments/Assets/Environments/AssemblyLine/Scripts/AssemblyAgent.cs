@@ -12,7 +12,7 @@
         [SerializeField]
         private Transform _raySpawnOrigin;
         [SerializeField]
-        private RayPerception _rayPerception;
+        private RayPerceptionOld _rayPerception;
         [SerializeField]
         private CubeSpawner _cubeSpawner;
 
@@ -100,7 +100,7 @@
 
         public override void CollectObservations(){ }
 
-        public override void AgentAction(float[] vectorAction, string textAction)
+        public override void AgentAction(float[] vectorAction)
         {
             float moveAction = _movementBuckets[(int)vectorAction[0]];
 
@@ -109,6 +109,14 @@
                     a: _pusher.position,
                     b: _pusherOrigin + (_maxPusherMovement * moveAction),
                     t: Time.deltaTime * _pusherSpeed));
+        }
+
+        public override float[] Heuristic()
+        {
+            var action = new float[1];
+
+            action[0] = 5f;
+            return action;
         }
         #endregion
     }

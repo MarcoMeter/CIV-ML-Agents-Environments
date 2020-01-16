@@ -2,8 +2,5 @@
 {
     using MLAgents;
 
-    public class AssemblyAcademy : Academy
-    {
-
-    }
+    //public class AssemblyAcademy : Academy {}
 }

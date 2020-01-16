@@ -5,6 +5,7 @@ using MLAgents;
 
 public class GenerateTestField : MonoBehaviour
 {
+    public Academy academy;
     public Vector3 minSize = new Vector3(3f, 0.5f, 3f);
     public Vector3 maxSize = new Vector3(5f, 1f, 5f);
     public Vector2 partsRange = new Vector2(5, 7);
@@ -38,11 +39,20 @@ public class GenerateTestField : MonoBehaviour
 
     public void Reset()
     {
+        transform.rotation = Quaternion.identity;
+        magnetChance = 0.8f;
+        /*Random.InitState((int)Academy.Instance.resetParameters["seed"]);
+        magnetChance = academy.resetParameters["magnet-chance"];
+        academy.resetParameters["magnet-chance"] = academy.resetParameters["magnet-chance"] - academy.resetParameters["magnet-chance-loss"];
+        academy.resetParameters["magnet-chance"] = academy.resetParameters["magnet-chance"] < academy.resetParameters["magnet-chance-min"] ? 
+            academy.resetParameters["magnet-chance-min"] : 
+            academy.resetParameters["magnet-chance"];*/
         partCount = 0;
         magnets = 0;
         placedMagnets = 0;
         DeleteChildren();
         GenerateObject();
+        transform.rotation = Quaternion.Euler(0f, Random.Range(0, 360f), 0f);
     }
 
     public void DeleteChildren()

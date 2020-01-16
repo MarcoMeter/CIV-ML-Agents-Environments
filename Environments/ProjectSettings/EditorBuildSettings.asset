@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-  path: Assets/WireLoop/scenes/WireLoop.unity
-  guid: dd233faa85a01b14e8f528a837d49ed8
+    path: Assets/Environments/AssemblyLine/Assemblyline.unity
+    guid: b9630d8f03b014947af3b94ed0cfba9e
   m_configObjects: {}

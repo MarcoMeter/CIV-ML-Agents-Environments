@@ -1,12 +1,57 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MLAgents.CommunicatorObjects;
+using MLAgents.Sensor;
 
 namespace MLAgents
 {
-    public struct CommunicatorParameters
+    public struct CommunicatorInitParameters
     {
+        /// <summary>
+        /// Port to listen for connections on.
+        /// </summary>
         public int port;
+        /// <summary>
+        /// The name of the environment.
+        /// </summary>
+        public string name;
+        /// <summary>
+        /// The version of the Unity SDK.
+        /// </summary>
+        public string version;
     }
+    public struct UnityRLInitParameters
+    {
+        /// <summary>
+        /// An RNG seed sent from the python process to Unity.
+        /// </summary>
+        public int seed;
+    }
+    public struct UnityRLInputParameters
+    {
+        /// <summary>
+        /// Boolean sent back from python to indicate whether or not training is happening.
+        /// </summary>
+        public bool isTraining;
+    }
+
+    /// <summary>
+    /// Delegate for handling quite events sent back from the communicator.
+    /// </summary>
+    public delegate void QuitCommandHandler();
+
+    /// <summary>
+    /// Delegate for handling reset parameter updates sent from the communicator.
+    /// </summary>
+    /// <param name="resetParams"></param>
+    public delegate void ResetCommandHandler();
+
+    /// <summary>
+    /// Delegate to handle UnityRLInputParameters updates from the communicator.
+    /// </summary>
+    /// <param name="inputParams"></param>
+    public delegate void RLInputReceivedHandler(UnityRLInputParameters inputParams);
 
     /**
     This is the interface of the Communicators.
@@ -38,34 +83,67 @@ namespace MLAgents
     ......UnityRLOutput
     ......UnityRLInitializationOutput
     ...UnityInput
-    ......UnityRLIntput
-    ......UnityRLInitializationIntput
+    ......UnityRLInput
+    ......UnityRLInitializationInput
 
     UnityOutput and UnityInput can be extended to provide functionalities beyond RL
     UnityRLOutput and UnityRLInput can be extended to provide new RL functionalities
      */
-    public interface ICommunicator
+    public interface ICommunicator : IDisposable
     {
         /// <summary>
-        /// Initialize the communicator by sending the first UnityOutput and receiving the
-        /// first UnityInput. The second UnityInput is stored in the unityInput argument.
+        /// Quit was received by the communicator.
         /// </summary>
-        /// <returns>The first Unity Input.</returns>
-        /// <param name="unityOutput">The first Unity Output.</param>
-        /// <param name="unityInput">The second Unity input.</param>
-        UnityInput Initialize(UnityOutput unityOutput,
-            out UnityInput unityInput);
+        event QuitCommandHandler QuitCommandReceived;
 
         /// <summary>
-        /// Send a UnityOutput and receives a UnityInput.
+        /// Reset command sent back from the communicator.
         /// </summary>
-        /// <returns>The next UnityInput.</returns>
-        /// <param name="unityOutput">The UnityOutput to be sent.</param>
-        UnityInput Exchange(UnityOutput unityOutput);
+        event ResetCommandHandler ResetCommandReceived;
 
         /// <summary>
-        /// Close the communicator gracefully on both sides of the communication.
+        /// Sends the academy parameters through the Communicator.
+        /// Is used by the academy to send the AcademyParameters to the communicator.
         /// </summary>
-        void Close();
+        /// <returns>The External Initialization Parameters received.</returns>
+        /// <param name="initParameters">The Unity Initialization Parameters to be sent.</param>
+        UnityRLInitParameters Initialize(CommunicatorInitParameters initParameters);
+
+        /// <summary>
+        /// Registers a new Brain to the Communicator.
+        /// </summary>
+        /// <param name="name">The name or key uniquely identifying the Brain</param>
+        /// <param name="brainParameters">The Parameters for the Brain being registered</param>
+        void SubscribeBrain(string name, BrainParameters brainParameters);
+
+        /// <summary>
+        /// Sends the observations of one Agent.
+        /// </summary>
+        /// <param name="brainKey">Batch Key.</param>
+        /// <param name="info">Agent info.</param>
+        /// <param name="sensors">The list of ISensors of the Agent.</param>
+        /// <param name="action">The action that will be called once the next AgentAction is ready.</param>
+        void PutObservations(string brainKey, AgentInfo info, List<ISensor> sensors, Action<AgentAction> action);
+
+        /// <summary>
+        /// Signals the ICommunicator that the Agents are now ready to receive their action
+        /// and that if the communicator has not yet received an action for one of the Agents
+        /// it needs to get one at this point.
+        /// </summary>
+        void DecideBatch();
+
+        /// <summary>
+        /// Gets the AgentActions based on the batching key.
+        /// </summary>
+        /// <param name="key">A key to identify which actions to get</param>
+        /// <returns></returns>
+        Dictionary<int, AgentAction> GetActions(string key);
+
+        /// <summary>
+        /// Registers a side channel to the communicator. The side channel will exchange
+        /// messages with its Python equivalent.
+        /// </summary>
+        /// <param name="sideChannel"> The side channel to be registered.</param>
+        void RegisterSideChannel(SideChannel sideChannel);
     }
 }

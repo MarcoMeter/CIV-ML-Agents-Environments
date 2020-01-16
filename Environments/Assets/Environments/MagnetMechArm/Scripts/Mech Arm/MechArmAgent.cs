@@ -30,7 +30,7 @@ public class MechArmAgent : Agent
         AddVectorObs(grabbing);
     }
 
-    public override void AgentAction(float[] vectorAction, string textAction)
+    public override void AgentAction(float[] vectorAction)
     {
         // Rewards
         float[] actions = new float[5] { -0.1f, -0.01f, 0f, 0.01f, 0.1f };

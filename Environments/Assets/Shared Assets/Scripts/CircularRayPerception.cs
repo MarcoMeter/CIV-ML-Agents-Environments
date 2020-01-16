@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MLAgents
 {
-    public class CircularRayPerception : RayPerception
+    public class CircularRayPerception : RayPerceptionOld
     {
         public int horizontalRays = 10;
         public int verticalRays = 3;

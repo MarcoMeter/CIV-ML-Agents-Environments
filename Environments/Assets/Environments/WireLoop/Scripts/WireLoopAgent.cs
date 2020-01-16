@@ -92,7 +92,7 @@
             }
         }
 
-        public override void AgentAction(float[] vectorAction, string textAction)
+        public override void AgentAction(float[] vectorAction)
         {
             // Calculates ring velocities
             _ringNewPos = _ring.position;

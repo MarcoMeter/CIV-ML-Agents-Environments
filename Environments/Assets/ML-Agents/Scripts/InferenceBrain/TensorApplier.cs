@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Barracuda;
+using System;
 
 namespace MLAgents.InferenceBrain
 {
@@ -27,14 +28,13 @@ namespace MLAgents.InferenceBrain
             /// <param name="tensorProxy">
             /// The Tensor containing the data to be applied to the Agents
             /// </param>
-            /// <param name="agentInfo">
-            /// Dictionary of Agents to AgentInfo that will receive
-            /// the values of the Tensor.
+            /// <param name="agents">
+            /// List of Agents that will receive the values of the Tensor.
             /// </param>
-            void Apply(TensorProxy tensorProxy, Dictionary<Agent, AgentInfo> agentInfo);
+            void Apply(TensorProxy tensorProxy, IEnumerable<AgentIdActionPair> actions);
         }
 
-        private readonly Dictionary<string, IApplier> m_Dict = new Dictionary<string, IApplier>();
+        readonly Dictionary<string, IApplier> m_Dict = new Dictionary<string, IApplier>();
 
         /// <summary>
         /// Returns a new TensorAppliers object.
@@ -43,11 +43,15 @@ namespace MLAgents.InferenceBrain
         /// used</param>
         /// <param name="seed"> The seed the Appliers will be initialized with.</param>
         /// <param name="allocator"> Tensor allocator</param>
+        /// <param name="memories">Dictionary of AgentInfo.id to memory used to pass to the inference model.</param>
         /// <param name="barracudaModel"></param>
         public TensorApplier(
-            BrainParameters bp, int seed, ITensorAllocator allocator, object barracudaModel = null)
+            BrainParameters bp,
+            int seed,
+            ITensorAllocator allocator,
+            Dictionary<int, List<float>> memories,
+            object barracudaModel = null)
         {
-            m_Dict[TensorNames.ValueEstimateOutput] = new ValueEstimateApplier();
             if (bp.vectorActionSpaceType == SpaceType.Continuous)
             {
                 m_Dict[TensorNames.ActionOutput] = new ContinuousActionOutputApplier();
@@ -57,16 +61,16 @@ namespace MLAgents.InferenceBrain
                 m_Dict[TensorNames.ActionOutput] =
                     new DiscreteActionOutputApplier(bp.vectorActionSize, seed, allocator);
             }
-            m_Dict[TensorNames.RecurrentOutput] = new MemoryOutputApplier();
+            m_Dict[TensorNames.RecurrentOutput] = new MemoryOutputApplier(memories);
 
             if (barracudaModel != null)
             {
                 var model = (Model)barracudaModel;
 
-                for (var i = 0; i < model?.memories.Length; i++)
+                for (var i = 0; i < model?.memories.Count; i++)
                 {
                     m_Dict[model.memories[i].output] =
-                        new BarracudaMemoryOutputApplier(model.memories.Length, i);
+                        new BarracudaMemoryOutputApplier(model.memories.Count, i, memories);
                 }
             }
         }
@@ -75,12 +79,11 @@ namespace MLAgents.InferenceBrain
         /// Updates the state of the agents based on the data present in the tensor.
         /// </summary>
         /// <param name="tensors"> Enumerable of tensors containing the data.</param>
-        /// <param name="agentInfos"> Dictionary of Agent to AgentInfo that contains the
-        /// Agents that will be updated using the tensor's data</param>
+        /// <param name="agents"> List of Agents that will be updated using the tensor's data</param>
         /// <exception cref="UnityAgentsException"> One of the tensor does not have an
         /// associated applier.</exception>
         public void ApplyTensors(
-            IEnumerable<TensorProxy> tensors,  Dictionary<Agent, AgentInfo> agentInfos)
+            IEnumerable<TensorProxy> tensors, IEnumerable<AgentIdActionPair> actions)
         {
             foreach (var tensor in tensors)
             {
@@ -89,7 +92,7 @@ namespace MLAgents.InferenceBrain
                     throw new UnityAgentsException(
                         $"Unknown tensorProxy expected as output : {tensor.name}");
                 }
-                m_Dict[tensor.name].Apply(tensor, agentInfos);
+                m_Dict[tensor.name].Apply(tensor, actions);
             }
         }
     }

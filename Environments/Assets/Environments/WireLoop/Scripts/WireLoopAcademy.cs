@@ -2,8 +2,5 @@
 {
     using MLAgents;
 
-    public class WireLoopAcademy : Academy
-    {
-        
-    }
+    //public class WireLoopAcademy : Academy {}
 }

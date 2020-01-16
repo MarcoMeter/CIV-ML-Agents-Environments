@@ -779,6 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &1878760966202553747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &1878760966854421005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1106,7 @@ Transform:
   - {fileID: 1878760967541082273}
   - {fileID: 6129884232883785424}
   - {fileID: 956468524}
+  - {fileID: 2002327968682196942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1777,6 +1780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &1976190175390471208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,6 +2369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &2953290077902788677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,6 +2568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &3349904137265048988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,6 +2767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &3729184252198006923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &4168542666262794983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,6 +3165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &4225265635877251638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &5020317698929903609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3599,75 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5256764912935227176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002327968682196942}
+  - component: {fileID: 1709711217811506203}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002327968682196942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256764912935227176}
+  m_LocalRotation: {x: 0.76604444, y: 0, z: 0, w: 0.64278764}
+  m_LocalPosition: {x: 0, y: 38.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1878760966854421004}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 100, y: 0, z: 0}
+--- !u!108 &1709711217811506203
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256764912935227176}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 49.67
+  m_SpotAngle: 96.90643
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &5514833605806343167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,6 +3866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &5705687548926866218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,7 +4004,11 @@ MonoBehaviour:
   minSize: {x: 3, y: 0.5, z: 3}
   maxSize: {x: 5, y: 1, z: 5}
   partsRange: {x: 5, y: 7}
+  magnetChance: 0.1
   agent: {fileID: 758327505133059660}
+  partCount: 0
+  magnets: 0
+  placedMagnets: 0
 --- !u!1 &6129884232883491488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6155,7 +6239,9 @@ GameObject:
   - component: {fileID: 6129884232886652620}
   - component: {fileID: 6129884232885685388}
   - component: {fileID: 6129884232883491569}
+  - component: {fileID: 1752347630829524897}
   - component: {fileID: 758327505133059660}
+  - component: {fileID: 2869357761455811696}
   m_Layer: 0
   m_Name: Solved Mech Arm
   m_TagString: Untagged
@@ -6281,6 +6367,30 @@ MonoBehaviour:
   inputRot: 0
   inputHeight: 0
   inputDist: 0
+--- !u!114 &1752347630829524897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129884232883491568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    vectorObservationSize: 10
+    numStackedVectorObservations: 1
+    vectorActionSize: 02000000050000000500000005000000
+    vectorActionDescriptions: []
+    vectorActionSpaceType: 0
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: SolvedMechArm
+  m_TeamID: 0
+  m_useChildSensors: 1
 --- !u!114 &758327505133059660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6293,20 +6403,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7631b9497664146980937637301a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: b4c7ffea109c1b541816868e04e2fbc1, type: 2}
   agentParameters:
-    agentCameras:
-    - {fileID: 5614482669450705320}
-    agentRenderTextures: []
-    maxStep: 5000
-    resetOnDone: 1
+    maxStep: 1000
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   armController: {fileID: 6129884232883491569}
   head: {fileID: 6278492522762671384}
+  spotLight: {fileID: 2002327968682196942}
   grabbing: 1
   generator: {fileID: 4423885642669567618}
   tries: -1
+--- !u!114 &2869357761455811696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129884232883491568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282f342c2ab144bf38be65d4d0c4e07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 5614482669450705320}
+  sensorName: CameraSensor
+  width: 84
+  height: 84
+  grayscale: 0
+  compression: 1
 --- !u!1 &6129884232883491576
 GameObject:
   m_ObjectHideFlags: 0
@@ -6549,6 +6673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &6605094671860214968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,6 +7456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMagnet: 0
   agent: {fileID: 758327505133059660}
+  generateObject: {fileID: 0}
 --- !u!1 &8591777152898397882
 GameObject:
   m_ObjectHideFlags: 0
